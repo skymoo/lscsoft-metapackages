@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require 'terminal-table'
+
 # systems to collect data from (need to be able to gsissh into those)
 yum_host = 'ldas-grid.ligo.caltech.edu'
 apt_host = 'atlas6.atlas.aei.uni-hannover.de'
@@ -47,6 +49,16 @@ IO.popen("gsissh #{apt_host} apt-cache depends #{packages.keys.find_all { |k| pa
   end
 end
 
+# now fill your terminal with a lot of tables
+packages.keys.sort.each do |pkg|
+  yum_list = ( packages[pkg][:yum_deps].nil? ? "n/a" : packages[pkg][:yum_deps].join("\n") )
+  apt_list = ( packages[pkg][:apt_deps].nil? ? "n/a" : packages[pkg][:apt_deps].join("\n") )
 
-require 'pp'
-pp packages
+  table = Terminal::Table.new :style => {:width => 80}
+  table.headings = [ 'SL7', 'Debian Jessie' ]
+  table.title = pkg
+  table.rows = [[ yum_list, apt_list ]]
+  puts table
+end
+
+
