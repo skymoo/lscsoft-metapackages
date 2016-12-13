@@ -51,8 +51,8 @@ end
 
 # now fill your terminal with a lot of tables
 packages.keys.sort.each do |pkg|
-  yum_list = ( packages[pkg][:yum_deps].nil? ? "n/a" : packages[pkg][:yum_deps].join("\n") )
-  apt_list = ( packages[pkg][:apt_deps].nil? ? "n/a" : packages[pkg][:apt_deps].join("\n") )
+  yum_list = ( packages[pkg][:yum_deps].nil? ? "n/a" : packages[pkg][:yum_deps].sort.join("\n") )
+  apt_list = ( packages[pkg][:apt_deps].nil? ? "n/a" : packages[pkg][:apt_deps].sort.join("\n") )
 
   table = Terminal::Table.new :style => {:width => 72}
   table.headings = [ 'SL7', 'Debian Jessie' ]
