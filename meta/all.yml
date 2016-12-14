@@ -1,0 +1,26 @@
+---
+####################
+### lscsoft-all
+####################
+all:
+  deps:
+    lscsoft-internal:
+    lscsoft-external:
+    lscsoft-ldas:
+    lscsoft-auth:
+  version: 2016.12
+  changelog:
+    - 2016-12-14T19:04:10+01:00:
+      author: Carsten Aulbert <carsten.aulbert@ligo.org>
+      changes: initial test
+####################
+### lscsoft-auth
+####################
+auth:
+  sasl:
+    sl7: cyrus-sasl-gssapi
+    deb: libsasl2-modules-gssapi-mit
+  krb5:
+    sl7: krb5-workstation
+    deb:
+  python-kerberos:
