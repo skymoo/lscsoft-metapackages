@@ -16,12 +16,82 @@ require 'pp'
 require 'date'
 require 'fileutils'
 
-def deb_create_source(fname, pkg_data)
-  # basic tests
-  %w(changelog desc_short desc_long deps name maintainer priority section).each do |t|
-    raise "#{fname} requires key '#{t}'" unless pkg_data.key?(t)
+def rpm_create_source(fname, pkg_data)
+  # ensure target dir is present
+  FileUtils.mkpath("#{$ROOT}/stage/rpm/#{pkg_data['name']}")
+
+  # check if we need to act at all
+  # if 'changelog.Debian' does not exist --> act
+  # first version line in 'changelog.Debian' contains our latest version string -> return
+  # otherwise --> act
+
+  # changelog_file = "#{$ROOT}/stage/deb/#{pkg_data['name']}/changelog.Debian"
+  # if File.exist?(changelog_file)
+  #   File.open(changelog_file).each do |l|
+  #     next unless l =~ /^\S+ \(([a-zA-Z0-9.+-:]+)\) /
+  #     return if $1.to_s.eql? pkg_data['changelog'][0]['version'].to_s
+  #     break
+  #   end
+  # end
+
+  spec = File.open("#{$ROOT}/stage/rpm/#{pkg_data['name']}/#{pkg_data['name']}.spec", 'w')
+  spec.puts <<-SPECSTART
+Name: #{pkg_data['name']}
+Version: #{pkg_data['changelog'][0]['version']}
+Release: 1%{?dist}
+Group: #{pkg_data['section']}
+License: GPL
+Summary: #{pkg_data['desc_short']}
+Packager: #{pkg_data['maintainer']}
+BuildArch: noarch
+
+SPECSTART
+
+  # add dependencies
+  dep_list = []
+  pkg_data['deps'].each do |k,v|
+    # simple, unversioned dependencies only list 'nil' as a value
+    if v.nil?
+      dep_list << k
+      next
+    end
+
+    # in any other case a deb hash key must be present
+    raise "#{fname}:\n  versioned dependency for package #{pkg_data['name']}: #{k} requires 'rpm' key" unless v.key?('rpm')
+    dep_list << "#{k} #{v['rpm']}"
+  end
+  dep_list.sort.each do |d|
+    spec.puts "Requires: #{d}"
   end
 
+  spec.puts <<-SPECMID
+
+%description
+#{pkg_data['desc_long']}
+
+%install
+
+%files
+
+%changelog
+SPECMID
+  pkg_data['changelog'].each do |entry|
+    spec.puts "* #{entry['date'].strftime('%a %b %e %Y')} #{entry['author']} #{entry['version']}"
+    entry['changes'].each do |item|
+      indent = '- '
+      # this can be a multiline string from YAML, hence
+      # - split on newline
+      # - add '- ' to first and
+      # - '  'to every other line
+      item.split("\n").each do |line|
+        spec.puts indent + line
+        indent = '  '
+      end
+    end
+  end
+end
+
+def deb_create_source(fname, pkg_data)
   # ensure target dir is present
   FileUtils.mkpath("#{$ROOT}/stage/deb/#{pkg_data['name']}")
 
@@ -142,6 +212,14 @@ Dir.glob("#{$ROOT}/meta/*.yml") do |meta_file|
   content['name'] = pkg
   # add long description unless given
   content['desc_long'] = content['desc_short'] if content['desc_long'].nil?
+
+  # basic tests
+  %w(changelog desc_short desc_long deps name maintainer priority section).each do |t|
+    raise "#{meta_file} requires key '#{t}'" unless content.key?(t)
+  end
+
+  # create rpm source package
+  rpm_create_source(meta_file, content)
 
   # create deb source package
   deb_create_source(meta_file, content)
