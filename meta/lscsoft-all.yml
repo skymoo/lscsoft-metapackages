@@ -21,6 +21,7 @@ desc_long:
 deps:
   lscsoft-internal:
     deb: '>> 5.0'
+    rpm:
   lscsoft-external:
   lscsoft-ldas:
   lscsoft-auth:
