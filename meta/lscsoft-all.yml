@@ -1,0 +1,29 @@
+---
+####################
+### lscsoft-all
+####################
+changelog:
+  - date: 2016-12-14T19:04:10+01:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - |
+        further tests
+        another line
+      - needed?
+    version: 2016.12
+  - date: 02/06/17 4:48pm EST
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - Test date string
+    version: 1.0
+desc_short: 'Metapackage to pull in all other lscsoft packages'
+desc_long:
+deps:
+  lscsoft-internal:
+    deb: '>> 5.0'
+  lscsoft-external:
+  lscsoft-ldas:
+  lscsoft-auth:
+maintainer: Carsten Aulbert <carsten.aulbert@ligo.org>
+priority: optional
+section: lscsoft
