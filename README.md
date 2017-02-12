@@ -1,4 +1,4 @@
-Simple scripts which turns a yaml file like
+Simple script which turns a yaml file like
 ```
 ---
 ####################
