@@ -9,7 +9,7 @@ require 'yaml'
 $ROOT = '/home/carsten/PROJECTS/LIGO/lscsoft-metapackage-comparison'
 # standard directory layout:
 # meta/ contains the meta package definitions - one per file
-# stage/{deb,rpm}/ contain all necessary information to build meta-packages
+# stage/pkgname/{deb,rpm}/ contain all necessary information to build meta-packages
 # results/ if we can somehow figure out how to build all packages on the host
 # machine, this directory shall contain the resulting packages
 require 'pp'
@@ -17,24 +17,7 @@ require 'date'
 require 'fileutils'
 
 def rpm_create_source(fname, pkg_data)
-  # ensure target dir is present
-  FileUtils.mkpath("#{$ROOT}/stage/rpm/#{pkg_data['name']}")
-
-  # check if we need to act at all
-  # if 'changelog.Debian' does not exist --> act
-  # first version line in 'changelog.Debian' contains our latest version string -> return
-  # otherwise --> act
-
-  # changelog_file = "#{$ROOT}/stage/deb/#{pkg_data['name']}/changelog.Debian"
-  # if File.exist?(changelog_file)
-  #   File.open(changelog_file).each do |l|
-  #     next unless l =~ /^\S+ \(([a-zA-Z0-9.+-:]+)\) /
-  #     return if $1.to_s.eql? pkg_data['changelog'][0]['version'].to_s
-  #     break
-  #   end
-  # end
-
-  spec = File.open("#{$ROOT}/stage/rpm/#{pkg_data['name']}/#{pkg_data['name']}.spec", 'w')
+  spec = File.open("#{$ROOT}/stage/#{pkg_data['name']}/rpm/#{pkg_data['name']}.spec", 'w')
   spec.puts <<-SPECSTART
 Name: #{pkg_data['name']}
 Version: #{pkg_data['changelog'][0]['version']}
@@ -92,22 +75,6 @@ SPECMID
 end
 
 def deb_create_source(fname, pkg_data)
-  # ensure target dir is present
-  FileUtils.mkpath("#{$ROOT}/stage/deb/#{pkg_data['name']}")
-
-  # check if we need to act at all
-  # if 'changelog.Debian' does not exist --> act
-  # first version line in 'changelog.Debian' contains our latest version string -> return
-  # otherwise --> act
-
-  changelog_file = "#{$ROOT}/stage/deb/#{pkg_data['name']}/changelog.Debian"
-  if File.exist?(changelog_file)
-    File.open(changelog_file).each do |l|
-      next unless l =~ /^\S+ \(([a-zA-Z0-9.+-:]+)\) /
-      return if $1.to_s.eql? pkg_data['changelog'][0]['version'].to_s
-      break
-    end
-  end
   deb_control(fname, pkg_data)
   deb_readme(fname, pkg_data)
   deb_changelog(fname, pkg_data)
@@ -116,14 +83,14 @@ end
 
 def deb_readme(fname, pkg_data)
 # create README
-  readme = File.new("#{$ROOT}/stage/deb/#{pkg_data['name']}/README", 'w')
+  readme = File.new("#{$ROOT}/stage/#{pkg_data['name']}/deb/README", 'w')
   readme.puts pkg_data['desc_long']
   readme.close
 end
 
 def deb_changelog(fname, pkg_data)
 # create changelog
-  changelog = File.new("#{$ROOT}/stage/deb/#{pkg_data['name']}/changelog.Debian", 'w')
+  changelog = File.new("#{$ROOT}/stage/#{pkg_data['name']}/deb/changelog.Debian", 'w')
   pkg_data['changelog'].each do |entry|
     changelog.puts "#{pkg_data['name']} (#{entry['version']}) unstable; urgency=medium\n\n"
     entry['changes'].each do |item|
@@ -145,7 +112,7 @@ def deb_changelog(fname, pkg_data)
 end
 def deb_copyright(fname, pkg_data)
 # create 'copyright'
-  copyright = File.new("#{$ROOT}/stage/deb/#{pkg_data['name']}/copyright", 'w')
+  copyright = File.new("#{$ROOT}/stage/#{pkg_data['name']}/deb/copyright", 'w')
   copyright.puts <<-COPYRIGHT
 Upstream Author(s): The LIGO Scientific Collaboration
 
@@ -158,7 +125,7 @@ end
 
 def deb_control(fname, pkg_data)
   # create control file
-  control = File.new("#{$ROOT}/stage/deb/#{pkg_data['name']}/control", 'w')
+  control = File.new("#{$ROOT}/stage/#{pkg_data['name']}/deb/control", 'w')
 
   # start with simple header
   control.puts <<-CONTROLSTART
@@ -193,8 +160,10 @@ Description: #{pkg_data['desc_short']}
  #{pkg_data['desc_long']}
 CONTROLEND
   control.close
-
 end
+
+############# MAIN
+
 # iterate over each file in meta/
 Dir.glob("#{$ROOT}/meta/*.yml") do |meta_file|
   puts meta_file
@@ -218,9 +187,27 @@ Dir.glob("#{$ROOT}/meta/*.yml") do |meta_file|
     raise "#{meta_file} requires key '#{t}'" unless content.key?(t)
   end
 
+  # ensure target dirs are is present
+  %w(deb rpm).each do |d|
+    FileUtils.mkpath("#{$ROOT}/stage/#{pkg}/#{d}")
+  end
+
+  # once we get here, check if we need to work at all on this one
+  # for that, check its version file and compare to latest one from changelog
+  last_version = "#{$ROOT}/stage/#{pkg}/version"
+  if File.exists?(last_version)
+    version = File.open(last_version, &:gets)
+    break if version.to_s.eql?(content['changelog'][0]['version'].to_s)
+  end
+
   # create rpm source package
   rpm_create_source(meta_file, content)
 
   # create deb source package
   deb_create_source(meta_file, content)
+
+  # all done, then update version file
+  version = File.open(last_version, 'w')
+  version.puts content['changelog'][0]['version'].to_s
+  version.close
 end
