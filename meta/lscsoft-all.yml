@@ -20,11 +20,12 @@ desc_short: 'Metapackage to pull in all other lscsoft packages'
 desc_long:
 deps:
   lscsoft-internal:
-    deb: '>> 5.0'
-    rpm:
   lscsoft-external:
   lscsoft-ldas:
   lscsoft-auth:
+  gsl:
+    deb: libgsl-dev (>> 1.4) | libgsl2-dev
+    rpm: libgsl-devel (> 1.4), libgsl-devel(< 1.8)
 maintainer: Carsten Aulbert <carsten.aulbert@ligo.org>
 priority: optional
 section: lscsoft

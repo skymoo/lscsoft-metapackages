@@ -33,15 +33,15 @@ SPECSTART
   # add dependencies
   dep_list = []
   pkg_data['deps'].each do |k,v|
-    # simple, unversioned dependencies only list 'nil' as a value
+    # add key as package name if value is nil (simple package, same for deb and rpm)
     if v.nil?
       dep_list << k
       next
     end
 
-    # in any other case a deb hash key must be present
+    # in any other case value needs to be a hash with proper values
     raise "#{fname}:\n  versioned dependency for package #{pkg_data['name']}: #{k} requires 'rpm' key" unless v.key?('rpm')
-    dep_list << "#{k} #{v['rpm']}"
+    dep_list << v['rpm']
   end
   dep_list.sort.each do |d|
     spec.puts "Requires: #{d}"
@@ -144,15 +144,15 @@ CONTROLSTART
   # add dependencies
   dep_list = []
   pkg_data['deps'].each do |k,v|
-    # simple, unversioned dependencies only list 'nil' as a value
+    # add key as package name if value is nil (simple package, same for deb and rpm)
     if v.nil?
       dep_list << k
       next
     end
 
-    # in any other case a deb hash key must be present
+    # in any other case value needs to be a hash with proper values
     raise "#{fname}:\n  versioned dependency for package #{pkg_data['name']}: #{k} requires 'deb' key" unless v.key?('deb')
-    dep_list << "#{k} (#{v['deb']})"
+    dep_list << v['deb']
   end
   control.puts 'Depends: ' + dep_list.sort.join(', ')
   control.puts <<-CONTROLEND
