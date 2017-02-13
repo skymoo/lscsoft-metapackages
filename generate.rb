@@ -16,7 +16,7 @@ require 'pp'
 require 'date'
 require 'fileutils'
 
-def rpm_create_source(fname, pkg_data)
+def rpm_create_source(pkg_data)
   spec = File.open("#{$ROOT}/stage/#{pkg_data['name']}/rpm/#{pkg_data['name']}.spec", 'w')
   spec.puts <<-SPECSTART
 Name: #{pkg_data['name']}
@@ -32,17 +32,17 @@ SPECSTART
 
   # add dependencies
   dep_list = []
+
   pkg_data['deps'].each do |k,v|
     # add key as package name if value is nil (simple package, same for deb and rpm)
     if v.nil?
       dep_list << k
-      next
+    # if our key (rpm/deb) exists use its value or the package name itself if value is empty
+    elsif v.key?('rpm')
+      dep_list << ( v['rpm'].nil? ? k : v['rpm'] )
     end
-
-    # in any other case value needs to be a hash with proper values
-    raise "#{fname}:\n  versioned dependency for package #{pkg_data['name']}: #{k} requires 'rpm' key" unless v.key?('rpm')
-    dep_list << v['rpm']
   end
+
   dep_list.sort.each do |d|
     spec.puts "Requires: #{d}"
   end
@@ -74,21 +74,21 @@ SPECMID
   end
 end
 
-def deb_create_source(fname, pkg_data)
-  deb_control(fname, pkg_data)
-  deb_readme(fname, pkg_data)
-  deb_changelog(fname, pkg_data)
-  deb_copyright(fname, pkg_data)
+def deb_create_source(pkg_data)
+  deb_control(pkg_data)
+  deb_readme(pkg_data)
+  deb_changelog(pkg_data)
+  deb_copyright(pkg_data)
 end
 
-def deb_readme(fname, pkg_data)
+def deb_readme(pkg_data)
 # create README
   readme = File.new("#{$ROOT}/stage/#{pkg_data['name']}/deb/README", 'w')
   readme.puts pkg_data['desc_long']
   readme.close
 end
 
-def deb_changelog(fname, pkg_data)
+def deb_changelog(pkg_data)
 # create changelog
   changelog = File.new("#{$ROOT}/stage/#{pkg_data['name']}/deb/changelog.Debian", 'w')
   pkg_data['changelog'].each do |entry|
@@ -110,7 +110,7 @@ def deb_changelog(fname, pkg_data)
 
   changelog.close
 end
-def deb_copyright(fname, pkg_data)
+def deb_copyright(pkg_data)
 # create 'copyright'
   copyright = File.new("#{$ROOT}/stage/#{pkg_data['name']}/deb/copyright", 'w')
   copyright.puts <<-COPYRIGHT
@@ -123,7 +123,7 @@ COPYRIGHT
   copyright.close
 end
 
-def deb_control(fname, pkg_data)
+def deb_control(pkg_data)
   # create control file
   control = File.new("#{$ROOT}/stage/#{pkg_data['name']}/deb/control", 'w')
 
@@ -147,12 +147,10 @@ CONTROLSTART
     # add key as package name if value is nil (simple package, same for deb and rpm)
     if v.nil?
       dep_list << k
-      next
+    # if our key (rpm/deb) exists use its value or the package name itself if value is empty
+    elsif v.key?('deb')
+      dep_list << ( v['deb'].nil? ? k : v['deb'] )
     end
-
-    # in any other case value needs to be a hash with proper values
-    raise "#{fname}:\n  versioned dependency for package #{pkg_data['name']}: #{k} requires 'deb' key" unless v.key?('deb')
-    dep_list << v['deb']
   end
   control.puts 'Depends: ' + dep_list.sort.join(', ')
   control.puts <<-CONTROLEND
@@ -201,10 +199,10 @@ Dir.glob("#{$ROOT}/meta/*.yml") do |meta_file|
   end
 
   # create rpm source package
-  rpm_create_source(meta_file, content)
+  rpm_create_source(content)
 
   # create deb source package
-  deb_create_source(meta_file, content)
+  deb_create_source(content)
 
   # all done, then update version file
   version = File.open(last_version, 'w')
