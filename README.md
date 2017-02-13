@@ -21,9 +21,10 @@ changelog:
 desc_short: 'Metapackage to pull in all other lscsoft packages'
 desc_long:
 deps:
+  gsl:
+    deb: libgsl-dev (>> 1.4) | libgsl2-dev
+    rpm: libgsl-devel (> 1.4), libgsl-devel(< 1.8)
   lscsoft-internal:
-    deb: '>> 5.0'
-    rpm:
   lscsoft-external:
   lscsoft-ldas:
   lscsoft-auth:
@@ -32,11 +33,8 @@ priority: optional
 section: lscsoft
 ```
 
-into
+into `rpm` spec file like
 
-# RPM
-
-a single spec file like
 ```
 Name: lscsoft-all
 Version: 2016.12
@@ -47,6 +45,7 @@ Summary: Metapackage to pull in all other lscsoft packages
 Packager: Carsten Aulbert <carsten.aulbert@ligo.org>
 BuildArch: noarch
 
+Requires: libgsl-devel (> 1.4), libgsl-devel(< 1.8)
 Requires: lscsoft-auth
 Requires: lscsoft-external
 Requires: lscsoft-internal 
@@ -68,11 +67,7 @@ Metapackage to pull in all other lscsoft packages
 - Test date string
 ```
 
-and for
-
-# Debian
-
-a set of files, e.g.
+and for Debian a set of files, e.g.
 `README`:
 
 ```
@@ -121,7 +116,7 @@ Readme: README
 Changelog: changelog.Debian
 Copyright: copyright
 Architecture: all
-Depends: lscsoft-auth, lscsoft-external, lscsoft-internal (>> 5.0), lscsoft-ldas
+Depends: libgsl-dev (>> 1.4) | libgsl2-dev, lscsoft-auth, lscsoft-external, lscsoft-internal (>> 5.0), lscsoft-ldas
 Description: Metapackage to pull in all other lscsoft packages
  Metapackage to pull in all other lscsoft packages
  ```
