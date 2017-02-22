@@ -1,0 +1,30 @@
+---
+####################
+### lscsoft-metaio
+####################
+changelog:
+  - date: Thu Apr 14 2016
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - "don't depend on debuginfo packages"
+    version: 2.3-1
+  - date: Tue Aug 18 2015
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - initial version
+    version: 2.2-1
+desc_short: 'Ensure the installation of the MetaIO LSCSOFT packages.'
+desc_long:
+deps:
+  libmetaio:
+    deb: libmetaio1
+    rpm:
+  libmetaio-devel:
+    deb: libmetaio-dev
+    rpm:
+  libmetaio-matlab:
+    deb:
+  libmetaio-utils:
+maintainer: Adam Mercer <adam.mercer@ligo.org>
+priority: optional
+section: lscsoft
