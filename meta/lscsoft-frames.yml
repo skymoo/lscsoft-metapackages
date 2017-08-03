@@ -1,0 +1,24 @@
+---
+####################
+### lscsoft-frames
+####################
+changelog:
+  - date: 2017-08-03T09:58:06+02:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - restart metapackages
+    version: 2017.08.03
+desc_short: 'Metapackage to pull in libframe LSCSoft dependencies'
+desc_long: |
+  LSCSoft metapackage are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+deps:
+  libframe:
+  libframe-devel:
+    deb: libframe-dev
+    rpm:
+  libframe-matlab:
+  libframe-utils:
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
+priority: optional
+section: lscsoft

@@ -1,0 +1,36 @@
+---
+####################
+### lscsoft-internal
+####################
+changelog:
+  - date: 2017-08-03T09:20:04+02:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - restart metapackages
+    version: 2017.08.03
+desc_short: 'Metapackage to pull in core LSCSoft dependencies'
+desc_long: |
+  LSCSoft metapackage are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+deps:
+  gds-all:
+  lscsoft-frame:
+  glue:
+    deb: python-glue
+    rpm:
+  lscsoft-gstlal:
+  lscsoft-lalsuite-dev:
+  lscsoft-lalsuite:
+  lscsoft-metaio:
+  lscsoft-pylal:
+  nds2-client-all:
+  python-dqsegdb:
+  python-ligo-common:
+  python-ligo-gracedb:
+  python-ligo-lars:
+  python-ligo-lvalert:
+  python-pyrxp:
+  python-voeventlib:
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
+priority: optional
+section: lscsoft

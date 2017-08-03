@@ -1,0 +1,31 @@
+---
+####################
+### lscsoft-gstlal
+####################
+changelog:
+  - date: 2017-08-03T10:29:22+02:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - restart metapackages
+    version: 2017.08.03
+desc_short: 'Metapackage to pull in libframe LSCSoft dependencies'
+desc_long: |
+  LSCSoft metapackage are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+deps:
+  gstlal:
+  gstlal-calibration:
+  gstlal-devel:
+    deb: gstlal-dev
+    rpm:
+  gstlal-inspiral:
+  gstlal-inspiral-devel:
+    deb: gstlal-inspiral-dev
+    rpm:
+  gstlal-ugly:
+  gstlal-ugly-devel:
+    deb: gstlal-ugly-dev
+    rpm:
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
+priority: optional
+section: lscsoft
