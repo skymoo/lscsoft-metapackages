@@ -3,32 +3,20 @@
 ### lscsoft-all
 ####################
 changelog:
-  - date: 2016-12-14T19:04:10+01:00
+  - date: 2017-08-03T09:16:42+02:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
-      - |
-        further tests
-        another line
-      - needed?
-    version: 2016.12
-  - date: 02/06/17 4:48pm EST
-    author: Carsten Aulbert <carsten.aulbert@ligo.org>
-    changes:
-      - Test date string
-    version: 1.0
+      - restart metapackages
+    version: 2017.08.03
 desc_short: 'Metapackage to pull in all other lscsoft packages'
-desc_long:
-  - line 1
-  - line 2
-  - line 3
+desc_long: |
+  LSCSoft metapackage are "virtual" packages pulling in dependencies required
+  to get to a certain system state
 deps:
   lscsoft-internal:
   lscsoft-external:
   lscsoft-ldas:
   lscsoft-auth:
-  gsl:
-    deb: libgsl-dev (>> 1.4) | libgsl2-dev
-    rpm: libgsl-devel (> 1.4), libgsl-devel(< 1.8)
-maintainer: Carsten Aulbert <carsten.aulbert@ligo.org>
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
