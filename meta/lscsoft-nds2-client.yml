@@ -14,8 +14,11 @@ changelog:
       - initial version
     version: 1.0-1
 desc_short: NDS2 Client LSCSoft meta-package
-desc_long: This package is a meta-package to ensure the installation of the
-LSCSoft NDS2 Client packages.
+desc_long: |
+  This package is a meta-package to ensure the installation of the
+  LSCSoft NDS2 Client packages.
+
+  second paragraph?
 deps:
   nds2-client-all:
 

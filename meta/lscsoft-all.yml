@@ -18,6 +18,9 @@ changelog:
     version: 1.0
 desc_short: 'Metapackage to pull in all other lscsoft packages'
 desc_long:
+  - line 1
+  - line 2
+  - line 3
 deps:
   lscsoft-internal:
   lscsoft-external:
