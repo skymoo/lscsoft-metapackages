@@ -74,6 +74,31 @@ SPECMID
   end
 end
 
+def reformat_wrapped(s, width=78)
+  # helper function needed to reformat long description
+  # based on https://www.safaribooksonline.com/library/view/ruby-cookbook/0596523696/ch01s15.html
+  # other solution, thanks AlexP
+  # .gsub("\n\n", "\n.\n").scan(/\S.{0,#{width-2}}\S(?=\s|$)|\S+/).collect {|x| " " + x }.join("\n")
+  parts = []
+  s.split(/\n\n/).each do |part|
+    lines = []
+    line = ""
+    part.split(/\s+/).each do |word|
+      if line.size + word.size >= width
+        lines << line
+        line = word
+      elsif line.empty?
+        line = word
+      else
+        line << " " << word
+      end
+    end
+    lines << line if line
+    parts << " " + (lines.join "\n ")
+  end
+  return parts.join "\n .\n"
+end
+
 def deb_create_source(pkg_data)
   deb_control(pkg_data)
   deb_readme(pkg_data)
@@ -155,7 +180,7 @@ CONTROLSTART
   control.puts 'Depends: ' + dep_list.sort.join(', ')
   control.puts <<-CONTROLEND
 Description: #{pkg_data['desc_short']}
- #{pkg_data['desc_long']}
+#{reformat_wrapped(pkg_data['desc_long'])}
 CONTROLEND
   control.close
 end
