@@ -32,7 +32,7 @@ deps:
     deb: libglib2.0-dev
     rpm:
   gsl-devel:
-    deb: libgsl-dev
+    deb: libgsl0-dev
     rpm:
   hdf5-devel:
     deb: libhdf5-dev
@@ -65,6 +65,8 @@ deps:
     deb: libopenmpi-dev
     rpm:
   pkgconfig:
+    deb: pkg-config
+    rpm:
   python-devel:
     deb: python-dev, python3-dev
     rpm:

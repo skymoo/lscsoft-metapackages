@@ -14,23 +14,18 @@ desc_long: |
   to get to a certain system state
 deps:
   gds-all:
-  lscsoft-frame:
   glue:
     deb: python-glue
     rpm:
+  ligo-python:
+  lscsoft-frame:
   lscsoft-gstlal:
-  lscsoft-lalsuite-dev:
   lscsoft-lalsuite:
+  lscsoft-lalsuite-dev:
   lscsoft-metaio:
-  lscsoft-pylal:
   nds2-client-all:
-  python-dqsegdb:
-  python-ligo-common:
-  python-ligo-gracedb:
-  python-ligo-lars:
-  python-ligo-lvalert:
-  python-pyrxp:
-  python-voeventlib:
+    deb:
+    rpm: nds2-client, lscsoft-nds2-client-dev, nds2-client-man, nds2-client-headers, nds2-client-python, lscsoft-nds2-client, nds2-client-java, nds2-client-octave, nds2-client-devel, nds2-client-doc
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft

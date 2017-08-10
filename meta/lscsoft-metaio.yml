@@ -4,17 +4,14 @@
 ####################
 changelog:
   - date: Thu Apr 14 2016
-    author: Adam Mercer <adam.mercer@ligo.org>
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
-      - "don't depend on debuginfo packages"
-    version: 2.3-1
-  - date: Tue Aug 18 2015
-    author: Adam Mercer <adam.mercer@ligo.org>
-    changes:
-      - initial version
-    version: 2.2-1
+      - restart metapackages
+    version: 2017.08.10
 desc_short: 'Ensure the installation of the MetaIO LSCSOFT packages.'
-desc_long:
+desc_long: |
+  LSCSoft metapackage are "virtual" packages pulling in dependencies required
+  to get to a certain system state.
 deps:
   libmetaio:
     deb: libmetaio1
@@ -25,6 +22,6 @@ deps:
   libmetaio-matlab:
     deb:
   libmetaio-utils:
-maintainer: Adam Mercer <adam.mercer@ligo.org>
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft

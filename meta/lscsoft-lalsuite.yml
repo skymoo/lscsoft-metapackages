@@ -21,9 +21,11 @@ deps:
     rpm:
   lal-octave:
   lal-python:
+
   lalapps:
   lalapps-debuginfo:
     rpm:
+
   lalburst:
   lalburst-debuginfo:
     rpm:
@@ -32,6 +34,7 @@ deps:
     rpm:
   lalburst-octave:
   lalburst-python:
+
   laldetchar:
   laldetchar-debuginfo:
     rpm:
@@ -40,6 +43,7 @@ deps:
     rpm:
   laldetchar-octave:
   laldetchar-python:
+
   lalframe:
   lalframe-debuginfo:
     rpm:
@@ -48,6 +52,7 @@ deps:
     rpm:
   lalframe-octave:
   lalframe-python:
+
   lalinference:
   lalinference-debuginfo:
     rpm:
@@ -56,6 +61,7 @@ deps:
     rpm:
   lalinference-octave:
   lalinference-python:
+
   lalinspiral:
   lalinspiral-debuginfo:
     rpm:
@@ -64,6 +70,7 @@ deps:
     rpm:
   lalinspiral-octave:
   lalinspiral-python:
+
   lalmetaio:
   lalmetaio-debuginfo:
     rpm:
@@ -72,6 +79,7 @@ deps:
     rpm:
   lalmetaio-octave:
   lalmetaio-python:
+
   lalpulsar:
   lalpulsar-debuginfo:
     rpm:
@@ -80,6 +88,7 @@ deps:
     rpm:
   lalpulsar-octave:
   lalpulsar-python:
+
   lalsimulation:
   lalsimulation-debuginfo:
     rpm:
@@ -88,6 +97,7 @@ deps:
     rpm:
   lalsimulation-octave:
   lalsimulation-python:
+
   lalstochastic:
   lalstochastic-debuginfo:
     rpm:
@@ -96,7 +106,9 @@ deps:
     rpm:
   lalstochastic-octave:
   lalstochastic-python:
+
   lalsuite-extra:
+
   lalxml:
   lalxml-debuginfo:
     rpm:
