@@ -1,0 +1,60 @@
+---
+####################
+### lscsoft-external
+####################
+changelog:
+  - date: 2017-08-10T15:42:17+02:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - restart metapackages
+    version: 2017.08.10
+desc_short: 'Metapackage to pull in various useful packages for LSCSoft'
+desc_long: |
+  LSCSoft metapackage are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+deps:
+  cfitsio:
+    deb: libcfitsio2, libcfitsio-dev, libcfitsio-bin
+    rpm: cfitsio, cfitsio-devel, cfitsio-static
+  chealpix-devel:
+    deb: libchealpix-dev
+    rpm:
+  fftw:
+    deb: libfftw3-3, libfftw3-bin
+    rpm:
+  fftw-devel:
+    deb: libfftw3-dev
+    rpm: fftw-devel, fftw-static
+  gsl:
+    deb: libgsl0ldbl, gsl-bin
+    rpm:
+  gsl-devel:
+    deb: libgsl0-dev
+    rpm: gsl-devel, gsl-static
+  healpix_cxx-devel:
+    deb: libhealpix-cxx-dev
+    rpm:
+  healpy:
+    deb: python-healpy, python3-healpy
+  numpy:
+    deb: python-numpy, python3-numpy
+  pegasus:
+  python-decorator:
+    deb: python-decorator, python3-decorator
+    rpm:
+  python-decoratortools:
+  python-matplotlib:
+    deb: python-matplotlib, python3-matplotlib
+  python-sqlobject:
+  python-virtualenv:
+    deb: python-virtualenv, python3-virtualenv
+    rpm:
+  scipy:
+    deb: python-scipy, python3-scipy
+    rpm:
+  spr:
+    deb:
+    rpm: spr, spr-devel
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
+priority: optional
+section: lscsoft
