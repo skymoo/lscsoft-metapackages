@@ -1,0 +1,91 @@
+---
+####################
+### lscsoft-external-python
+####################
+changelog:
+  - date: 2017-08-11T09:27:28+02:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - restart metapackages
+    version: 2017.08.11
+desc_short: 'Metapackage to pull in various useful packages for LSCSoft'
+desc_long: |
+  LSCSoft metapackage are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+deps:
+  GitPython:
+    deb: python-git
+    rpm:
+  # note Debian's astropy-utils depends ONLY only python3
+  astropy-tools:
+    deb: astropy-utils
+  h5py:
+    deb: python-h5py, python3-h5py
+    rpm:
+  ipython:
+    deb: ipyhton, ipython3
+    rpm:
+  numpy:
+    deb: python-numpy, python3-numpy
+    rpm:
+  # this seems to be part of python2.7 stdlib but superseeded by python-configargparse
+  python-argparse:
+    rpm:
+  python-basemap:
+    deb: python-mpltoolkits.basemap, python3-mpltoolkits.basemap
+    rpm:
+  python-basemap-data-hires:
+    deb: python-mpltoolkits.basemap-data
+    rpm:
+  python-basemap-examples:
+    rpm:
+  python-matplotlib:
+    deb: python-matplotlib, python3-matplotlib
+    rpm:
+  python-pip:
+  python-sqlobject:
+  python-virtualenv:
+    deb: python-virtualenv, python3-virtualenv
+    rpm:
+  python2-rpm-macros:
+    deb: python-rpm
+    rpm:
+  python3-rpm-macros:
+    deb: python3-rpm
+    rpm:
+  python34:
+    deb: python3
+    rpm:
+  python34-crypto:
+    deb: python3-crypto
+    rpm:
+  python34-devel:
+    deb: python3-dev
+    rpm:
+  python34-libs:
+    deb: libpython3-dev
+    rpm:
+  python34-nose:
+    deb: python3-nose
+    rpm:
+  python34-numpy:
+    deb: python3-numpy
+    rpm:
+  # not sure what the equivalent Debian package is
+  python34-numpy-f2py:
+    rpm:
+  python34-setuptools:
+    deb: python3-setuptools
+    rpm:
+  python34-setuptools_scm:
+    deb: python3-setuptools-scm
+    rpm:
+  scipy:
+    deb: python-scipy, python3-scipy
+    rpm:
+  sympy:
+    deb: python-sympy, python3-sympy
+    rpm:
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
+priority: optional
+section: lscsoft

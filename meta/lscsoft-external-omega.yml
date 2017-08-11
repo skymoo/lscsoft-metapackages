@@ -1,0 +1,29 @@
+---
+####################
+### lscsoft-external-omege
+####################
+changelog:
+  - date: 2017-08-11T09:20:05+02:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - restart metapackages
+    version: 2017.08.11
+desc_short: 'Metapackage to pull in various useful packages for LSCSoft'
+desc_long: |
+  LSCSoft metapackage are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+deps:
+  ImageMagick:
+    deb: imagemagick
+    rpm:
+  java-1.8.0-openjdk-devel:
+    deb: openjdk-8-jdk
+    rpm:
+  moreutils:
+  xorg-x11-server-Xvfb:
+    deb: xvfb
+    rpm:
+# Extra Debian dependencies: lscsoft-lal, lscsoft-frame, lscsoft-external-octave, runit, procmail, git-core
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
+priority: optional
+section: lscsoft

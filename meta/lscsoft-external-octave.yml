@@ -1,0 +1,23 @@
+---
+####################
+### lscsoft-external-octave
+####################
+changelog:
+  - date: 2017-08-11T09:18:01+02:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - restart metapackages
+    version: 2017.08.11
+desc_short: 'Metapackage to pull in various useful packages for LSCSoft'
+desc_long: |
+  LSCSoft metapackage are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+deps:
+  octave:
+  octave-devel:
+    deb: liboctave-dev
+    rpm:
+# Extra Debian dependency emacs23-el | emacs24-el
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
+priority: optional
+section: lscsoft
