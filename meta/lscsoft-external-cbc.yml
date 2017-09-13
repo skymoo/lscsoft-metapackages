@@ -36,8 +36,10 @@ deps:
     rpm:
   healpy:
     deb: python-healpy, python3-healpy
+    rpm:
   numpy:
     deb: python-numpy, python3-numpy
+    rpm:
   pegasus:
   python-decorator:
     deb: python-decorator, python3-decorator
@@ -45,6 +47,7 @@ deps:
   python-decoratortools:
   python-matplotlib:
     deb: python-matplotlib, python3-matplotlib
+    rpm:
   python-sqlobject:
   python-virtualenv:
     deb: python-virtualenv, python3-virtualenv
@@ -55,6 +58,8 @@ deps:
   spr:
     deb:
     rpm: spr, spr-devel
+# Debian metapackage currently has these extra deps
+# lscsoft-internal, libgsl0-dbg, libcfitsio-doc | libcfitsio3-doc, libcfitsio2-dbg | libcfitsio3-dbg, python-pysqlite2
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
