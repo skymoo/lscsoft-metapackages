@@ -23,7 +23,7 @@ deps:
     deb: python-h5py, python3-h5py
     rpm:
   ipython:
-    deb: ipyhton, ipython3
+    deb: ipython, ipython3
     rpm:
   numpy:
     deb: python-numpy, python3-numpy
@@ -32,7 +32,7 @@ deps:
   python-argparse:
     rpm:
   python-basemap:
-    deb: python-mpltoolkits.basemap, python3-mpltoolkits.basemap
+    deb: python-mpltoolkits.basemap
     rpm:
   python-basemap-data-hires:
     deb: python-mpltoolkits.basemap-data
@@ -51,7 +51,6 @@ deps:
     deb: python-rpm
     rpm:
   python3-rpm-macros:
-    deb: python3-rpm
     rpm:
   python34:
     deb: python3
@@ -78,13 +77,13 @@ deps:
     deb: python3-setuptools
     rpm:
   python34-setuptools_scm:
-    deb: python3-setuptools-scm
+    deb: python3-setuptools-git
     rpm:
   scipy:
     deb: python-scipy, python3-scipy
     rpm:
   sympy:
-    deb: python-sympy, python3-sympy
+    deb: python-sympy
     rpm:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional

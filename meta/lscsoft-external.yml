@@ -64,7 +64,7 @@ deps:
   htop:
   inotify-tools:
   java:
-    deb: openjdf-7-jdk | openjdk-8-jdk, openjdk-7-doc | openjdk-8-doc
+    deb: openjdk-7-jdk | openjdk-8-jdk, openjdk-7-doc | openjdk-8-doc
     rpm: java-1.8.0-openjdk, java-1.8.0-openjdk-devel, java-1.8.0-openjdk-javadoc
   jsoncpp-devel:
     deb: libjsoncpp-dev
@@ -81,7 +81,7 @@ deps:
     deb: libopenblas-dev
     rpm:
   perf:
-    deb: linux-perf
+    deb: linux-base
     rpm:
   qgit:
   root:
@@ -110,6 +110,8 @@ deps:
     deb: xvfb
     rpm:
   xz:
+    deb: xz-utils
+    rpm:
   zlib-static:
     deb: zlib1g-dev
     rpm:

@@ -40,3 +40,5 @@ deps:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
+
+# note: python3-ligo-lvalert-heartbeat currently requires lscsoft-proposed
