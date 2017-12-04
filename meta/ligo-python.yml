@@ -8,6 +8,11 @@ changelog:
     changes:
       - restart metapackages
     version: 2017.08.03
+  - date: 2017-12-04T14:22:28+01:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - temoprarily remove python3-ligo-lvalert-heartbeat and python-pyrxp-doc
+    version: 2017.12.04
 desc_short: 'Metapackage to pull in various python packages from LIGO'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required
@@ -31,10 +36,10 @@ deps:
     deb: python-ligo-lvalert, python3-ligo-lvalert
     rpm:
   ligo-lvalert-heartbeat:
-    deb: python-ligo-lvalert-heartbeat, python3-ligo-lvalert-heartbeat
+    deb: python-ligo-lvalert-heartbeat
     rpm:
   python-pyRXP:
-    deb: python-pyrxp, python-pyrxp-doc
+    deb: python-pyrxp
     rpm:
   python-voeventlib:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
