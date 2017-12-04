@@ -1,0 +1,50 @@
+---
+####################
+### lscsoft-external-periodic
+####################
+changelog:
+  - date: 2017-08-11T09:22:42+02:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - restart metapackages
+    version: 2017.08.11
+desc_short: 'Metapackage to pull in various useful packages for LSCSoft'
+desc_long: |
+  LSCSoft metapackage are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+deps:
+  R:
+    deb: r-recommended
+    rpm:
+  R-devel:
+    deb: r-base-dev
+    rpm:
+  cfitsio:
+    deb: libcfitsio2, libcfitsio-dev, libcfitsio-bin
+    rpm: cfitsio, cfitsio-devel, cfitsio-static
+  fftw:
+    deb: libfftw3-3, libfftw3-bin
+    rpm:
+  fftw-devel:
+    deb: libfftw3-dev
+    rpm: fftw-devel, fftw-static
+  gsl:
+    deb: libgsl0ldbl, gsl-bin
+    rpm:
+  gsl-devel:
+    deb: libgsl0-dev
+    rpm: gsl-devel, gsl-static
+  lscsoft-internal:
+  numpy:
+    deb: python-numpy
+    rpm:
+  python-matplotlib:
+  python-sqlobject:
+  scipy:
+    deb: python-scipy
+    rpm:
+# Extra Debian dependencies: lscsoft-internal, libgsl0-dbg, libfftw3-doc, libcfitsio-doc | libcfitsio3-doc, libcfitsio2-dbg | libcfitsio3-dbg, python-pysqlite2, r-base-core-dbg
+
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
+priority: optional
+section: lscsoft

@@ -1,0 +1,122 @@
+---
+####################
+### lscsoft-lalsuite
+####################
+changelog:
+  - date: 2017-08-03T10:31:40+02:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - restart metapackages
+    version: 2017.08.03
+desc_short: 'Metapackage to pull in lalsuite dependencies'
+desc_long: |
+  LSCSoft metapackage are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+deps:
+  lal:
+  lal-debuginfo:
+    rpm:
+  lal-devel:
+    deb: lal-dev
+    rpm:
+  lal-octave:
+  lal-python:
+
+  lalapps:
+  lalapps-debuginfo:
+    rpm:
+
+  lalburst:
+  lalburst-debuginfo:
+    rpm:
+  lalburst-devel:
+    deb: lalburst-dev
+    rpm:
+  lalburst-octave:
+  lalburst-python:
+
+  laldetchar:
+  laldetchar-debuginfo:
+    rpm:
+  laldetchar-devel:
+    deb: laldetchar-dev
+    rpm:
+  laldetchar-octave:
+  laldetchar-python:
+
+  lalframe:
+  lalframe-debuginfo:
+    rpm:
+  lalframe-devel:
+    deb: lalframe-dev
+    rpm:
+  lalframe-octave:
+  lalframe-python:
+
+  lalinference:
+  lalinference-debuginfo:
+    rpm:
+  lalinference-devel:
+    deb: lalinference-dev
+    rpm:
+  lalinference-octave:
+  lalinference-python:
+
+  lalinspiral:
+  lalinspiral-debuginfo:
+    rpm:
+  lalinspiral-devel:
+    deb: lalinspiral-dev
+    rpm:
+  lalinspiral-octave:
+  lalinspiral-python:
+
+  lalmetaio:
+  lalmetaio-debuginfo:
+    rpm:
+  lalmetaio-devel:
+    deb: lalmetaio-dev
+    rpm:
+  lalmetaio-octave:
+  lalmetaio-python:
+
+  lalpulsar:
+  lalpulsar-debuginfo:
+    rpm:
+  lalpulsar-devel:
+    deb: lalpulsar-dev
+    rpm:
+  lalpulsar-octave:
+  lalpulsar-python:
+
+  lalsimulation:
+  lalsimulation-debuginfo:
+    rpm:
+  lalsimulation-devel:
+    deb: lalsimulation-dev
+    rpm:
+  lalsimulation-octave:
+  lalsimulation-python:
+
+  lalstochastic:
+  lalstochastic-debuginfo:
+    rpm:
+  lalstochastic-devel:
+    deb: lalstochastic-dev
+    rpm:
+  lalstochastic-octave:
+  lalstochastic-python:
+
+  lalsuite-extra:
+
+  lalxml:
+  lalxml-debuginfo:
+    rpm:
+  lalxml-devel:
+    deb: lalxml-dev
+    rpm:
+  lalxml-octave:
+  lalxml-python:
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
+priority: optional
+section: lscsoft

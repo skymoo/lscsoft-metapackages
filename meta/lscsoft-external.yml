@@ -1,0 +1,123 @@
+---
+####################
+### lscsoft-external
+####################
+changelog:
+  - date: 2017-08-10T15:00:07+02:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - restart metapackages
+    version: 2017.08.10
+desc_short: 'Metapackage to pull in various useful packages for LSCSoft'
+desc_long: |
+  LSCSoft metapackage are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+deps:
+  ElectricFence:
+    deb: electric-fence
+    rpm:
+  ImageMagick:
+    deb: imagemagick
+    rpm:
+  R:
+    deb: r-recommended
+    rpm:
+  R-devel:
+    deb: r-base-dev
+    rpm:
+  cgdb:
+  clang:
+  clang-analyzer:
+    rpm:
+  ctags:
+    deb: exuberant-ctags
+    rpm:
+  ddd:
+  doxygen:
+  duc:
+  environment-modules:
+  fftw:
+    deb: libfftw3-3, libfftw3-bin
+    rpm:
+  fftw-devel:
+    deb: libfftw3-dev
+    rpm: fftw-devel, fftw-static
+  fuse-sshfs:
+    deb: sshfs
+    rpm:
+  git:
+    deb: git (>= 1.8.2)
+    rpm: git-all >= 1.8.2
+  git-annex:
+  git-lfs:
+  glibc-static:
+    deb: libc6-dev
+    rpm:
+  graphviz:
+  gsl:
+    deb: libgsl0ldbl, gsl-bin
+    rpm:
+  gsl-devel:
+    deb: libgsl0-dev
+    rpm: gsl-devel, gsl-static
+  highlight:
+  htop:
+  inotify-tools:
+  java:
+    deb: openjdk-7-jdk | openjdk-8-jdk, openjdk-7-doc | openjdk-8-doc
+    rpm: java-1.8.0-openjdk, java-1.8.0-openjdk-devel, java-1.8.0-openjdk-javadoc
+  jsoncpp-devel:
+    deb: libjsoncpp-dev
+    rpm:
+  libxml2-static:
+    deb: libxml2-dev
+    rpm:
+  lscsoft-external-cbc:
+  lscsoft-external-octave:
+  lscsoft-external-omega:
+  lscsoft-external-periodic:
+  lscsoft-external-python:
+  openblas-devel:
+    deb: libopenblas-dev
+    rpm:
+  perf:
+    deb: linux-base
+    rpm:
+  qgit:
+  root:
+    deb: root-system
+    rpm:
+  root-physics:
+    deb: libroot-math-physics-dev
+    rpm:
+  root-python:
+    deb: libroot-bindings-python-dev
+    rpm:
+  screen:
+  swig:
+    deb: swig3.0
+    rpm:
+  swig-doc:
+    deb: swig3.0-doc
+    rpm:
+  texlive:
+    deb: texlive-latex-extra, texlive-science
+    rpm: texlive-multirow,  texlive-sectsty, texlive-tocloft, texlive-xtab
+  tmux:
+  tree:
+  valgrind:
+  xorg-x11-server-Xvfb:
+    deb: xvfb
+    rpm:
+  xz:
+    deb: xz-utils
+    rpm:
+  zlib-static:
+    deb: zlib1g-dev
+    rpm:
+  zsh:
+  # additional packages currently present on debian:
+  # python-numpy, python-matplotlib, python-sqlobject, ipython, python-scipy, python-pysqlite2, python-mpltoolkits.basemap, linux-base, python-virtualenv, funtools, libfuntools-dev, python-argparse, python-git, python-pip
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
+priority: optional
+section: lscsoft

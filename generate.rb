@@ -6,12 +6,13 @@
 
 require 'yaml'
 
-$ROOT = '/home/carsten/PROJECTS/LIGO/lscsoft-metapackage-comparison'
-# standard directory layout:
+# store path of this script
+$ROOT = File.expand_path(File.dirname(__FILE__))
+
+# standard directory layout (relative to $ROOT)
 # meta/ contains the meta package definitions - one per file
 # stage/pkgname/{deb,rpm}/ contain all necessary information to build meta-packages
-# results/ if we can somehow figure out how to build all packages on the host
-# machine, this directory shall contain the resulting packages
+
 require 'pp'
 require 'date'
 require 'fileutils'
@@ -72,6 +73,31 @@ SPECMID
       end
     end
   end
+end
+
+def reformat_wrapped(s, width=78)
+  # helper function needed to reformat long description
+  # based on https://www.safaribooksonline.com/library/view/ruby-cookbook/0596523696/ch01s15.html
+  # other solution, thanks AlexP
+  # .gsub("\n\n", "\n.\n").scan(/\S.{0,#{width-2}}\S(?=\s|$)|\S+/).collect {|x| " " + x }.join("\n")
+  parts = []
+  s.split(/\n\n/).each do |part|
+    lines = []
+    line = ""
+    part.split(/\s+/).each do |word|
+      if line.size + word.size >= width
+        lines << line
+        line = word
+      elsif line.empty?
+        line = word
+      else
+        line << " " << word
+      end
+    end
+    lines << line if line
+    parts << " " + (lines.join "\n ")
+  end
+  return parts.join "\n .\n"
 end
 
 def deb_create_source(pkg_data)
@@ -155,7 +181,7 @@ CONTROLSTART
   control.puts 'Depends: ' + dep_list.sort.join(', ')
   control.puts <<-CONTROLEND
 Description: #{pkg_data['desc_short']}
- #{pkg_data['desc_long']}
+#{reformat_wrapped(pkg_data['desc_long'])}
 CONTROLEND
   control.close
 end
@@ -164,7 +190,6 @@ end
 
 # iterate over each file in meta/
 Dir.glob("#{$ROOT}/meta/*.yml") do |meta_file|
-  puts meta_file
   pkg = meta_file[/^#{$ROOT}\/meta\/(.+)\.yml$/,1]
   content = YAML.load_file(meta_file)
 
@@ -195,8 +220,10 @@ Dir.glob("#{$ROOT}/meta/*.yml") do |meta_file|
   last_version = "#{$ROOT}/stage/#{pkg}/version"
   if File.exists?(last_version)
     version = File.open(last_version, &:gets)
-    break if version.to_s.eql?(content['changelog'][0]['version'].to_s)
+    break if version.to_s.chomp.eql?(content['changelog'][0]['version'].to_s.chomp)
   end
+
+  puts "Working on: #{meta_file}"
 
   # create rpm source package
   rpm_create_source(content)

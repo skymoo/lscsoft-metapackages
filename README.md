@@ -48,7 +48,7 @@ BuildArch: noarch
 Requires: libgsl-devel (> 1.4), libgsl-devel(< 1.8)
 Requires: lscsoft-auth
 Requires: lscsoft-external
-Requires: lscsoft-internal 
+Requires: lscsoft-internal
 Requires: lscsoft-ldas
 
 %description
@@ -120,3 +120,33 @@ Depends: libgsl-dev (>> 1.4) | libgsl2-dev, lscsoft-auth, lscsoft-external, lscs
 Description: Metapackage to pull in all other lscsoft packages
  Metapackage to pull in all other lscsoft packages
  ```
+
+
+## Testing packages##
+
+### Debian ###
+
+Easiest way of testing is creating a small VM with the lscsoft stack available and a local repository for the updated metapackages, e.g. in VM this line should be present:
+```
+echo "deb http://software.ligo.org/lscsoft/debian/ jessie contrib" > /etc/apt/sources.list.d/lscsoft.list
+echo "deb file:///tmp/metatest /" > /etc/apt/sources.list.d/metatest.list
+```
+
+At the root of checked-out repository one could run as follows (using a simple pbuilder "VM" on build server):
+
+Preparation:
+```
+export LOCALREPO=/tmp/metatest
+mkdir -p $LOCALREPO
+export REMOTE=bob:/srv/pbuilder/build/cow.1185/tmp/
+```
+
+Loop for testing:
+```
+./generate.rb
+for i in stage/*/deb/; do ( cd $i; equivs-build control ); done
+find stage -name "*deb" -type f | xargs -i rsync -a {} $LOCALREPO
+(cd $LOCALREPO; rm -f Packages.gz; dpkg-scanpackages -m . | gzip -c > Packages.gz)
+rsync -a /tmp/metatest "$REMOTE/"
+
+```

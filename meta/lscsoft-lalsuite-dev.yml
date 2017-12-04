@@ -1,0 +1,93 @@
+---
+####################
+### lscsoft-lalsuite-dev
+####################
+changelog:
+  - date: 2017-08-03T10:31:40+02:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - restart metapackages
+    version: 2017.08.03
+desc_short: 'Metapackage to pull in lalsuite development dependencies'
+desc_long: |
+  LSCSoft metapackage are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+deps:
+  autoconf:
+  automake:
+  bc:
+  cfitsio-devel:
+    deb: libcfitsio-dev
+    rpm:
+  chealpix-devel:
+    deb: libchealpix-dev
+    rpm:
+  doxygen:
+  fftw-devel:
+    deb: libfftw3-dev
+    rpm:
+  fftw-static:
+    rpm:
+  glib2-devel:
+    deb: libglib2.0-dev
+    rpm:
+  gsl-devel:
+    deb: libgsl0-dev
+    rpm:
+  hdf5-devel:
+    deb: libhdf5-dev
+    rpm:
+  hdf5-static:
+    rpm:
+  healpy:
+    deb: python-healpy, python3-healpy
+    rpm: healpy >= 1.8.5
+  ldas-tools-framecpp-c-devel:
+    deb: ldas-tools-framecpp-c-dev
+    rpm:
+  libframe-devel:
+    deb: libframe-dev
+    rpm:
+  libmetaio-devel:
+    deb: libmetaio-dev
+    rpm:
+  libtool:
+  libxml2-devel:
+    deb: libxml2-dev
+    rpm:
+  numpy:
+    deb: python-numpy, python3-numpy
+    rpm:
+  octave-devel:
+    deb: octave3.2-headers | liboctave-dev
+    rpm:
+  openmpi-devel:
+    deb: libopenmpi-dev
+    rpm:
+  pkgconfig:
+    deb: pkg-config
+    rpm:
+  python-devel:
+    deb: python-dev, python3-dev
+    rpm:
+  python-seaborn:
+    deb: python-seaborn, python3-seaborn
+    rpm:
+  python-shapely:
+    deb: python-shapely, python3-shapely
+    rpm:
+  python-six:
+    deb: python-six, python3-six
+    rpm:
+  scipy:
+    deb: python-scipy, python3-scipy
+    rpm:
+  swig:
+    deb: swig3.0
+    rpm:
+  texlive-bibtex:
+    deb: texlive-binaries
+    rpm:
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
+priority: optional
+section: lscsoft
