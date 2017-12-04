@@ -220,7 +220,7 @@ Dir.glob("#{$ROOT}/meta/*.yml") do |meta_file|
   last_version = "#{$ROOT}/stage/#{pkg}/version"
   if File.exists?(last_version)
     version = File.open(last_version, &:gets)
-    break if version.to_s.chomp.eql?(content['changelog'][0]['version'].to_s.chomp)
+    next if version.to_s.chomp.eql?(content['changelog'][0]['version'].to_s.chomp)
   end
 
   puts "Working on: #{meta_file}"
