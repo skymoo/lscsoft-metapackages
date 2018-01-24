@@ -1,0 +1,20 @@
+---
+####################
+### lscsoft-dev
+####################
+changelog:
+  - date: 2018-01-24T14:07:18-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - restart metapackages
+    version: 2018.01.24
+desc_short: 'Metapackage to pull in general LSCSoft Development Packages'
+desc_long: |
+  LSCSoft metapackages are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+deps:
+  abi-compliance-checker:
+  abi-dumper:
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
+priority: optional
+section: lscsoft
