@@ -3,6 +3,11 @@
 ### lscsoft-auth
 ####################
 changelog:
+  - date: 2018-01-25T08:54:25+01:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - Adjust Debian package names
+    version: 2018.01.25-1
   - date: 2018-01-24T15:17:22-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -14,8 +19,11 @@ desc_long: |
   to get to a certain system state
 deps:
   cyrus-sasl-gssapi:
+    deb: libsasl2-modules-gssapi-mit
   krb5-workstation:
+    deb: krb5-user
   python-kerberos:
+    deb: python-krbv
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft

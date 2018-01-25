@@ -3,6 +3,11 @@
 ### lscsoft-gstlal-dev
 ####################
 changelog:
+  - date: 2018-01-25T09:05:36+01:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - Adjust Debian package names
+    version: 2018.01.25
   - date: 2018-01-24T14:41:10-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -14,29 +19,49 @@ desc_long: |
   to get to a certain system state
 deps:
   cyrus-sasl-devel:
+    deb: libsasl2-dev
   doxygen:
   fftw-devel:
+    deb: libfftw3-dev
   gds-devel:
+    deb: gds-dev
   gobject-introspection-devel:
+    deb: libgirepository1.0-dev
   graphviz:
   gsl-devel:
+    deb: libgsl0-dev
   gstreamer1-devel:
+    deb: libgstreamer1.0-dev
   gstreamer1-plugins-base-devel:
+    deb: libgstreamer-plugins-base1.0-dev
   lal-devel:
+    deb: lal-dev
   lal-python:
+    deb: lal-python, lal-python3
   lalburst-devel:
+    deb: lalburst-dev
   lalinspiral-devel:
+    deb: lalinspiral-dev
   lalinspiral-python:
+    deb: lalinspiral-python, lalinspiral-python3
   lalmetaio-devel:
+    deb: lalmetaio-dev
   lalsimulation-devel:
+    deb: lalsimulation-dev
   ldas-tools-framecpp-devel:
+    deb: ldas-tools-framecpp-dev
   nds2-client-devel:
+    deb: nds2-client-dev
   nds2-client-headers:
+    deb: nds2-server-dev
   numpy:
+    deb: python-numpy, python3-numpy
   orc:
+    deb: liborc-0.4-0
   pygobject3-devel:
+    deb: python-gi-dev
   python-devel:
-
+    deb: python-dev, python3-dev
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
