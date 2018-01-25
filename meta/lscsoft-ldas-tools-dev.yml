@@ -3,6 +3,11 @@
 ### lscsoft-ldas-tools-dev
 ####################
 changelog:
+  - date: 2018-01-25T09:27:37+01:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - Adjust Debian package names
+    version: 2018.01.25
   - date: 2018-01-24T14:53:55-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -20,10 +25,14 @@ deps:
   flex:
   libtool:
   openssl-devel:
+    deb: libssl-dev
   pkgconfig:
+    deb: pkg-config
   python-devel:
+    deb: python-dev, python3-dev
   swig:
   zlib-devel:
+    deb: zlib1g-dev
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
