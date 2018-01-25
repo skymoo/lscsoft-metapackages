@@ -1,0 +1,42 @@
+---
+####################
+### lscsoft-gstlal-dev
+####################
+changelog:
+  - date: 2018-01-24T14:41:10-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - restart metapackages
+    version: 2018.01.24
+desc_short: 'Metapackage to pull in gstLAL development packages'
+desc_long: |
+  LSCSoft metapackages are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+deps:
+  cyrus-sasl-devel:
+  doxygen:
+  fftw-devel:
+  gds-devel:
+  gobject-introspection-devel:
+  graphviz:
+  gsl-devel:
+  gstreamer1-devel:
+  gstreamer1-plugins-base-devel:
+  lal-devel:
+  lal-python:
+  lalburst-devel:
+  lalinspiral-devel:
+  lalinspiral-python:
+  lalmetaio-devel:
+  lalsimulation-devel:
+  ldas-tools-framecpp-devel:
+  nds2-client-devel:
+  nds2-client-headers:
+  numpy:
+  orc:
+  pygobject3-devel:
+  python-devel:
+
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
+priority: optional
+section: lscsoft
