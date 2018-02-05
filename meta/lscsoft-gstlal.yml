@@ -10,7 +10,7 @@ changelog:
     changes:
       - restart metapackages
     version: 2017.08.03
-desc_short: 'Metapackage to pull in libframe LSCSoft dependencies'
+desc_short: 'Metapackage to pull in LSCSoft gstlal dependencies'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required
   to get to a certain system state
