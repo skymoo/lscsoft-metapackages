@@ -2,6 +2,8 @@
 ####################
 ### lscsoft-nds2-client
 ####################
+#
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
   - date: Wed Apr 20 2016
     author: Adam Mercer <adam.mercer@ligo.org>

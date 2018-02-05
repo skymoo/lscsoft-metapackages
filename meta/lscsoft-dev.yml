@@ -2,6 +2,8 @@
 ####################
 ### lscsoft-dev
 ####################
+#
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
   - date: 2018-01-24T14:07:18-07:00
     author: Adam Mercer <adam.mercer@ligo.org>

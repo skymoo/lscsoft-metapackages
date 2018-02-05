@@ -2,6 +2,8 @@
 ####################
 ### lscsoft-pylal
 ####################
+#
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
   - date: Tue Aug 18 2015
     author: Adam Mercer <adam.mercer@ligo.org>
