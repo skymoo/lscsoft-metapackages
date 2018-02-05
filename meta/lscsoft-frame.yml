@@ -1,6 +1,6 @@
 ---
 ####################
-### lscsoft-frames
+### lscsoft-frame
 ####################
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
