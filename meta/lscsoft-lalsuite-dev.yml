@@ -5,6 +5,12 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-02-05T17:40:35-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add pytest
+      - add python2-reproject
+    version: 2018.02.05
   - date: 2017-08-03T10:31:40+02:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -69,9 +75,11 @@ deps:
   pkgconfig:
     deb: pkg-config
     rpm:
+  pytest:
   python-devel:
     deb: python-dev, python3-dev
     rpm:
+  python2-reproject:
   python-seaborn:
     deb: python-seaborn, python3-seaborn
     rpm:
