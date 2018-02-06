@@ -32,7 +32,7 @@ deps:
   lscsoft-frame:
   lscsoft-gstlal:
   lscsoft-lalsuite:
-  lscsoft-ldas:
+  lscsoft-ldas-tools:
   lscsoft-ligotools:
   lscsoft-metaio:
   lscsoft-pylal:
