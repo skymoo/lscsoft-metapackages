@@ -5,6 +5,11 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-02-05T17:36:56-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - remove lalsuite-extra, distributed via CVMFS
+    version: 2018.02.05
   - date: 2017-08-03T10:31:40+02:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -108,8 +113,6 @@ deps:
     rpm:
   lalstochastic-octave:
   lalstochastic-python:
-
-  lalsuite-extra:
 
   lalxml:
   lalxml-debuginfo:
