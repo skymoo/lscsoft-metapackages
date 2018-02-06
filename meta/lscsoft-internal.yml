@@ -35,9 +35,9 @@ deps:
   lscsoft-ldas-tools:
   lscsoft-ligotools:
   lscsoft-metaio:
-  lscsoft-pylal:
   nds2-client-all:
   python-pyRXP:
+  python-pylal:
   python-voeventlib:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
