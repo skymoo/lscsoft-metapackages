@@ -10,6 +10,7 @@ changelog:
     changes:
       - add python-gwpy
       - https://bugs.ligo.org/redmine/issues/6099
+    version: 2018.02.20
   - date: 2018-02-05T17:31:43-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -42,7 +43,7 @@ deps:
   lscsoft-metaio:
   nds2-client-all:
   python-gwpy:
-    deb: python-gwpy python3-gwpy
+    deb: python-gwpy, python3-gwpy
     rpm: python2-gwpy
   python-pyRXP:
   python-pylal:
