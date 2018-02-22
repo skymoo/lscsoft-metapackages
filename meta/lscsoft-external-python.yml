@@ -5,6 +5,11 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-02-22T10:18:47+01:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - fix Debian specific package names
+    version: 2018.02.22
   - date: 2018-02-05T14:57:20-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -78,10 +83,12 @@ deps:
   python34-numpy:
     deb: python3-numpy
     rpm:
-  # not sure what the equivalent Debian package is
+  # numpy-f2py seems to be part of python3-numpy on Debian
   python34-numpy-f2py:
     rpm:
   python34-pip:
+    deb: python3-pip
+    rpm:
   python34-setuptools:
     deb: python3-setuptools
     rpm:
@@ -89,6 +96,8 @@ deps:
     deb: python3-setuptools-git
     rpm:
   python34-virtualenv:
+    deb: python3-virtualenv
+    rpm:
   scipy:
     deb: python-scipy, python3-scipy
     rpm:
