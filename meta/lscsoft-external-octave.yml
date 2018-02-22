@@ -2,6 +2,8 @@
 ####################
 ### lscsoft-external-octave
 ####################
+#
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
   - date: 2017-08-11T09:18:01+02:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>

@@ -1,0 +1,59 @@
+---
+####################
+### lscsoft-ldas-tools
+####################
+#
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
+changelog:
+  - date: 2018-02-22T09:46:30+01:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - fix Debian package names
+    version: 2018.02.22
+  - date: 2018-02-05T17:44:17-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - restart metapackages
+    version: 2018.02.05
+desc_short: 'Metapackage to pull in LDAS Tools packages'
+desc_long: |
+  LSCSoft metapackages are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+deps:
+  ldas-tools-al:
+  ldas-tools-al-devel:
+    deb: ldas-tools-al-dev
+    rpm:
+  ldas-tools-diskcacheAPI:
+  ldas-tools-diskcacheAPI-devel:
+    deb: ldas-tools-diskcacheAPI-dev
+    rpm:
+  ldas-tools-diskcacheAPI-python:
+  ldas-tools-filters:
+  ldas-tools-filters-devel:
+    deb: ldas-tools-filters-dev
+    rpm:
+  ldas-tools-frameAPI:
+  ldas-tools-frameAPI-devel:
+    deb: ldas-tools-frameAPI-dev
+    rpm:
+  ldas-tools-frameAPI-python:
+  ldas-tools-framecpp:
+  ldas-tools-framecpp-c:
+  ldas-tools-framecpp-c-devel:
+    deb: ldas-tools-framecpp-c-dev
+    rpm:
+  ldas-tools-framecpp-devel:
+    deb: ldas-tools-framecpp-dev
+    rpm:
+  ldas-tools-framecpp-doc:
+  ldas-tools-framecpp-python:
+  ldas-tools-ldasgen:
+  ldas-tools-ldasgen-devel:
+    deb: ldas-tools-ldasgen-dev
+    rpm:
+  ldas-tools-ldasgen-python:
+  ldas-tools-utilities:
+maintainer: LIGO software packaging group <software-packaging@ligo.org>
+priority: optional
+section: lscsoft

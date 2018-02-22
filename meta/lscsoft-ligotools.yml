@@ -1,29 +1,24 @@
 ---
 ####################
-### lscsoft-metaio
+### lscsoft-ligotools
 ####################
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
-  - date: 2017-08-10T18:04:37+02:00
-    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+  - date: 2018-02-05T17:57:13-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - restart metapackages
-    version: 2017.08.10
-desc_short: 'Ensure the installation of the MetaIO LSCSOFT packages.'
+    version: 2018.02.05
+desc_short: 'Ensure the installation of the LIGOTools packages.'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required
   to get to a certain system state.
 deps:
-  libmetaio:
-    deb: libmetaio1
-    rpm:
-  libmetaio-devel:
-    deb: libmetaio-dev
-    rpm:
-  libmetaio-matlab:
-    deb:
-  libmetaio-utils:
+  ligotools-cache:
+  ligotools-matlab:
+  ligotools-scripts:
+  ligotools-tconvert:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft

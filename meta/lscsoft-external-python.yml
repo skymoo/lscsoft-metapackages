@@ -2,7 +2,21 @@
 ####################
 ### lscsoft-external-python
 ####################
+#
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-02-22T10:18:47+01:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - fix Debian specific package names
+    version: 2018.02.22
+  - date: 2018-02-05T14:57:20-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - don't need python rpm macros on Debian
+      - add python32-pip
+      - add python34-virtualenv
+    version: 2018.02.05
   - date: 2017-08-11T09:27:28+02:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -48,7 +62,6 @@ deps:
     deb: python-virtualenv, python3-virtualenv
     rpm:
   python2-rpm-macros:
-    deb: python-rpm
     rpm:
   python3-rpm-macros:
     rpm:
@@ -70,14 +83,20 @@ deps:
   python34-numpy:
     deb: python3-numpy
     rpm:
-  # not sure what the equivalent Debian package is
+  # numpy-f2py seems to be part of python3-numpy on Debian
   python34-numpy-f2py:
+    rpm:
+  python34-pip:
+    deb: python3-pip
     rpm:
   python34-setuptools:
     deb: python3-setuptools
     rpm:
   python34-setuptools_scm:
     deb: python3-setuptools-git
+    rpm:
+  python34-virtualenv:
+    deb: python3-virtualenv
     rpm:
   scipy:
     deb: python-scipy, python3-scipy
