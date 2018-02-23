@@ -5,6 +5,11 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-02-23T10:45:19+01:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - add stretch support
+    version: 2018.02.23
   - date: 2018-02-22T09:46:30+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -25,19 +30,27 @@ deps:
     deb: ldas-tools-al-dev
     rpm:
   ldas-tools-diskcacheAPI:
+    deb: ldas-tools-diskcacheapi
+    rpm:
   ldas-tools-diskcacheAPI-devel:
-    deb: ldas-tools-diskcacheAPI-dev
+    deb: ldas-tools-diskcacheapi-dev
     rpm:
   ldas-tools-diskcacheAPI-python:
+    deb: ldas-tools-diskcacheapi-python
+    rpm:
   ldas-tools-filters:
   ldas-tools-filters-devel:
     deb: ldas-tools-filters-dev
     rpm:
   ldas-tools-frameAPI:
+    deb: ldas-tools-frameapi
+    rpm:
   ldas-tools-frameAPI-devel:
-    deb: ldas-tools-frameAPI-dev
+    deb: ldas-tools-frameapi-dev
     rpm:
   ldas-tools-frameAPI-python:
+    deb: ldas-tools-frameapi-python
+    rpm:
   ldas-tools-framecpp:
   ldas-tools-framecpp-c:
   ldas-tools-framecpp-c-devel:

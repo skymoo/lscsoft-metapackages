@@ -57,10 +57,10 @@ deps:
     rpm:
   graphviz:
   gsl:
-    deb: libgsl0ldbl, gsl-bin
+    deb: libgsl0ldbl | libgsl2, gsl-bin
     rpm:
   gsl-devel:
-    deb: libgsl0-dev
+    deb: libgsl0-dev | libgsl-dev
     rpm: gsl-devel, gsl-static
   highlight:
   htop:
