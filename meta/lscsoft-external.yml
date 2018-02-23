@@ -5,6 +5,11 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-02-23T10:57:14+01:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - add stretch support
+    version: 2018.02.23
   - date: 2017-08-10T15:00:07+02:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -57,10 +62,10 @@ deps:
     rpm:
   graphviz:
   gsl:
-    deb: libgsl0ldbl, gsl-bin
+    deb: libgsl0ldbl | libgsl2, gsl-bin
     rpm:
   gsl-devel:
-    deb: libgsl0-dev
+    deb: libgsl0-dev | libgsl-dev
     rpm: gsl-devel, gsl-static
   highlight:
   htop:

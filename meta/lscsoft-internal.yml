@@ -5,6 +5,11 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-02-23T10:44:10+01:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - add stretch support
+    version: 2018.02.23
   - date: 2018-02-22T10:08:51+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -61,6 +66,8 @@ deps:
     deb: python-gwpy, python3-gwpy
     rpm: python2-gwpy
   python-pyRXP:
+    deb: python-pyrxp, python3-pyrxp
+    rpm:
   python-pylal:
   python-voeventlib:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>

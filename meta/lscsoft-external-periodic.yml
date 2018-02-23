@@ -5,6 +5,11 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-02-23T10:41:42+01:00
+    author: Carsten Aulbert <carsten.aulbert@ligo.org>
+    changes:
+      - add stretch support
+    version: 2018.02.23
   - date: 2017-08-11T09:22:42+02:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -22,7 +27,7 @@ deps:
     deb: r-base-dev
     rpm:
   cfitsio:
-    deb: libcfitsio2, libcfitsio-dev, libcfitsio-bin
+    deb: libcfitsio2 | libcfitsio5, libcfitsio-dev, libcfitsio-bin
     rpm: cfitsio, cfitsio-devel, cfitsio-static
   fftw:
     deb: libfftw3-3, libfftw3-bin
@@ -31,10 +36,10 @@ deps:
     deb: libfftw3-dev
     rpm: fftw-devel, fftw-static
   gsl:
-    deb: libgsl0ldbl, gsl-bin
+    deb: libgsl0ldbl | libgsl2, gsl-bin
     rpm:
   gsl-devel:
-    deb: libgsl0-dev
+    deb: libgsl0-dev | libgsl-dev
     rpm: gsl-devel, gsl-static
   lscsoft-internal:
   numpy:
