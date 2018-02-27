@@ -9,7 +9,7 @@ changelog:
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - Adjust Debian package names
-    version: 2018.01.25-1
+    version: 2018.01.25
   - date: 2018-01-24T15:17:22-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
