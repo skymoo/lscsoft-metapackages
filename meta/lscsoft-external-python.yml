@@ -5,6 +5,11 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-03-28T09:33:03+01:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python34-scipy
+    version: 2018.03.28
   - date: 2018-02-22T10:18:47+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -88,6 +93,9 @@ deps:
     rpm:
   python34-pip:
     deb: python3-pip
+    rpm:
+  python34-scipy:
+    deb: python3-scipy
     rpm:
   python34-setuptools:
     deb: python3-setuptools
