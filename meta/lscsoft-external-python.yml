@@ -8,7 +8,9 @@ changelog:
   - date: 2018-03-28T09:33:03+01:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
+      - add python2-pydot
       - add python34-scipy
+      - add python34-six
     version: 2018.03.28
   - date: 2018-02-22T10:18:47+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
