@@ -64,6 +64,12 @@ deps:
     deb: python-matplotlib, python3-matplotlib
     rpm:
   python-pip:
+  python-pydot:
+    deb: python-pydot, python3-pydot
+    rpm: python2-pydot
+  python-six:
+    deb: python-six, python3-six
+    rpm: python2-six, python34-six
   python-sqlobject:
   python-virtualenv:
     deb: python-virtualenv, python3-virtualenv
@@ -110,7 +116,7 @@ deps:
     rpm:
   scipy:
     deb: python-scipy, python3-scipy
-    rpm:
+    rpm: scipy, python34-scipy
   sympy:
     deb: python-sympy
     rpm:
