@@ -5,6 +5,11 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-06-08T10:25:45-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add glue and python34-glue
+    version: 2018.06.08
   - date: 2018-06-04T12:32:39-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -49,6 +54,9 @@ deps:
   glib2-devel:
     deb: libglib2.0-dev
     rpm:
+  glue:
+    deb: python-glue, python3-glue
+    rpm: glue, python34-glue
   gsl-devel:
     deb: libgsl0-dev
     rpm:
