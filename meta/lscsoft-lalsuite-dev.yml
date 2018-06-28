@@ -5,6 +5,11 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-06-28T14:06:36-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python-h5py
+    version: 2018.06.28
   - date: 2018-06-08T10:25:45-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -99,6 +104,7 @@ deps:
   python-devel:
     deb: python-dev, python3-dev
     rpm:
+  python-h5py:
   python-ligo-segments:
     deb: python-ligo-segments, python3-ligo-segments
     rpm: python2-ligo-segments
