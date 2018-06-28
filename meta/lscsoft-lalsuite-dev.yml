@@ -105,6 +105,8 @@ deps:
     deb: python-dev, python3-dev
     rpm:
   python-h5py:
+    deb: python-h5py
+    rpm: h5py
   python-ligo-segments:
     deb: python-ligo-segments, python3-ligo-segments
     rpm: python2-ligo-segments
