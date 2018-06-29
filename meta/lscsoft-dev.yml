@@ -5,6 +5,12 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-06-29T16:34:10-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - remove abi-compliance-checker
+      - https://bugs.ligo.org/redmine/issues/6184
+    version: 2018.06.29
   - date: 2018-01-24T14:07:18-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -15,7 +21,6 @@ desc_long: |
   LSCSoft metapackages are "virtual" packages pulling in dependencies required
   to get to a certain system state
 deps:
-  abi-compliance-checker:
   abi-dumper:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
