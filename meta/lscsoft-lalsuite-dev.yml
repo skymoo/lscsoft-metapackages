@@ -5,6 +5,12 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-06-29T16:37:07-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - remove python34-glue
+      - add python2-rpm-macros for EL7
+    version: 2018.06.29
   - date: 2018-06-28T14:06:36-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -61,7 +67,7 @@ deps:
     rpm:
   glue:
     deb: python-glue, python3-glue
-    rpm: glue, python34-glue
+    rpm:
   gsl-devel:
     deb: libgsl0-dev
     rpm:
@@ -121,6 +127,8 @@ deps:
     rpm:
   python-six:
     deb: python-six, python3-six
+    rpm:
+  python2-rpm-macros:
     rpm:
   scipy:
     deb: python-scipy, python3-scipy
