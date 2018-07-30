@@ -5,6 +5,15 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-07-30T11:45:30-04:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add pyflakes
+      - add python34-pyflakes
+      - add pylint
+      - add python34-pylint
+      - add python-pep8
+    version: 2018-07-30
   - date: 2018-03-28T09:33:03+01:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -49,6 +58,12 @@ deps:
   numpy:
     deb: python-numpy, python3-numpy
     rpm:
+  pyflakes:
+    deb: python-pyflakes, python3-pyflakes
+    rpm: pyflakes, python34-pyflakes
+  pylint:
+    deb: pylint, pylint3
+    rpm:
   # this seems to be part of python2.7 stdlib but superseeded by python-configargparse
   python-argparse:
     rpm:
@@ -62,6 +77,9 @@ deps:
     rpm:
   python-matplotlib:
     deb: python-matplotlib, python3-matplotlib
+    rpm:
+  python-pep8:
+    deb: pep8, python-pep8
     rpm:
   python-pip:
   python-pydot:
