@@ -5,6 +5,12 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-08-02T16:51:53-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python{2,34}-mock
+      - add python{2,34}-pytest-cov
+    version: 2018.08.02
   - date: 2018-07-30T11:45:30-04:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -78,6 +84,9 @@ deps:
   python-matplotlib:
     deb: python-matplotlib, python3-matplotlib
     rpm:
+  python-mock:
+    deb: python-mock, python3-mock
+    rpm: python2-mock, python34-mock
   python-pep8:
     deb: pep8, python-pep8
     rpm:
@@ -85,6 +94,9 @@ deps:
   python-pydot:
     deb: python-pydot, python3-pydot
     rpm: python2-pydot
+  python-pytest-cov:
+    deb: python-pytest-cov, python3-pytest-cov
+    rpm: python2-pytest-cov, python34-pytest-cov
   python-six:
     deb: python-six, python3-six
     rpm: python2-six, python34-six
