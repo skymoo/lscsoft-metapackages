@@ -5,6 +5,11 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-10-12T15:13:31-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - update for new package names
+    version: 2018.10.12
   - date: 2018-02-23T10:45:19+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -25,47 +30,43 @@ desc_long: |
   LSCSoft metapackages are "virtual" packages pulling in dependencies required
   to get to a certain system state
 deps:
+  ldas-tools-cmake:
   ldas-tools-al:
-  ldas-tools-al-devel:
-    deb: ldas-tools-al-dev
-    rpm:
-  ldas-tools-diskcacheAPI:
-    deb: ldas-tools-diskcacheapi
-    rpm:
-  ldas-tools-diskcacheAPI-devel:
-    deb: ldas-tools-diskcacheapi-dev
-    rpm:
-  ldas-tools-diskcacheAPI-python:
-    deb: ldas-tools-diskcacheapi-python
-    rpm:
-  ldas-tools-filters:
-  ldas-tools-filters-devel:
-    deb: ldas-tools-filters-dev
-    rpm:
-  ldas-tools-frameAPI:
-    deb: ldas-tools-frameapi
-    rpm:
-  ldas-tools-frameAPI-devel:
-    deb: ldas-tools-frameapi-dev
-    rpm:
-  ldas-tools-frameAPI-python:
-    deb: ldas-tools-frameapi-python
-    rpm:
+    deb: ldas-tools-al, ldas-tools-al-dev
+    rpm: ldas-tools-al, ldas-tools-al-devel
+  ldas-tools-al-swig:
+    deb: python-ldas-tools-al, python3-ldas-tools-al
+    rpm: python2-ldas-tools-al, python34-ldas-tools-al
   ldas-tools-framecpp:
+    deb: ldas-tools-framecpp, ldas-tools-framecpp-dev
+    rpm: ldas-tools-framecpp, ldas-tools-framecpp-devel
   ldas-tools-framecpp-c:
-  ldas-tools-framecpp-c-devel:
-    deb: ldas-tools-framecpp-c-dev
-    rpm:
-  ldas-tools-framecpp-devel:
-    deb: ldas-tools-framecpp-dev
-    rpm:
-  ldas-tools-framecpp-doc:
-  ldas-tools-framecpp-python:
+    deb: ldas-tools-framecpp-c, ldas-tools-framecpp-c-dev
+    rpm: ldas-tools-framecpp-c, ldas-tools-framecpp-c-devel
+  ldas-tools-framecpp-swig:
+    deb: python-ldas-tools-framecpp, python3-ldas-tools-framecpp
+    rpm: python2-ldas-tools-framecpp, python34-ldas-tools-framecpp
+  ldas-tools-filters:
+    deb: ldas-tools-filters, ldas-tools-filters-dev
+    rpm: ldas-tools-filters, ldas-tools-filters-devel
   ldas-tools-ldasgen:
-  ldas-tools-ldasgen-devel:
-    deb: ldas-tools-ldasgen-dev
-    rpm:
-  ldas-tools-ldasgen-python:
+    deb: ldas-tools-ldasgen, ldas-tools-ldasgen-dev
+    rpm: ldas-tools-ldasgen, ldas-tools-ldasgen-devel
+  ldas-tools-ldasgen-swig:
+    deb: python-ldas-tools-ldasgen, python3-ldas-tools-ldasgen
+    rpm: python2-ldas-tools-ldasgen, python34-ldas-tools-ldasgen
+  ldas-tools-diskcacheAPI:
+    deb: ldas-tools-diskcacheapi, ldas-tools-diskcacheapi-dev
+    rpm: ldas-tools-diskcacheAPI, ldas-tools-diskcacheAPI-devel
+  ldas-tools-diskcacheAPI-swig:
+    deb: python-ldas-tools-diskcacheapi, python3-ldas-tools-diskcacheapi
+    rpm: python2-ldas-tools-diskcacheAPI, python34-ldas-tools-diskcacheAPI
+  ldas-tools-frameAPI:
+    deb: ldas-tools-frameapi, ldas-tools-frameapi-dev
+    rpm: ldas-tools-frameAPI, ldas-tools-frameAPI-devel
+  ldas-tools-frameAPI-swig:
+    deb: python-ldas-tools-frameapi, python3-ldas-tools-frameapi
+    rpm: python2-ldas-tools-frameAPI, python34-ldas-tools-frameAPI
   ldas-tools-utilities:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
