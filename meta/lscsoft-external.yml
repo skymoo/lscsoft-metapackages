@@ -123,8 +123,6 @@ deps:
     deb: zlib1g-dev
     rpm:
   zsh:
-  # additional packages currently present on debian:
-  # python-numpy, python-matplotlib, python-sqlobject, ipython, python-scipy, python-pysqlite2, python-mpltoolkits.basemap, linux-base, python-virtualenv, funtools, libfuntools-dev, python-argparse, python-git, python-pip
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
