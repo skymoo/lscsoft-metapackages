@@ -5,6 +5,11 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-10-12T13:01:37-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - remove lscsoft-internal
+    version: 2018.10.12
   - date: 2018-02-23T10:41:42+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -41,7 +46,6 @@ deps:
   gsl-devel:
     deb: libgsl0-dev | libgsl-dev
     rpm: gsl-devel, gsl-static
-  lscsoft-internal:
   numpy:
     deb: python-numpy
     rpm:
@@ -50,8 +54,6 @@ deps:
   scipy:
     deb: python-scipy
     rpm:
-# Extra Debian dependencies: lscsoft-internal, libgsl0-dbg, libfftw3-doc, libcfitsio-doc | libcfitsio3-doc, libcfitsio2-dbg | libcfitsio3-dbg, python-pysqlite2, r-base-core-dbg
-
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
