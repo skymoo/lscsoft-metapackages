@@ -5,6 +5,17 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-10-12T14:11:44-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - remove lars
+      - update ligo-common package name
+      - add python34-ligo-common
+      - update ligo-lvalert package name
+      - add python34-ligo-lvalert
+      - add ligo-gracedb packages
+      - remove python-pylal
+    version: 2018.10.12
   - date: 2018-08-02T16:25:34-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -50,16 +61,16 @@ deps:
     rpm:
   ligo-common:
     deb: python-ligo-common, python3-ligo-common
-    rpm:
-  ligo-lars:
-    deb: python-ligo-lars
-    rpm:
+    rpm: python2-ligo-common, python34-ligo-common
+  ligo-gracedb:
+    deb: python-ligo-gracedb, python3-ligo-gracedb
+    rpm: python2-ligo-gracedb, python34-ligo-gracedb
   ligo-lvalert-heartbeat:
     deb: python-ligo-lvalert-heartbeat
     rpm:
   ligo-lvalert:
     deb: python-ligo-lvalert, python3-ligo-lvalert
-    rpm:
+    rpm: python2-ligo-lvalert, python34-ligo-lvalert
   lscsoft-frame:
   lscsoft-gstlal:
   lscsoft-lalsuite:
@@ -76,7 +87,6 @@ deps:
   python-pyRXP:
     deb: python-pyrxp, python3-pyrxp
     rpm:
-  python-pylal:
   python-voeventlib:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
