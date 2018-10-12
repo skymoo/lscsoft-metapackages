@@ -5,6 +5,11 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-10-12T12:04:01-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    chnages:
+      - add astropy-tools on sl7
+    version: 2018.07.30
   - date: 2018-08-02T16:51:53-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -19,7 +24,7 @@ changelog:
       - add pylint
       - add python34-pylint
       - add python-pep8
-    version: 2018-07-30
+    version: 2018.07.30
   - date: 2018-03-28T09:33:03+01:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -55,6 +60,7 @@ deps:
   # note Debian's astropy-utils depends ONLY only python3
   astropy-tools:
     deb: astropy-utils
+    rpm: astropy-tools
   h5py:
     deb: python-h5py, python3-h5py
     rpm:
