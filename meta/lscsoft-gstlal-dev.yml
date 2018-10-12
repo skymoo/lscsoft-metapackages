@@ -5,6 +5,12 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-10-12T13:41:09-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - ensure rpms are installed
+      - update for new lal python package names
+    version: 2018.10.12
   - date: 2018-01-25T09:05:36+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -22,48 +28,69 @@ desc_long: |
 deps:
   cyrus-sasl-devel:
     deb: libsasl2-dev
+    rpm:
   doxygen:
   fftw-devel:
     deb: libfftw3-dev
+    rpm:
   gds-devel:
     deb: gds-dev
+    rpm:
   gobject-introspection-devel:
     deb: libgirepository1.0-dev
+    rpm:
   graphviz:
   gsl-devel:
     deb: libgsl0-dev
+    rpm:
   gstreamer1-devel:
     deb: libgstreamer1.0-dev
+    rpm:
   gstreamer1-plugins-base-devel:
     deb: libgstreamer-plugins-base1.0-dev
+    rpm:
   lal-devel:
     deb: lal-dev
-  lal-python:
-    deb: lal-python, lal-python3
+    rpm:
+  python2-lal-python:
+    deb: python-lal, python3-lal
+    rpm:
   lalburst-devel:
     deb: lalburst-dev
+    rpm:
   lalinspiral-devel:
     deb: lalinspiral-dev
-  lalinspiral-python:
-    deb: lalinspiral-python, lalinspiral-python3
+    rpm:
+  python2-lalinspiral:
+    deb: python-lalinspiral, python3-lalinspiral
+    rpm:
   lalmetaio-devel:
     deb: lalmetaio-dev
+    rpm:
   lalsimulation-devel:
     deb: lalsimulation-dev
+    rpm:
   ldas-tools-framecpp-devel:
     deb: ldas-tools-framecpp-dev
+    rpm:
   nds2-client-devel:
     deb: nds2-client-dev
+    rpm:
   nds2-client-headers:
     deb: nds2-server-dev
+    rpm:
   numpy:
     deb: python-numpy, python3-numpy
+    rpm:
   orc:
     deb: liborc-0.4-0
+    rpm:
   pygobject3-devel:
     deb: python-gi-dev
+    rpm:
   python-devel:
     deb: python-dev, python3-dev
+    rpm:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
