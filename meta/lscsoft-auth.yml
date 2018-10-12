@@ -5,6 +5,11 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-10-12T12:52:16-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add missing sl7 packages
+    version: 2018.10.12
   - date: 2018-01-25T08:54:25+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -22,10 +27,13 @@ desc_long: |
 deps:
   cyrus-sasl-gssapi:
     deb: libsasl2-modules-gssapi-mit
+    rpm: cyrus-sasl-gssapi
   krb5-workstation:
     deb: krb5-user
+    rpm: krb5-workstation
   python-kerberos:
     deb: python-krbv
+    rpm: python-kerberos
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
