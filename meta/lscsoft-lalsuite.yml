@@ -5,6 +5,14 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-10-12T14:20:52-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - remove debuginfo packages
+      - remove lalxml, laldetchar, and lalstochastic
+      - update for renamed python packages
+      - add python3 packages for Debian
+    version: 2018.10.12
   - date: 2018-02-05T17:36:56-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -21,107 +29,68 @@ desc_long: |
   to get to a certain system state
 deps:
   lal:
-  lal-debuginfo:
-    rpm:
   lal-devel:
     deb: lal-dev
     rpm:
   lal-octave:
-  lal-python:
-
-  lalapps:
-  lalapps-debuginfo:
+  python-lal:
+    deb: python-lal, python3-lal
     rpm:
-
-  lalburst:
-  lalburst-debuginfo:
-    rpm:
-  lalburst-devel:
-    deb: lalburst-dev
-    rpm:
-  lalburst-octave:
-  lalburst-python:
-
-  laldetchar:
-  laldetchar-debuginfo:
-    rpm:
-  laldetchar-devel:
-    deb: laldetchar-dev
-    rpm:
-  laldetchar-octave:
-  laldetchar-python:
-
   lalframe:
-  lalframe-debuginfo:
-    rpm:
   lalframe-devel:
     deb: lalframe-dev
     rpm:
   lalframe-octave:
-  lalframe-python:
-
-  lalinference:
-  lalinference-debuginfo:
+  python-lalframe:
+    deb: python-lalframe, python3-lalframe
     rpm:
-  lalinference-devel:
-    deb: lalinference-dev
-    rpm:
-  lalinference-octave:
-  lalinference-python:
-
-  lalinspiral:
-  lalinspiral-debuginfo:
-    rpm:
-  lalinspiral-devel:
-    deb: lalinspiral-dev
-    rpm:
-  lalinspiral-octave:
-  lalinspiral-python:
-
   lalmetaio:
-  lalmetaio-debuginfo:
-    rpm:
   lalmetaio-devel:
     deb: lalmetaio-dev
     rpm:
   lalmetaio-octave:
-  lalmetaio-python:
-
-  lalpulsar:
-  lalpulsar-debuginfo:
+  python-lalmetaio:
+    deb: python-lalmetaio, python3-lalmetaio
     rpm:
-  lalpulsar-devel:
-    deb: lalpulsar-dev
-    rpm:
-  lalpulsar-octave:
-  lalpulsar-python:
-
   lalsimulation:
-  lalsimulation-debuginfo:
-    rpm:
   lalsimulation-devel:
     deb: lalsimulation-dev
     rpm:
   lalsimulation-octave:
-  lalsimulation-python:
-
-  lalstochastic:
-  lalstochastic-debuginfo:
+  python-lalsimulation:
+    deb: python-lalsimulation, python3-lalsimulation
     rpm:
-  lalstochastic-devel:
-    deb: lalstochastic-dev
+  lalburst:
+  lalburst-devel:
+    deb: lalburst-dev
     rpm:
-  lalstochastic-octave:
-  lalstochastic-python:
-
-  lalxml:
-  lalxml-debuginfo:
+  lalburst-octave:
+  python-lalburst:
+    deb: python-lalburst, python3-lalburst
     rpm:
-  lalxml-devel:
-    deb: lalxml-dev
+  lalinspiral:
+  lalinspiral-devel:
+    deb: lalinspiral-dev
     rpm:
-  lalxml-octave:
-  lalxml-python:
+  lalinspiral-octave:
+  python-lalinspiral:
+  lalpulsar:
+  lalpulsar-devel:
+    deb: lalpulsar-dev
+    rpm:
+  lalpulsar-octave:
+  python-lalpulsar:
+    deb: python-lalpulsar, python3-lalpulsar
+    rpm:
+  lalinference:
+  lalinference-devel:
+    deb: lalinference-dev
+    rpm:
+  lalinference-octave:
+  python-lalinference:
+    deb: python-lalinference, python3-lalinference
+    rpm:
+  lalapps:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
