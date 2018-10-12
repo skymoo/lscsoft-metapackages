@@ -65,8 +65,6 @@ deps:
   spr:
     deb:
     rpm: spr, spr-devel
-# Debian metapackage currently has these extra deps
-# lscsoft-internal, libgsl0-dbg, libcfitsio-doc | libcfitsio3-doc, libcfitsio2-dbg | libcfitsio3-dbg, python-pysqlite2
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
