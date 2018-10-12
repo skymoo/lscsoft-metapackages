@@ -19,7 +19,6 @@ deps:
   octave-devel:
     deb: liboctave-dev
     rpm:
-# Extra Debian dependency emacs23-el | emacs24-el
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
