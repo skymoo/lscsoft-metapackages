@@ -1,0 +1,9 @@
+image: ruby:alpine
+
+stages:
+  - test
+
+generate:
+  stage: test
+  script:
+    - ruby generate.rb
