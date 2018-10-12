@@ -28,13 +28,17 @@ deps:
   libtool:
   openssl-devel:
     deb: libssl-dev
+    rpm:
   pkgconfig:
     deb: pkg-config
+    rpm:
   python-devel:
     deb: python-dev, python3-dev
+    rpm:
   swig:
   zlib-devel:
     deb: zlib1g-dev
+    rpm:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
