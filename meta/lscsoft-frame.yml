@@ -5,6 +5,11 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-10-12T13:34:11-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add libframe on sl7
+    version: 2018.10.12
   - date: 2018-02-22T09:08:48+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -22,6 +27,7 @@ desc_long: |
 deps:
   libframe:
     deb: libframe1
+    rpm:
   libframe-devel:
     deb: libframe-dev
     rpm:
