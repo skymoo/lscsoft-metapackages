@@ -60,7 +60,7 @@ deps:
   # note Debian's astropy-utils depends ONLY only python3
   astropy-tools:
     deb: astropy-utils
-    rpm: astropy-tools
+    rpm:
   h5py:
     deb: python-h5py, python3-h5py
     rpm:
