@@ -178,7 +178,9 @@ CONTROLSTART
       dep_list << ( v['deb'].nil? ? k : v['deb'] )
     end
   end
-  control.puts 'Depends: ' + dep_list.sort.join(', ')
+  dep_list.sort.each do |d|
+    control.puts "Depends: #{d}"
+  end
   control.puts <<-CONTROLEND
 Description: #{pkg_data['desc_short']}
 #{reformat_wrapped(pkg_data['desc_long'])}
