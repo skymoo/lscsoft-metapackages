@@ -1,9 +1,17 @@
-image: ruby:alpine
-
 stages:
+  - lint
   - test
 
+check:
+  image: python:alpine
+  stage: lint
+  before_script:
+    - pip install yamllint
+  script:
+    - yamllint meta/*.yml
+
 generate:
+  image: ruby:alpine
   stage: test
   script:
     - ruby generate.rb
