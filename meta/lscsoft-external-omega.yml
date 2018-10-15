@@ -25,7 +25,6 @@ deps:
   xorg-x11-server-Xvfb:
     deb: xvfb
     rpm:
-# Extra Debian dependencies: lscsoft-lal, lscsoft-frame, lscsoft-external-octave, runit, procmail, git-core
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
