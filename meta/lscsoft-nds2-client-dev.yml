@@ -31,9 +31,8 @@ deps:
   autoconf:
   automake:
   cmake:
-  cmake3:
-    deb: cmake
-    rpm:
+    deb:
+    rpm: cmake, cmake3
   cyrus-sasl-devel:
     deb: libsasl2-dev
     rpm:
