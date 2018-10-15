@@ -8,7 +8,7 @@ changelog:
   - date: 2018-10-15T13:28:50-07:00
   - author: Adam Mercer <adam.mercer@ligo.org>
     changes:
-      - update build dependencies
+      - add cmake and cmake3
     version: 2018.10.15
   - date: 2018-01-25T09:27:37+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
