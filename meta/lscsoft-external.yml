@@ -77,8 +77,11 @@ deps:
   htop:
   inotify-tools:
   java:
-    deb: openjdk-7-jdk | openjdk-8-jdk, openjdk-7-doc | openjdk-8-doc
-    rpm: java-1.8.0-openjdk, java-1.8.0-openjdk-devel, java-1.8.0-openjdk-javadoc
+    deb: openjdk-7-jdk | openjdk-8-jdk
+    rpm: java-1.8.0-openjdk, java-1.8.0-openjdk-devel
+  java-doc:
+    deb: openjdk-7-doc | openjdk-8-doc
+    rpm: java-1.8.0-openjdk-javadoc
   jsoncpp-devel:
     deb: libjsoncpp-dev
     rpm:
