@@ -75,9 +75,6 @@ deps:
   qrupdate-devel:
     deb: libqrupdate-dev
     rpm:
-  sqlite-devel:
-    deb: libsqlite3-dev
-    rpm:
   suitesparse-devel:
     deb: libsuitesparse-dev
     rpm:
