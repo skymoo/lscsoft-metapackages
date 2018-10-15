@@ -5,6 +5,12 @@
 #
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-10-15T13:26:50-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - remove unused dependencies
+      - cleanup
+    version: 2018.10.15
   - date: 2018-02-23T10:52:03+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -28,8 +34,6 @@ deps:
   arpack-devel:
     deb: libarpack2-dev, libparpack2-dev, libarpack++2-dev
     rpm:
-  autoconf:
-  automake:
   cmake:
     deb:
     rpm: cmake, cmake3
@@ -38,18 +42,6 @@ deps:
     rpm:
   cyrus-sasl-gssapi:
     deb: libsasl2-modules-gssapi-mit
-    rpm:
-  docbook5-schemas:
-    deb: docbook-xml
-    rpm:
-  docbook5-style-xsl:
-    deb: docbook-xsl
-    rpm:
-  fontconfig-devel:
-    deb: libfontconfig1-dev
-    rpm:
-  gl2ps-devel:
-    deb: libgl2ps-dev
     rpm:
   libstdc++-static:
     deb: libstdc++-4.9-dev | libstdc++-6-dev
