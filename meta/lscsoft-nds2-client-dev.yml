@@ -82,8 +82,6 @@ deps:
     deb: libsuitesparse-dev
     rpm:
   swig:
-    deb:
-    rpm: swig >= 2.0.11
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
