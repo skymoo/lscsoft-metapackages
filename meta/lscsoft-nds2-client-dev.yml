@@ -27,49 +27,69 @@ desc_long: |
 deps:
   arpack-devel:
     deb: libarpack2-dev, libparpack2-dev, libarpack++2-dev
+    rpm:
   autoconf:
   automake:
   cmake:
   cmake3:
     deb: cmake
+    rpm:
   cyrus-sasl-devel:
     deb: libsasl2-dev
+    rpm:
   cyrus-sasl-gssapi:
     deb: libsasl2-modules-gssapi-mit
+    rpm:
   docbook5-schemas:
     deb: docbook-xml
+    rpm:
   docbook5-style-xsl:
     deb: docbook-xsl
+    rpm:
   fontconfig-devel:
     deb: libfontconfig1-dev
+    rpm:
   gl2ps-devel:
     deb: libgl2ps-dev
+    rpm:
   libstdc++-static:
     deb: libstdc++-4.9-dev | libstdc++-6-dev
+    rpm:
   java-1.8.0-openjdk-devel:
     deb: default-jdk
+    rpm:
   libcurl-devel:
     deb: libcurl4-openssl-dev | libcurl4-gnutls-dev | libcurl4-nss-dev
+    rpm:
   libtool:
   make:
   mesa-libGLU-devel:
     deb: libglu1-mesa-dev
+    rpm:
   numpy:
     deb: python-numpy
+    rpm:
   octave-devel:
     deb: liboctave-dev
+    rpm:
   pcre-devel:
     deb: libpcre3-dev
+    rpm:
   pkgconfig:
     deb: pkg-config
+    rpm:
   python-devel:
     deb: python-dev, python3-dev
+    rpm:
   qrupdate-devel:
     deb: libqrupdate-dev
+    rpm:
   sqlite-devel:
     deb: libsqlite3-dev
+    rpm:
   suitesparse-devel:
     deb: libsuitesparse-dev
+    rpm:
   swig:
     deb:
     rpm: swig >= 2.0.11
