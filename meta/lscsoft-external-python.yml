@@ -76,7 +76,7 @@ deps:
   pylint:
     deb: pylint, pylint3
     rpm:
-  # this seems to be part of python2.7 stdlib but superseeded by python-configargparse
+  # seems to be part of python27 stdlib but superseeded by python-configargparse
   python-argparse:
     rpm:
   python-basemap:
