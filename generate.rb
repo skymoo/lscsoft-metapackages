@@ -192,6 +192,8 @@ end
 
 # iterate over each file in meta/
 Dir.glob("#{$ROOT}/meta/*.yml") do |meta_file|
+  puts "Working on: #{meta_file}"
+
   pkg = meta_file[/^#{$ROOT}\/meta\/(.+)\.yml$/,1]
   content = YAML.load_file(meta_file)
 
@@ -224,8 +226,6 @@ Dir.glob("#{$ROOT}/meta/*.yml") do |meta_file|
     version = File.open(last_version, &:gets)
     next if version.to_s.chomp.eql?(content['changelog'][0]['version'].to_s.chomp)
   end
-
-  puts "Working on: #{meta_file}"
 
   # create rpm source package
   rpm_create_source(content)
