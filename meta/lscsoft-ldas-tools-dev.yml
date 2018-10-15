@@ -9,6 +9,7 @@ changelog:
   - author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - add cmake and cmake3
+      - add numpy
     version: 2018.10.15
   - date: 2018-01-25T09:27:37+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
@@ -34,6 +35,9 @@ deps:
   doxygen:
   flex:
   libtool:
+  numpy:
+    deb: python-numpy, python3-numpy
+    rpm:
   openssl-devel:
     deb: libssl-dev
     rpm:
