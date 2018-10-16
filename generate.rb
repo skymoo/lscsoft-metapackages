@@ -53,6 +53,10 @@ SPECSTART
 %description
 #{pkg_data['desc_long']}
 
+%prep
+
+%build
+
 %install
 
 %files
