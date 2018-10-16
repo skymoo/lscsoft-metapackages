@@ -34,3 +34,11 @@ rhel:
   script:
     - ruby generate.rb
     - for i in stage/*/rpm/*.spec; do rpmlint $i; rpmbuild -ba $i; done
+    - mkdir rpms srpms
+    - mv rpmbuild/RPMS/noarch/*.rpm rpms
+    - mv rpmbuild/SRPMS/*.rpm srpms
+  artifacts:
+    expire_in: 3h
+    paths:
+      - rpms
+      - srpms
