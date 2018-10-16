@@ -167,6 +167,7 @@ Readme: README
 Changelog: changelog.Debian
 Copyright: copyright
 Architecture: all
+
 CONTROLSTART
 
   # add dependencies
@@ -184,6 +185,7 @@ CONTROLSTART
     control.puts "Depends: #{d}"
   end
   control.puts <<-CONTROLEND
+
 Description: #{pkg_data['desc_short']}
 #{reformat_wrapped(pkg_data['desc_long'])}
 CONTROLEND
