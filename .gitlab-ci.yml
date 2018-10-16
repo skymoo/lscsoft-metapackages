@@ -15,7 +15,7 @@ debian:
   stage: build
   before_script:
     - apt-get update
-    - apt-get --assume-yes equivs ruby
+    - apt-get --assume-yes install equivs ruby
   script:
     - ruby generate.rb
     - for i in stage/*/deb/; do ( cd $i; equivs-build control ); done
