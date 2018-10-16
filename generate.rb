@@ -49,7 +49,7 @@ SPECSTART
   spec.puts <<-SPECMID
 
 %description
-#{pkg_data['desc_long']}
+#{pkg_data['desc_long'].strip}
 
 %prep
 
