@@ -33,7 +33,11 @@ rhel:
     - yum --assumeyes install rpm-build rpmlint ruby
   script:
     - ruby generate.rb
-    - for i in stage/*/rpm/*.spec; do rpmlint $i; rpmbuild -ba $i; done
+    - |
+      for i in stage/*/rpm/*.spec; do
+        rpmlint $i
+        rpmbuild -ba --define "_topdir $CI_PROJECT_DIR/rpmbuild" $i
+      done
     - mkdir rpms srpms
     - mv rpmbuild/RPMS/noarch/*.rpm rpms
     - mv rpmbuild/SRPMS/*.rpm srpms
