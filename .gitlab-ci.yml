@@ -2,13 +2,22 @@ stages:
   - lint
   - build
 
-check:
+yaml:
   image: python:alpine
   stage: lint
   before_script:
     - pip install yamllint
   script:
     - yamllint meta/*.yml
+
+rhel_lint:
+  image: ligo/base:el7
+  stage: lint
+  before_script:
+    - yum --assume-yes install ruby rpmlint
+  script:
+    ruby generate.rb
+    for i in stage/*/rpm/*.spec; do rpmlint $i; done
 
 debian:
   image: ligo/base:stretch
