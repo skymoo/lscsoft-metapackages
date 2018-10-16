@@ -23,10 +23,8 @@ def rpm_create_source(pkg_data)
 Name: #{pkg_data['name']}
 Version: #{pkg_data['changelog'][0]['version']}
 Release: 1%{?dist}
-Group: #{pkg_data['section']}
 License: GPL
 Summary: #{pkg_data['desc_short']}
-Packager: #{pkg_data['maintainer']}
 BuildArch: noarch
 
 SPECSTART
