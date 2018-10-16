@@ -16,8 +16,8 @@ rpmlint:
   before_script:
     - yum --assumeyes install ruby rpmlint
   script:
-    ruby generate.rb
-    for i in stage/*/rpm/*.spec; do rpmlint $i; done
+    - ruby generate.rb
+    - for i in stage/*/rpm/*.spec; do rpmlint $i; done
 
 debian:
   image: ligo/base:stretch
