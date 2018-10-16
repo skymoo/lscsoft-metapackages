@@ -62,7 +62,7 @@ SPECSTART
 %changelog
 SPECMID
   pkg_data['changelog'].each do |entry|
-    spec.puts "* #{entry['date'].strftime('%a %b %e %Y')} #{entry['author']} #{entry['version']}"
+    spec.puts "* #{entry['date'].strftime('%a %b %e %Y')} #{entry['author']} #{entry['version']}-1"
     entry['changes'].each do |item|
       indent = '- '
       # this can be a multiline string from YAML, hence
