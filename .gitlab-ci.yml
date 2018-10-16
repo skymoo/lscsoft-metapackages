@@ -27,4 +27,4 @@ rhel:
     - yum --assumeyes install rpm-build rpmlint ruby
   script:
     - ruby generate.rb
-    - for in in stage/*/rpm/*.spec; do rpmlint $i; rpmbuild -ba $i; done
+    - for i in stage/*/rpm/*.spec; do rpmlint $i; rpmbuild -ba $i; done
