@@ -19,6 +19,12 @@ debian:
   script:
     - ruby generate.rb
     - for i in stage/*/deb/; do ( cd $i; equivs-build control ); done
+    - mkdir debs
+    - for i in stage/*/deb/*.deb; do cp $i debs; done
+  artifacts:
+    expire_in: 3h
+    paths:
+      - debs
 
 rhel:
   image: ligo/base:el7
