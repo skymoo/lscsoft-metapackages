@@ -157,7 +157,7 @@ def deb_control(pkg_data)
   control.puts <<-CONTROLSTART
 Section: #{pkg_data['section']}
 Priority: #{pkg_data['priority']}
-Standards-Version: 3.9.2
+Standards-Version: 3.9.8
 
 Package: #{pkg_data['name']}
 Maintainer: #{pkg_data['maintainer']}
