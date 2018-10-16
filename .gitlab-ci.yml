@@ -10,15 +10,6 @@ yaml:
   script:
     - yamllint meta/*.yml
 
-rpmlint:
-  image: ligo/base:el7
-  stage: lint
-  before_script:
-    - yum --assumeyes install ruby rpmlint
-  script:
-    - ruby generate.rb
-    - for i in stage/*/rpm/*.spec; do echo $i; rpmlint $i; done
-
 debian:
   image: ligo/base:stretch
   stage: build
@@ -33,7 +24,7 @@ rhel:
   image: ligo/base:el7
   stage: build
   before_script:
-    - yum --assumeyes install rpm-build ruby
+    - yum --assumeyes install rpm-build rpmlint ruby
   script:
     - ruby generate.rb
-    - for i in stage/*/rpm/*.spec; do rpmbuild -ba $i; done
+    - for in in stage/*/rpm/*.spec; do rpmlint $i; rpmbuild -ba $i; done
