@@ -28,3 +28,12 @@ debian:
   script:
     - ruby generate.rb
     - for i in stage/*/deb/; do ( cd $i; equivs-build control ); done
+
+rhel:
+  image: ligo/base:el7
+  stage: build
+  before_script:
+    - yum --assumeyes install rpm-build ruby
+  script:
+    - ruby generate.rb
+    - for i in stage/*/rpm/*.spec; do rpmbuild -ba $i; done
