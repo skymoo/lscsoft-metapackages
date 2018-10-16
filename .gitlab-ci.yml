@@ -10,11 +10,11 @@ yaml:
   script:
     - yamllint meta/*.yml
 
-rhel_lint:
+rpmlint:
   image: ligo/base:el7
   stage: lint
   before_script:
-    - yum --assume-yes install ruby rpmlint
+    - yum --assumeyes install ruby rpmlint
   script:
     ruby generate.rb
     for i in stage/*/rpm/*.spec; do rpmlint $i; done
