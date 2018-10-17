@@ -86,6 +86,6 @@ deps:
     deb: python-pyrxp, python3-pyrxp
     rpm:
   python-voeventlib:
-maintainer: LIGO software packaging group <software-packaging@ligo.org>
+maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: lscsoft

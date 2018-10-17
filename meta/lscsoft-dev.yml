@@ -20,6 +20,6 @@ desc_long: |
   to get to a certain system state
 deps:
   abi-dumper:
-maintainer: LIGO software packaging group <software-packaging@ligo.org>
+maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: lscsoft

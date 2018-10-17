@@ -137,6 +137,6 @@ deps:
   texlive-bibtex:
     deb: texlive-binaries
     rpm:
-maintainer: LIGO software packaging group <software-packaging@ligo.org>
+maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: lscsoft

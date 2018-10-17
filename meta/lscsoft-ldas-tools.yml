@@ -66,6 +66,6 @@ deps:
     deb: python-ldas-tools-frameapi, python3-ldas-tools-frameapi
     rpm: python2-ldas-tools-frameAPI, python34-ldas-tools-frameAPI
   ldas-tools-utilities:
-maintainer: LIGO software packaging group <software-packaging@ligo.org>
+maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: lscsoft
