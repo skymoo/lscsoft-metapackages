@@ -8,7 +8,7 @@ changelog:
     changes:
       - restart metapackages
     version: 20170811
-desc_short: 'Metapackage to pull in various useful packages for LSCSoft'
+desc_short: 'Metapackage to pull in packages for the Omega pipeline'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required
   to get to a certain system state
