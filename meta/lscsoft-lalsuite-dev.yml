@@ -40,7 +40,7 @@ changelog:
     changes:
       - restart metapackages
     version: 20170803
-desc_short: 'Metapackage to pull in lalsuite development dependencies'
+desc_short: 'Metapackage to pull in packages for LALSuite development'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required
   to get to a certain system state
