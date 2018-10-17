@@ -8,7 +8,7 @@ changelog:
     changes:
       - restart metapackages
     version: 20180205
-desc_short: 'Ensure the installation of the LIGOTools packages'
+desc_short: 'Metapackage to pull in LIGOTools packages'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required
   to get to a certain system state.
