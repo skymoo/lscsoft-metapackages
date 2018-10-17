@@ -1,8 +1,6 @@
 ---
-####################
-### lscsoft-external-omega
-####################
-#
+# lscsoft-external-omega
+
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
   - date: 2017-08-11T09:20:05+02:00

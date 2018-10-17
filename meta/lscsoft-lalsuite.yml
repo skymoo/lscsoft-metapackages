@@ -1,8 +1,6 @@
 ---
-####################
-### lscsoft-lalsuite
-####################
-#
+# lscsoft-lalsuite
+
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
   - date: 2018-10-12T14:20:52-07:00

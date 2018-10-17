@@ -1,8 +1,6 @@
 ---
-####################
-### lscsoft-external-periodic
-####################
-#
+# lscsoft-external-periodic
+
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
   - date: 2018-10-12T13:01:37-07:00

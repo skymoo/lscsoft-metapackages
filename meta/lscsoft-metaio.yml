@@ -1,8 +1,6 @@
 ---
-####################
-### lscsoft-metaio
-####################
-#
+# lscsoft-metaio
+
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
   - date: 2017-08-10T18:04:37+02:00

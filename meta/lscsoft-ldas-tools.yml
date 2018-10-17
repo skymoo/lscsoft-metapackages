@@ -1,8 +1,6 @@
 ---
-####################
-### lscsoft-ldas-tools
-####################
-#
+# lscsoft-ldas-tools
+
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
   - date: 2018-10-12T15:13:31-07:00

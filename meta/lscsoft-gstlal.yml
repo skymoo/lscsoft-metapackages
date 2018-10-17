@@ -1,8 +1,6 @@
 ---
-####################
-### lscsoft-gstlal
-####################
-#
+# lscsoft-gstlal
+
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
   - date: 2017-08-03T10:29:22+02:00
