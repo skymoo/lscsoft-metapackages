@@ -10,12 +10,12 @@ changelog:
     changes:
       - remove abi-compliance-checker
       - https://bugs.ligo.org/redmine/issues/6184
-    version: 2018.06.29
+    version: 20180629
   - date: 2018-01-24T14:07:18-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - restart metapackages
-    version: 2018.01.24
+    version: 20180124
 desc_short: 'Metapackage to pull in general LSCSoft Development Packages'
 desc_long: |
   LSCSoft metapackages are "virtual" packages pulling in dependencies required

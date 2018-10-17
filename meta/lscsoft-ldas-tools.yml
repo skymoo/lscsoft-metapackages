@@ -9,22 +9,22 @@ changelog:
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - update for new package names
-    version: 2018.10.12
+    version: 20181012
   - date: 2018-02-23T10:45:19+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - add stretch support
-    version: 2018.02.23
+    version: 20180223
   - date: 2018-02-22T09:46:30+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - fix Debian package names
-    version: 2018.02.22
+    version: 20180222
   - date: 2018-02-05T17:44:17-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - restart metapackages
-    version: 2018.02.05
+    version: 20180205
 desc_short: 'Metapackage to pull in LDAS Tools packages'
 desc_long: |
   LSCSoft metapackages are "virtual" packages pulling in dependencies required

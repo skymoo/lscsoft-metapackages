@@ -9,17 +9,17 @@ changelog:
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - add missing sl7 packages
-    version: 2018.10.12
+    version: 20181012
   - date: 2018-01-25T08:54:25+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - Adjust Debian package names
-    version: 2018.01.25
+    version: 20180125
   - date: 2018-01-24T15:17:22-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - restart metapackages
-    version: 2018.01.24
+    version: 20180124
 desc_short: 'Metapackage to pull in packages for the Auth project'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required

@@ -10,22 +10,22 @@ changelog:
     changes:
       - remove unused dependencies
       - cleanup
-    version: 2018.10.15
+    version: 20181015
   - date: 2018-02-23T10:52:03+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - add stretch support
-    version: 2018.02.23
+    version: 20180223
   - date: 2018-01-25T09:30:28+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - Adjust Debian package names
-    version: 2018.01.25
+    version: 20180125
   - date: 2018-01-24T14:59:13-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - restart metapackages
-    version: 2018.01.24
+    version: 20180124
 desc_short: 'Metapackage to pull in nds2-client development packages'
 desc_long: |
   LSCSoft metapackages are "virtual" packages pulling in dependencies required

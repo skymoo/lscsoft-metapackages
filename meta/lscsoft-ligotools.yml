@@ -9,7 +9,7 @@ changelog:
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - restart metapackages
-    version: 2018.02.05
+    version: 20180205
 desc_short: 'Ensure the installation of the LIGOTools packages.'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required

@@ -10,17 +10,17 @@ changelog:
     changes:
       - add cmake and cmake3
       - add numpy
-    version: 2018.10.15
+    version: 20181015
   - date: 2018-01-25T09:27:37+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - Adjust Debian package names
-    version: 2018.01.25
+    version: 20180125
   - date: 2018-01-24T14:53:55-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - restart metapackages
-    version: 2018.01.24
+    version: 20180124
 desc_short: 'Metapackage to pull in LDAS Tools development packages'
 desc_long: |
   LSCSoft metapackages are "virtual" packages pulling in dependencies required

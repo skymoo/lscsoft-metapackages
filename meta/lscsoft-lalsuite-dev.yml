@@ -10,38 +10,38 @@ changelog:
     changes:
       - remove python34-glue
       - add python2-rpm-macros for EL7
-    version: 2018.06.29
+    version: 20180629
   - date: 2018-06-28T14:06:36-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - add python-h5py
-    version: 2018.06.28
+    version: 20180628
   - date: 2018-06-08T10:25:45-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - add glue and python34-glue
-    version: 2018.06.08
+    version: 20180608
   - date: 2018-06-04T12:32:39-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - add python-ligo-segments
-    version: 2018.06.04
+    version: 20180604
   - date: 2018-02-22T10:10:22+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - fix Debian specific package names
-    version: 2018.02.22
+    version: 20180222
   - date: 2018-02-05T17:40:35-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - add pytest
       - add python2-reproject
-    version: 2018.02.05
+    version: 20180205
   - date: 2017-08-03T10:31:40+02:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - restart metapackages
-    version: 2017.08.03
+    version: 20170803
 desc_short: 'Metapackage to pull in lalsuite development dependencies'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required

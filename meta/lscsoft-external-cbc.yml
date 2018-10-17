@@ -9,12 +9,12 @@ changelog:
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - add stretch support
-    version: 2018.02.23
+    version: 20180223
   - date: 2017-08-10T15:42:17+02:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - restart metapackages
-    version: 2017.08.10
+    version: 20170810
 desc_short: 'Metapackage to pull in various useful packages for LSCSoft'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required

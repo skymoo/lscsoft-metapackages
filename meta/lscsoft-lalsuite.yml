@@ -12,17 +12,17 @@ changelog:
       - remove lalxml, laldetchar, and lalstochastic
       - update for renamed python packages
       - add python3 packages for Debian
-    version: 2018.10.12
+    version: 20181012
   - date: 2018-02-05T17:36:56-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - remove lalsuite-extra, distributed via CVMFS
-    version: 2018.02.05
+    version: 20180205
   - date: 2017-08-03T10:31:40+02:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - restart metapackages
-    version: 2017.08.03
+    version: 20170803
 desc_short: 'Metapackage to pull in lalsuite dependencies'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required

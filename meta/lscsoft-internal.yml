@@ -15,38 +15,38 @@ changelog:
       - add python34-ligo-lvalert
       - add ligo-gracedb packages
       - remove python-pylal
-    version: 2018.10.12
+    version: 20181012
   - date: 2018-08-02T16:25:34-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - add python-gwdatafind
-    version: 2018.08.02
+    version: 20180802
   - date: 2018-02-23T10:44:10+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - add stretch support
-    version: 2018.02.23
+    version: 20180223
   - date: 2018-02-22T10:08:51+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - fix Debian specific names for python packages
-    version: 2018.02.22
+    version: 20180222
   - date: 2018-02-20T08:50:56-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - add python-gwpy
       - https://bugs.ligo.org/redmine/issues/6099
-    version: 2018.02.20
+    version: 20180220
   - date: 2018-02-05T17:31:43-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - sync with SL7
-    version: 2018.02.05
+    version: 20180205
   - date: 2017-08-03T09:20:04+02:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - restart metapackages
-    version: 2017.08.03
+    version: 20170803
 desc_short: 'Metapackage to pull in core LSCSoft dependencies'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required

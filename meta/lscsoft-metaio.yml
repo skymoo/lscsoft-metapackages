@@ -9,7 +9,7 @@ changelog:
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - restart metapackages
-    version: 2017.08.10
+    version: 20170810
 desc_short: 'Ensure the installation of the MetaIO LSCSOFT packages.'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required

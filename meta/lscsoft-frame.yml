@@ -9,17 +9,17 @@ changelog:
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - add libframe on sl7
-    version: 2018.10.12
+    version: 20181012
   - date: 2018-02-22T09:08:48+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - restart metapackages
-    version: 2018.02.22
+    version: 20180222
   - date: 2017-08-03T09:58:06+02:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - restart metapackages
-    version: 2017.08.03
+    version: 20170803
 desc_short: 'Metapackage to pull in libframe LSCSoft dependencies'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required

@@ -9,7 +9,7 @@ changelog:
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - restart metapackages
-    version: 2018.01.24
+    version: 20180124
 desc_short: 'Metapackage to pull in core LSCSoft development packages'
 desc_long: |
   LSCSoft meta-packages are "virtual" packages pulling in dependencies required

@@ -9,7 +9,7 @@ changelog:
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
       - restart metapackages
-    version: 2017.08.03
+    version: 20170803
 desc_short: 'Metapackage to pull in LSCSoft gstlal dependencies'
 desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required
