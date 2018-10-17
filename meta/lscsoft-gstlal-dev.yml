@@ -50,18 +50,18 @@ deps:
   lal-devel:
     deb: lal-dev
     rpm:
-  python2-lal-python:
+  python-lal:
     deb: python-lal, python3-lal
-    rpm:
+    rpm: python2-lal
   lalburst-devel:
     deb: lalburst-dev
     rpm:
   lalinspiral-devel:
     deb: lalinspiral-dev
     rpm:
-  python2-lalinspiral:
+  python-lalinspiral:
     deb: python-lalinspiral, python3-lalinspiral
-    rpm:
+    rpm: python2-lalinspiral
   lalmetaio-devel:
     deb: lalmetaio-dev
     rpm:
