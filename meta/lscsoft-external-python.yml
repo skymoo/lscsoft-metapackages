@@ -3,11 +3,18 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-10-17T11:01:03-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - replace python34-devel with python34-debug
+      - add python36-debug
+      - https://bugs.ligo.org/redmine/issues/6257
+    version: 20181017
   - date: 2018-10-12T12:04:01-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - add astropy-tools on sl7
-    version: 20180730
+    version: 20181012
   - date: 2018-08-02T16:51:53-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -118,7 +125,7 @@ deps:
   python34-crypto:
     deb: python3-crypto
     rpm:
-  python34-devel:
+  python34-debug:
     deb: python3-dev
     rpm:
   python34-libs:
@@ -147,6 +154,8 @@ deps:
     rpm:
   python34-virtualenv:
     deb: python3-virtualenv
+    rpm:
+  python36-debug:
     rpm:
   scipy:
     deb: python-scipy, python3-scipy
