@@ -14,7 +14,7 @@ changelog:
     changes:
       - restart metapackages
     version: 20180124
-desc_short: 'Metapackage to pull in general LSCSoft Development Packages'
+desc_short: 'Metapackage to pull in general LSCSoft development packages'
 desc_long: |
   LSCSoft metapackages are "virtual" packages pulling in dependencies required
   to get to a certain system state
