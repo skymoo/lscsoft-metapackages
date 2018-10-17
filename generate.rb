@@ -24,6 +24,7 @@ Name: #{pkg_data['name']}
 Version: #{pkg_data['changelog'][0]['version']}
 Release: 1%{?dist}
 License: GPLv3+
+URL: https://git.ligo.org/packaging/lscsoft-metapackages
 Summary: #{pkg_data['desc_short']}
 BuildArch: noarch
 
