@@ -19,7 +19,7 @@ changelog:
     changes:
       - restart metapackages
     version: 20180124
-desc_short: 'Metapackage to pull in LDAS Tools development packages'
+desc_short: 'Metapackage to pull in packages for LDAS Tools development'
 desc_long: |
   LSCSoft metapackages are "virtual" packages pulling in dependencies required
   to get to a certain system state
