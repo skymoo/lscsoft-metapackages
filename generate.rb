@@ -28,13 +28,6 @@ Summary: #{pkg_data['desc_short']}
 BuildArch: noarch
 SPECSTART
 
-  # if extra headers are specified, add them verbatim here
-  if pkg_data.key?('extra_headers') && pkg_data['extra_headers'].key?('rpm')
-    pkg_data['extra_headers']['rpm'].each do |h|
-      spec.puts h
-    end
-  end
-
   # add dependencies
   dep_list = []
 
@@ -52,6 +45,14 @@ SPECSTART
   spec.puts
   dep_list.sort.each do |d|
     spec.puts "Requires: #{d}"
+  end
+
+  # if extra headers are specified, add them verbatim here
+  if pkg_data.key?('extra_headers') && pkg_data['extra_headers'].key?('rpm')
+    spec.puts
+    pkg_data['extra_headers']['rpm'].each do |h|
+      spec.puts h
+    end
   end
 
   spec.puts <<-SPECMID
@@ -177,13 +178,6 @@ Copyright: copyright
 Architecture: all
 CONTROLSTART
 
-  # if extra headers are specified, add them verbatim here
-  if pkg_data.key?('extra_headers') && pkg_data['extra_headers'].key?('deb')
-    pkg_data['extra_headers']['deb'].each do |h|
-      control.puts h
-    end
-  end
-
   # add dependencies
   dep_list = []
   pkg_data['deps'].each do |k, v|
@@ -197,9 +191,19 @@ CONTROLSTART
   end
 
   # write out dependency block
+  control.puts
   dep_list.sort.each do |d|
     control.puts "Depends: #{d}"
   end
+
+  # if extra headers are specified, add them verbatim here
+  if pkg_data.key?('extra_headers') && pkg_data['extra_headers'].key?('deb')
+    control.puts
+    pkg_data['extra_headers']['deb'].each do |h|
+      control.puts h
+    end
+  end
+
   control.puts <<-CONTROLEND
 
 Description: #{pkg_data['desc_short']}
