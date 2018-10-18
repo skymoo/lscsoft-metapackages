@@ -26,8 +26,14 @@ License: GPLv3+
 URL: https://git.ligo.org/packaging/lscsoft-metapackages
 Summary: #{pkg_data['desc_short']}
 BuildArch: noarch
-
 SPECSTART
+
+  # if extra headers are specified, add them verbatim here
+  if pkg_data.key?('extra_headers') && pkg_data['extra_headers'].key?('rpm')
+    pkg_data['extra_headers']['rpm'].each do |h|
+      spec.puts h
+    end
+  end
 
   # add dependencies
   dep_list = []
@@ -42,6 +48,8 @@ SPECSTART
     end
   end
 
+  # write out Requires block
+  spec.puts
   dep_list.sort.each do |d|
     spec.puts "Requires: #{d}"
   end
@@ -161,15 +169,20 @@ def deb_control(pkg_data)
 Section: #{pkg_data['section']}
 Priority: #{pkg_data['priority']}
 Standards-Version: 3.9.8
-
 Package: #{pkg_data['name']}
 Maintainer: #{pkg_data['maintainer']}
 Readme: README
 Changelog: changelog.Debian
 Copyright: copyright
 Architecture: all
-
 CONTROLSTART
+
+  # if extra headers are specified, add them verbatim here
+  if pkg_data.key?('extra_headers') && pkg_data['extra_headers'].key?('deb')
+    pkg_data['extra_headers']['deb'].each do |h|
+      control.puts h
+    end
+  end
 
   # add dependencies
   dep_list = []
@@ -182,6 +195,8 @@ CONTROLSTART
       dep_list << (v['deb'].nil? ? k : v['deb'])
     end
   end
+
+  # write out dependency block
   dep_list.sort.each do |d|
     control.puts "Depends: #{d}"
   end
