@@ -4,21 +4,20 @@
 # based on the main config file and what is already present under the
 # target directory
 
+require 'pp'
+require 'date'
+require 'fileutils'
 require 'yaml'
 
 # store path of this script
-$ROOT = File.expand_path(File.dirname(__FILE__))
+ROOT = File.expand_path(__dir__).freeze
 
 # standard directory layout (relative to $ROOT)
 # meta/ contains the meta package definitions - one per file
 # stage/pkgname/{deb,rpm}/ contain all necessary information to build meta-packages
 
-require 'pp'
-require 'date'
-require 'fileutils'
-
 def rpm_create_source(pkg_data)
-  spec = File.open("#{$ROOT}/stage/#{pkg_data['name']}/rpm/#{pkg_data['name']}.spec", 'w')
+  spec = File.open("#{ROOT}/stage/#{pkg_data['name']}/rpm/#{pkg_data['name']}.spec", 'w')
   spec.puts <<-SPECSTART
 Name: #{pkg_data['name']}
 Version: #{pkg_data['changelog'][0]['version']}
@@ -78,7 +77,7 @@ SPECMID
   end
 end
 
-def reformat_wrapped(s, width=78)
+def reformat_wrapped(s, width = 78)
   # helper function needed to reformat long description
   # based on https://www.safaribooksonline.com/library/view/ruby-cookbook/0596523696/ch01s15.html
   # other solution, thanks AlexP
@@ -86,7 +85,7 @@ def reformat_wrapped(s, width=78)
   parts = []
   s.split(/\n\n/).each do |part|
     lines = []
-    line = ""
+    line = ''
     part.split(/\s+/).each do |word|
       if line.size + word.size >= width
         lines << line
@@ -94,13 +93,13 @@ def reformat_wrapped(s, width=78)
       elsif line.empty?
         line = word
       else
-        line << " " << word
+        line << ' ' << word
       end
     end
     lines << line if line
-    parts << " " + (lines.join "\n ")
+    parts << ' ' + (lines.join "\n ")
   end
-  return parts.join "\n .\n"
+  parts.join "\n .\n"
 end
 
 def deb_create_source(pkg_data)
@@ -111,15 +110,15 @@ def deb_create_source(pkg_data)
 end
 
 def deb_readme(pkg_data)
-# create README
-  readme = File.new("#{$ROOT}/stage/#{pkg_data['name']}/deb/README", 'w')
+  # create README
+  readme = File.new("#{ROOT}/stage/#{pkg_data['name']}/deb/README", 'w')
   readme.puts pkg_data['desc_long']
   readme.close
 end
 
 def deb_changelog(pkg_data)
-# create changelog
-  changelog = File.new("#{$ROOT}/stage/#{pkg_data['name']}/deb/changelog.Debian", 'w')
+  # create changelog
+  changelog = File.new("#{ROOT}/stage/#{pkg_data['name']}/deb/changelog.Debian", 'w')
   pkg_data['changelog'].each do |entry|
     changelog.puts "#{pkg_data['name']} (#{entry['version']}) unstable; urgency=medium\n\n"
     entry['changes'].each do |item|
@@ -139,9 +138,10 @@ def deb_changelog(pkg_data)
 
   changelog.close
 end
+
 def deb_copyright(pkg_data)
-# create 'copyright'
-  copyright = File.new("#{$ROOT}/stage/#{pkg_data['name']}/deb/copyright", 'w')
+  # create 'copyright'
+  copyright = File.new("#{ROOT}/stage/#{pkg_data['name']}/deb/copyright", 'w')
   copyright.puts <<-COPYRIGHT
 Upstream Author(s): The LIGO Scientific Collaboration
 
@@ -154,7 +154,7 @@ end
 
 def deb_control(pkg_data)
   # create control file
-  control = File.new("#{$ROOT}/stage/#{pkg_data['name']}/deb/control", 'w')
+  control = File.new("#{ROOT}/stage/#{pkg_data['name']}/deb/control", 'w')
 
   # start with simple header
   control.puts <<-CONTROLSTART
@@ -173,13 +173,13 @@ CONTROLSTART
 
   # add dependencies
   dep_list = []
-  pkg_data['deps'].each do |k,v|
+  pkg_data['deps'].each do |k, v|
     # add key as package name if value is nil (simple package, same for deb and rpm)
     if v.nil?
       dep_list << k
     # if our key (rpm/deb) exists use its value or the package name itself if value is empty
     elsif v.key?('deb')
-      dep_list << ( v['deb'].nil? ? k : v['deb'] )
+      dep_list << (v['deb'].nil? ? k : v['deb'])
     end
   end
   dep_list.sort.each do |d|
@@ -196,10 +196,10 @@ end
 ############# MAIN
 
 # iterate over each file in meta/
-Dir.glob("#{$ROOT}/meta/*.yml") do |meta_file|
+Dir.glob("#{ROOT}/meta/*.yml") do |meta_file|
   puts "Working on: #{meta_file}"
 
-  pkg = meta_file[/^#{$ROOT}\/meta\/(.+)\.yml$/,1]
+  pkg = meta_file[/^#{ROOT}\/meta\/(.+)\.yml$/, 1]
   content = YAML.load_file(meta_file)
 
   # a few modifications need to be done (convenience)
@@ -207,7 +207,7 @@ Dir.glob("#{$ROOT}/meta/*.yml") do |meta_file|
   content['changelog'].each do |entry|
     entry['date'] = DateTime.parse(entry['date'].to_s)
   end
-  content['changelog'].sort!{ |x,y| y['date'] <=> x['date'] }
+  content['changelog'].sort! { |x, y| y['date'] <=> x['date'] }
 
   # add package name (inferred from YAML fname)
   content['name'] = pkg
@@ -215,19 +215,18 @@ Dir.glob("#{$ROOT}/meta/*.yml") do |meta_file|
   content['desc_long'] = content['desc_short'] if content['desc_long'].nil?
 
   # basic tests
-  %w(changelog desc_short desc_long deps name maintainer priority section).each do |t|
+  %w[changelog desc_short desc_long deps name maintainer priority section].each do |t|
     raise "#{meta_file} requires key '#{t}'" unless content.key?(t)
   end
-
   # ensure target dirs are is present
-  %w(deb rpm).each do |d|
-    FileUtils.mkpath("#{$ROOT}/stage/#{pkg}/#{d}")
+  %w[deb rpm].each do |d|
+    FileUtils.mkpath("#{ROOT}/stage/#{pkg}/#{d}")
   end
 
   # once we get here, check if we need to work at all on this one
   # for that, check its version file and compare to latest one from changelog
-  last_version = "#{$ROOT}/stage/#{pkg}/version"
-  if File.exists?(last_version)
+  last_version = "#{ROOT}/stage/#{pkg}/version"
+  if File.exist?(last_version)
     version = File.open(last_version, &:gets)
     next if version.to_s.chomp.eql?(content['changelog'][0]['version'].to_s.chomp)
   end
