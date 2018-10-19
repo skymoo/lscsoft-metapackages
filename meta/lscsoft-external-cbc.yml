@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-10-19T08:55:36-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - replace healpix_cxx with healpix-c++ on EL7
+    version: 20181019
   - date: 2018-02-23T10:39:02+01:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -36,7 +41,7 @@ deps:
   gsl-devel:
     deb: libgsl0-dev | libgsl-dev
     rpm: gsl-devel, gsl-static
-  healpix_cxx-devel:
+  healpix-c++-devel:
     deb: libhealpix-cxx-dev
     rpm:
   healpy:
@@ -63,6 +68,10 @@ deps:
   spr:
     deb:
     rpm: spr, spr-devel
+extra_headers:
+  rpm:
+    - 'Obsoletes: healpix_cxx'
+    - 'Obsoletes: healpix_cxx-devel'
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: lscsoft
