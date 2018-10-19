@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-10-18T18:00:07-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - replace old lscsoft-ldas metapackage on EL7
+    version: 20181018
   - date: 2018-10-12T15:13:31-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -66,6 +71,9 @@ deps:
     deb: python-ldas-tools-frameapi, python3-ldas-tools-frameapi
     rpm: python2-ldas-tools-frameAPI, python34-ldas-tools-frameAPI
   ldas-tools-utilities:
+extra_headers:
+  rpm:
+    - 'Obsoletes: lscsoft-ldas'
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: lscsoft
