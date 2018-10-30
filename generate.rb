@@ -191,10 +191,7 @@ CONTROLSTART
   end
 
   # write out dependency block
-  control.puts
-  dep_list.sort.each do |d|
-    control.puts "Depends: #{d}"
-  end
+  control.puts 'Depends: ' + dep_list.sort.join(', ')
 
   # if extra headers are specified, add them verbatim here
   if pkg_data.key?('extra_headers') && pkg_data['extra_headers'].key?('deb')
