@@ -3,6 +3,12 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-11-01T09:51:58-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python-bottle
+      - https://git.ligo.org/sccb/requests/issues/8
+    version: 20181101
   - date: 2018-10-17T11:01:03-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -92,6 +98,9 @@ deps:
     rpm:
   python-basemap-examples:
     rpm:
+  python-bottle:
+    deb: python-bottle, python3-bottle
+    rpm: python2-bottle, python34-bottle
   python-matplotlib:
     deb: python-matplotlib, python3-matplotlib
     rpm:
