@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-11-12T10:21:20-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python{2,34}-gwosc
+    version: 20181112
   - date: 2018-10-18T16:26:57-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -87,6 +92,9 @@ deps:
   python-gwdatafind:
     deb: python-gwdatafind, python3-gwdatafind
     rpm: python2-gwdatafind
+  python-gwosc:
+    deb: python-gwosc, python3-gwosc
+    rpm: python2-gwosc, python34-gwosc
   python-gwpy:
     deb: python-gwpy, python3-gwpy
     rpm: python2-gwpy
