@@ -127,8 +127,10 @@ deps:
   python-setuptools:
     deb: python-setuptools, python3-setuptools
     rpm: python-setuptools, python34-setuptools
+  python-setuptools-git:
+    deb: python-setuptools-git, python3-setuptools-git
   python-setuptools-scm:
-    deb: python-setuptools-scm,  python-setuptools-git, python3-setuptools-scm, python3-setuptools-git
+    deb: python-setuptools-scm, python3-setuptools-scm
     rpm: python34-setuptools_scm
   python-six:
     deb: python-six, python3-six
