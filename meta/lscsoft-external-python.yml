@@ -3,6 +3,13 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2018-11-12T10:48:55-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - unify numpy and scipy entries
+      - add python-setuptools, python-setuptools-scm, and
+        python-setuptools-git
+    version: 20181112
   - date: 2018-11-01T09:51:58-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -80,7 +87,7 @@ deps:
     rpm:
   numpy:
     deb: python-numpy, python3-numpy
-    rpm:
+    rpm: numpy, python34-numpy, python34-numpy-f2py
   pyflakes:
     deb: python-pyflakes, python3-pyflakes
     rpm: pyflakes, python34-pyflakes
@@ -117,6 +124,12 @@ deps:
   python-pytest-cov:
     deb: python-pytest-cov, python3-pytest-cov
     rpm: python2-pytest-cov, python34-pytest-cov
+  python-setuptools:
+    deb: python-setuptools, python3-setuptools
+    rpm: python-setuptools, python34-setuptools
+  python-setuptools-scm:
+    deb: python-setuptools-scm,  python-setuptools-git, python3-setuptools-scm, python3-setuptools-git
+    rpm: python34-setuptools_scm
   python-six:
     deb: python-six, python3-six
     rpm: python2-six, python34-six
@@ -143,17 +156,8 @@ deps:
   python34-nose:
     deb: python3-nose
     rpm:
-  python34-numpy:
-    deb: python3-numpy
-    rpm:
-  # numpy-f2py seems to be part of python3-numpy on Debian
-  python34-numpy-f2py:
-    rpm:
   python34-pip:
     deb: python3-pip
-    rpm:
-  python34-scipy:
-    deb: python3-scipy
     rpm:
   python34-setuptools:
     deb: python3-setuptools
