@@ -3,6 +3,12 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-03-07T09:51:23-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - remove python-seaborn
+      - add python-gwdatafind, python-gwpy
+    version: 20190307
   - date: 2018-06-29T16:37:07-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -108,6 +114,12 @@ deps:
   python-devel:
     deb: python-dev, python3-dev
     rpm:
+  python-gwdatafind:
+    deb: python-gwdatafind, python3-gwdatafind
+    rpm: python2-gwdatafind, python34-gwdatafind
+  python-gwpy:
+    deb: python-gwpy, python3-gwpy
+    rpm: python2-gwpy
   python-h5py:
     deb: python-h5py
     rpm: h5py
@@ -117,9 +129,6 @@ deps:
   python-reproject:
     deb: python-reproject, python3-reproject
     rpm: python2-reproject
-  python-seaborn:
-    deb: python-seaborn, python3-seaborn
-    rpm:
   python-shapely:
     deb: python-shapely, python3-shapely
     rpm:
