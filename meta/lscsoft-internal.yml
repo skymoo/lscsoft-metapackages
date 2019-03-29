@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-03-28T18:00:08-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - depend on ligo-scald
+    version: 20190328
   - date: 2019-03-11T10:50:14-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -105,6 +110,9 @@ deps:
   ligo-lvalert:
     deb: python-ligo-lvalert, python3-ligo-lvalert
     rpm: python2-ligo-lvalert, python34-ligo-lvalert
+  ligo-scald:
+    deb: python-ligo-scald, python3-ligo-scald
+    rpm: python2-ligo-scald, python34-ligo-scald
   lscsoft-frame:
   lscsoft-gstlal:
   lscsoft-lalsuite:
