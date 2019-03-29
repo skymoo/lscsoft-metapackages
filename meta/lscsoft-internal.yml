@@ -112,7 +112,7 @@ deps:
     rpm: python2-ligo-lvalert, python34-ligo-lvalert
   ligo-scald:
     deb: python-ligo-scald, python3-ligo-scald
-    rpm: python2-ligo-scald, python34-ligo-scald
+    rpm: python2-ligo-scald
   lscsoft-frame:
   lscsoft-gstlal:
   lscsoft-lalsuite:
