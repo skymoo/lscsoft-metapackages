@@ -3,6 +3,13 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-04-01T15:11:08-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add help2man
+      - add python-all-dev, python3-all-dev
+      - add python-ligo-gracedb
+    version: 20190401
   - date: 2019-03-07T09:51:23-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -83,6 +90,7 @@ deps:
   healpy:
     deb: python-healpy, python3-healpy
     rpm: healpy >= 1.8.5
+  help2man:
   ldas-tools-framecpp-c-devel:
     deb: ldas-tools-framecpp-c-dev
     rpm:
@@ -112,7 +120,7 @@ deps:
     deb: python-pytest, python3-pytest
     rpm:
   python-devel:
-    deb: python-dev, python3-dev
+    deb: python-dev, python-all-dev, python3-dev, python3-all-dev
     rpm:
   python-gwdatafind:
     deb: python-gwdatafind, python3-gwdatafind
@@ -123,6 +131,9 @@ deps:
   python-h5py:
     deb: python-h5py
     rpm: h5py
+  python-ligo-gracedb:
+    deb: python-ligo-gracedb, python3-ligo-gracedb
+    rpm: python2-ligo-gracedb
   python-ligo-segments:
     deb: python-ligo-segments, python3-ligo-segments
     rpm: python2-ligo-segments
