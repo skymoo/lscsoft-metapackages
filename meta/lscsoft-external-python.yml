@@ -3,6 +3,13 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-04-01T15:23:58-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python-urllib3
+      - add python-requests
+      - cleanups
+    version: 20190401
   - date: 2018-12-19T13:03:31+00:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -93,37 +100,48 @@ deps:
     rpm:
   numpy:
     deb: python-numpy, python3-numpy
-    rpm: numpy, python34-numpy, python34-numpy-f2py
+    rpm: numpy, python2-numpy, python34-numpy, python36-numpy
+  numpy-f2py:
+    rpm: numpy-f2py, python34-numpy-f2py, python36-numpy-f2py
   pyflakes:
     deb: python-pyflakes, python3-pyflakes
     rpm: pyflakes, python34-pyflakes
   pylint:
     deb: pylint, pylint3
-    rpm:
-  # seems to be part of python27 stdlib but superseeded by python-configargparse
-  python-argparse:
-    rpm:
+    rpm: pylint, python2-pylint, python34-pylint
+  python:
+    deb: python, python3
+    rpm: python, python34, python36
   python-basemap:
-    deb: python-mpltoolkits.basemap
-    rpm:
-  python-basemap-data-hires:
-    deb: python-mpltoolkits.basemap-data
-    rpm:
-  python-basemap-examples:
-    rpm:
+    deb: python-mpltoolkits.basemap, python-mpltoolkits.basemap-data
+    rpm: python-basemap,  python-basemap-data-hires, python-basemap-examples
   python-bottle:
     deb: python-bottle, python3-bottle
     rpm: python2-bottle, python34-bottle
+  python-crypto:
+    deb: python3-crypto
+    rpm: python2-crypto, python34-crypto
+  python-dev:
+    deb: python-dev, python3-dev
+    rpm: python-debug, python34-debug, python36-debug
+  python-libs:
+    deb: libpython-dev, libpython3-dev
+    rpm: python-libs, python34-libs, python36-libs
   python-matplotlib:
     deb: python-matplotlib, python3-matplotlib
     rpm:
   python-mock:
     deb: python-mock, python3-mock
     rpm: python2-mock, python34-mock
+  python-nose:
+    deb: python-nose, python3-nose
+    rpm: python-nose, python34-nose, python36-nose
   python-pep8:
     deb: pep8, python-pep8
     rpm:
   python-pip:
+    deb: python-pip, python3-pip
+    rpm: python2-pip, python34-pip
   python-psutil:
     deb: python-psutil, python3-psutil
     rpm: python2-psutil, python34-psutil
@@ -133,9 +151,12 @@ deps:
   python-pytest-cov:
     deb: python-pytest-cov, python3-pytest-cov
     rpm: python2-pytest-cov, python34-pytest-cov
+  python-requests:
+    deb: python-requests, python3-requests
+    rpm: python2-requests, python34-requests, python36-requests
   python-setuptools:
     deb: python-setuptools, python3-setuptools
-    rpm: python-setuptools, python34-setuptools
+    rpm: python-setuptools, python34-setuptools, python36-setuptools
   python-setuptools-git:
     deb: python-setuptools-git, python3-setuptools-git
   python-setuptools-scm:
@@ -143,44 +164,18 @@ deps:
     rpm: python34-setuptools_scm
   python-six:
     deb: python-six, python3-six
-    rpm: python2-six, python34-six
+    rpm: python2-six, python34-six, python36-six
   python-sqlobject:
+  python-urllib3:
+    deb: python-urllib3, python3-urllib3
+    rpm: python-urllib3, python34-urllibn, python36-urllib3
   python-virtualenv:
     deb: python-virtualenv, python3-virtualenv
-    rpm:
-  python2-rpm-macros:
-    rpm:
-  python3-rpm-macros:
-    rpm:
-  python34:
-    deb: python3
-    rpm:
-  python34-crypto:
-    deb: python3-crypto
-    rpm:
-  python34-debug:
-    deb: python3-dev
-    rpm:
-  python34-libs:
-    deb: libpython3-dev
-    rpm:
-  python34-nose:
-    deb: python3-nose
-    rpm:
-  python34-pip:
-    deb: python3-pip
-    rpm:
-  python34-setuptools:
-    deb: python3-setuptools
-    rpm:
-  python34-setuptools_scm:
-    deb: python3-setuptools-git
-    rpm:
-  python34-virtualenv:
-    deb: python3-virtualenv
-    rpm:
-  python36-debug:
-    rpm:
+    rpm: python-virtualenv, python34-virtualenv
+  python-rpm-macros:
+    rpm: python-rpm-macros, python2-rpm-macros, python3-rpm-macros
+  python-srpm-macros:
+    rpm: python-srpm-macros
   scipy:
     deb: python-scipy, python3-scipy
     rpm: scipy, python34-scipy
