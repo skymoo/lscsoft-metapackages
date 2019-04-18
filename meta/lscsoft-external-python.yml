@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-04-18T09:13:03-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python-gpstime
+    version: 20190418
   - date: 2019-04-01T15:23:58-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -124,6 +129,9 @@ deps:
   python-dev:
     deb: python-dev, python3-dev
     rpm: python-debug, python34-debug, python36-debug
+  python-gpstime:
+    deb: python-gpstime, python3-gpstime
+    rpm: python2-gpstime, python34-gpstime, python36-gpstime
   python-libs:
     deb: libpython-dev, libpython3-dev
     rpm: python-libs, python34-libs, python36-libs
