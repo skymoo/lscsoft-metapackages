@@ -131,7 +131,7 @@ deps:
     rpm: python-debug, python34-debug, python36-debug
   python-gpstime:
     deb: python-gpstime, python3-gpstime
-    rpm: python2-gpstime, python34-gpstime, python36-gpstime
+    rpm: python2-gpstime, python34-gpstime
   python-libs:
     deb: libpython-dev, libpython3-dev
     rpm: python-libs, python34-libs, python36-libs
