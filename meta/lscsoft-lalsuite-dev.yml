@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-05-08T17:17:27-05:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - remove python-reproject
+    version: 20190508
   - date: 2019-04-01T15:11:08-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -137,9 +142,6 @@ deps:
   python-ligo-segments:
     deb: python-ligo-segments, python3-ligo-segments
     rpm: python2-ligo-segments
-  python-reproject:
-    deb: python-reproject, python3-reproject
-    rpm: python2-reproject
   python-shapely:
     deb: python-shapely, python3-shapely
     rpm:
