@@ -8,7 +8,7 @@ changelog:
     changes:
       - add pytest
       - add freezegun
-    version: 20190508
+    version: 20190610
   - date: 2019-05-08T17:17:27-05:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
