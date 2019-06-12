@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-06-12T13:15:47+01:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - added python3 packages for rpms
+    version: 20190612
   - date: 2019-06-10T19:32:44+01:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -87,9 +92,6 @@ deps:
   glib2-devel:
     deb: libglib2.0-dev
     rpm:
-  glue:
-    deb: python-glue, python3-glue
-    rpm:
   gsl-devel:
     deb: libgsl0-dev
     rpm:
@@ -98,9 +100,6 @@ deps:
     rpm:
   hdf5-static:
     rpm:
-  healpy:
-    deb: python-healpy, python3-healpy
-    rpm: healpy >= 1.8.5
   help2man:
   ldas-tools-framecpp-c-devel:
     deb: ldas-tools-framecpp-c-dev
@@ -115,9 +114,6 @@ deps:
   libxml2-devel:
     deb: libxml2-dev
     rpm:
-  numpy:
-    deb: python-numpy, python3-numpy
-    rpm:
   octave-devel:
     deb: octave3.2-headers | liboctave-dev
     rpm:
@@ -129,10 +125,13 @@ deps:
     rpm:
   python-devel:
     deb: python-dev, python-all-dev, python3-dev, python3-all-dev
-    rpm:
+    rpm: python-devel, python34-devel, python36-devel
   python-freezegun:
     deb: python-freezegun, python3-freezegun
     rpm: python2-freezegun
+  python-glue:
+    deb: python-glue, python3-glue
+    rpm: glue, python34-glue
   python-gwdatafind:
     deb: python-gwdatafind, python3-gwdatafind
     rpm: python2-gwdatafind, python34-gwdatafind
@@ -142,26 +141,35 @@ deps:
   python-h5py:
     deb: python-h5py
     rpm: h5py
+  python-healpy:
+    deb: python-healpy, python3-healpy
+    rpm: healpy >= 1.8.5
   python-ligo-gracedb:
     deb: python-ligo-gracedb, python3-ligo-gracedb
-    rpm: python2-ligo-gracedb
+    rpm: python2-ligo-gracedb, python34-ligo-gracedb
   python-ligo-segments:
     deb: python-ligo-segments, python3-ligo-segments
-    rpm: python2-ligo-segments
+    rpm: python2-ligo-segments, python34-ligo-segments
+  python-matplotlib:
+    deb: python-matplotlib, python3-matplotlib
+    rpm:
+  python-numpy:
+    deb: python-numpy, python3-numpy
+    rpm: numpy, python34-numpy
   python-pytest:
     deb: python-pytest, python3-pytest
-    rpm:
+    rpm: python-pytest, python34-pytest
   python-shapely:
     deb: python-shapely, python3-shapely
     rpm:
   python-six:
     deb: python-six, python3-six
-    rpm:
-  python2-rpm-macros:
-    rpm:
-  scipy:
+    rpm: python-six, python34-six
+  python-rpm-macros:
+    rpm: python2-rpm-macros, python3-rpm-macros
+  python-scipy:
     deb: python-scipy, python3-scipy
-    rpm:
+    rpm: scipy, python34-scipy
   swig:
     deb: swig3.0
     rpm:
