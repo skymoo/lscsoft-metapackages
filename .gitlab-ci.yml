@@ -50,6 +50,16 @@ build:rhel:
       - rpms
       - srpms
 
+test:debian:
+  image: ligo/base:stretch
+  stage: test
+  dependencies:
+    - build:debian
+  script:
+    - apt-get update
+    - apt-get --assume-yes upgrade
+    - dpkg -i debs/*.deb || apt-get --assume-yes -f install
+
 test:rhel:
   image: ligo/base:el7
   stage: test
