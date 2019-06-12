@@ -1,6 +1,7 @@
 stages:
   - lint
   - build
+  - test
 
 yaml:
   image: python:alpine
@@ -13,6 +14,7 @@ yaml:
 debian:
   image: ligo/base:stretch
   stage: build
+  dependencies: []
   before_script:
     - apt-get update
     - apt-get --assume-yes install equivs ruby
@@ -29,6 +31,7 @@ debian:
 rhel:
   image: ligo/base:el7
   stage: build
+  dependencies: []
   before_script:
     - yum --assumeyes install rpm-build rpmlint ruby
   script:
@@ -46,3 +49,12 @@ rhel:
     paths:
       - rpms
       - srpms
+
+test:rhel:
+  image: ligo/base:el7
+  stage: test
+  dependencies:
+    - rhel
+  script:
+    - yum --assumeyes update
+    - yum --assumeyes localinstall rpms/*.rpm
