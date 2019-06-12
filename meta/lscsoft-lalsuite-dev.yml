@@ -3,6 +3,12 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-06-10T19:32:44+01:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - add pytest
+      - add freezegun
+    version: 20190610
   - date: 2019-05-08T17:17:27-05:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -121,12 +127,12 @@ deps:
   pkgconfig:
     deb: pkg-config
     rpm:
-  pytest:
-    deb: python-pytest, python3-pytest
-    rpm:
   python-devel:
     deb: python-dev, python-all-dev, python3-dev, python3-all-dev
     rpm:
+  python-freezegun:
+    deb: python-freezegun, python3-freezegun
+    rpm: python2-freezegun
   python-gwdatafind:
     deb: python-gwdatafind, python3-gwdatafind
     rpm: python2-gwdatafind, python34-gwdatafind
@@ -142,6 +148,9 @@ deps:
   python-ligo-segments:
     deb: python-ligo-segments, python3-ligo-segments
     rpm: python2-ligo-segments
+  python-pytest:
+    deb: python-pytest, python3-pytest
+    rpm:
   python-shapely:
     deb: python-shapely, python3-shapely
     rpm:
@@ -159,6 +168,6 @@ deps:
   texlive-bibtex:
     deb: texlive-binaries
     rpm:
-maintainer: Data Analysis Software Working Group <daswg@ligo.org>
+maintainer: Computing and Software Committee <lvccomputing@ligo.org>
 priority: optional
 section: lscsoft
