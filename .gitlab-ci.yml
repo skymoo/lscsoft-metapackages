@@ -3,7 +3,7 @@ stages:
   - build
   - test
 
-yaml:
+lint:yaml:
   image: python:alpine
   stage: lint
   before_script:
@@ -11,7 +11,7 @@ yaml:
   script:
     - yamllint meta/*.yml
 
-debian:
+build:debian:
   image: ligo/base:stretch
   stage: build
   dependencies: []
@@ -28,7 +28,7 @@ debian:
     paths:
       - debs
 
-rhel:
+build:rhel:
   image: ligo/base:el7
   stage: build
   dependencies: []
@@ -54,7 +54,7 @@ test:rhel:
   image: ligo/base:el7
   stage: test
   dependencies:
-    - rhel
+    - build:rhel
   script:
     - yum --assumeyes update
     - yum --assumeyes localinstall rpms/*.rpm
