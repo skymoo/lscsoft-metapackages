@@ -1,6 +1,7 @@
 stages:
   - lint
   - build
+  - test
 
 yaml:
   image: python:alpine
@@ -48,3 +49,12 @@ rhel:
     paths:
       - rpms
       - srpms
+
+test:rhel:
+  image: ligo/base:el7
+  stage: test
+  dependencies:
+    - rhel
+  script:
+    - yum --assumeyes update
+    - yum --assumeyes localinstall rpms/*.rpm
