@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-07-01T16:30:58-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - remove spr
+    version: 20190701
   - date: 2018-10-19T08:55:36-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -65,9 +70,6 @@ deps:
   scipy:
     deb: python-scipy, python3-scipy
     rpm:
-  spr:
-    deb:
-    rpm: spr, spr-devel
 extra_headers:
   rpm:
     - 'Obsoletes: healpix_cxx'
