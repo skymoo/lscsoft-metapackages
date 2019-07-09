@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-07-09T13:07:00+02:00
+    author: Steffen Grunewald <steffen.grunewald@ligo.org>
+    changes:
+      - libgsl, openjdk versions
+    version: 20190709
   - date: 2018-10-12T14:41:15-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -66,7 +71,7 @@ deps:
     rpm:
   graphviz:
   gsl:
-    deb: libgsl0ldbl | libgsl2, gsl-bin
+    deb: libgsl0ldbl | libgsl2 | libgsl23, gsl-bin
     rpm:
   gsl-devel:
     deb: libgsl0-dev | libgsl-dev
@@ -75,10 +80,10 @@ deps:
   htop:
   inotify-tools:
   java:
-    deb: openjdk-7-jdk | openjdk-8-jdk
+    deb: openjdk-7-jdk | openjdk-8-jdk | openjdk-11-jdk | default-jdk
     rpm: java-1.8.0-openjdk, java-1.8.0-openjdk-devel
   java-doc:
-    deb: openjdk-7-doc | openjdk-8-doc
+    deb: openjdk-7-doc | openjdk-8-doc | openjdk-11-doc | default-jdk-doc
     rpm: java-1.8.0-openjdk-javadoc
   jsoncpp-devel:
     deb: libjsoncpp-dev
