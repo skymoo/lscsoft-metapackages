@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-07-09T13:07:00+02:00
+    author: Steffen Grunewald <steffen.grunewald@ligo.org>
+    changes:
+      - libstdc++*-dev version
+    version: 20190709
   - date: 2018-10-15T13:26:50-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -42,7 +47,7 @@ deps:
     deb: libsasl2-modules-gssapi-mit
     rpm:
   libstdc++-static:
-    deb: libstdc++-4.9-dev | libstdc++-6-dev
+    deb: libstdc++-4.9-dev | libstdc++-6-dev | libstdc++-8-dev
     rpm:
   java-1.8.0-openjdk-devel:
     deb: default-jdk

@@ -3,6 +3,16 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-07-11T15:29:06-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - use default-jdk for java dependency
+    version: 20190711
+  - date: 2019-07-09T13:07:00+02:00
+    author: Steffen Grunewald <steffen.grunewald@ligo.org>
+    changes:
+      - openjdk version
+    version: 20190709
   - date: 2017-08-11T09:20:05+02:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -17,7 +27,7 @@ deps:
     deb: imagemagick
     rpm:
   java-1.8.0-openjdk-devel:
-    deb: openjdk-7-jdk | openjdk-8-jdk
+    deb: default-jdk
     rpm:
   moreutils:
   xorg-x11-server-Xvfb:
