@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-07-11T15:31:18-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - use default-jdk for java depdendency
+    version: 20190711
   - date: 2019-07-09T13:07:00+02:00
     author: Steffen Grunewald <steffen.grunewald@ligo.org>
     changes:
@@ -80,10 +85,10 @@ deps:
   htop:
   inotify-tools:
   java:
-    deb: openjdk-7-jdk | openjdk-8-jdk | openjdk-11-jdk | default-jdk
+    deb: default-jdk
     rpm: java-1.8.0-openjdk, java-1.8.0-openjdk-devel
   java-doc:
-    deb: openjdk-7-doc | openjdk-8-doc | openjdk-11-doc | default-jdk-doc
+    deb: default-jdk-doc
     rpm: java-1.8.0-openjdk-javadoc
   jsoncpp-devel:
     deb: libjsoncpp-dev
