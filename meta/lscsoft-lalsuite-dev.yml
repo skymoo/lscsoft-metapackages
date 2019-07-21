@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-07-21T17:45:00+01:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - added python-mock
+    version: 20190721
   - date: 2019-06-21T09:45:13+01:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -162,6 +167,9 @@ deps:
   python-matplotlib:
     deb: python-matplotlib, python3-matplotlib
     rpm:
+  python-mock:
+    deb: python-mock
+    rpm: python2-mock
   python-numpy:
     deb: python-numpy, python3-numpy
     rpm: numpy, python34-numpy
