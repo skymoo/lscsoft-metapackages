@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-07-26T13:50:15-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python34-freezegun
+    version: 20190726
   - date: 2019-07-21T17:45:00+01:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -142,7 +147,7 @@ deps:
     rpm: python-devel, python34-devel, python36-devel
   python-freezegun:
     deb: python-freezegun, python3-freezegun
-    rpm: python2-freezegun
+    rpm: python2-freezegun, python34-freezegun
   python-glue:
     deb: python-glue, python3-glue
     rpm: glue, python34-glue
