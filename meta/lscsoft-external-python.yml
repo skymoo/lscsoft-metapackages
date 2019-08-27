@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-08-26T20:41:24-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - replace python34-pip with python3-pip for EL7
+    version: 20190826
   - date: 2019-04-18T09:13:03-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -149,7 +154,7 @@ deps:
     rpm:
   python-pip:
     deb: python-pip, python3-pip
-    rpm: python2-pip, python34-pip
+    rpm: python2-pip, python3-pip
   python-psutil:
     deb: python-psutil, python3-psutil
     rpm: python2-psutil, python34-psutil
