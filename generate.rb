@@ -175,17 +175,19 @@ CONTROLSTART
 
   # add dependencies
   dep_list = []
-  pkg_data['deps'].each do |k,v|
-    # add key as package name if value is nil (simple package, same for deb and rpm)
-    if v.nil?
-      dep_list << k
-    # if our key (rpm/deb) exists use its value or the package name itself if value is empty
-    elsif v.key?('deb')
-      dep_list << ( v['deb'].nil? ? k : v['deb'] )
+  if pkg_data.key 'deps'
+    pkg_data['deps'].each do |k,v|
+      # add key as package name if value is nil (simple package, same for deb and rpm)
+      if v.nil?
+        dep_list << k
+      # if our key (rpm/deb) exists use its value or the package name itself if value is empty
+      elsif v.key?('deb')
+        dep_list << ( v['deb'].nil? ? k : v['deb'] )
+      end
     end
-  end
-  dep_list.sort.each do |d|
-    control.puts "Depends: #{d}"
+    dep_list.sort.each do |d|
+      control.puts "Depends: #{d}"
+    end
   end
   control.puts <<-CONTROLEND
 
@@ -217,7 +219,7 @@ Dir.glob("#{$ROOT}/meta/*.yml") do |meta_file|
   content['desc_long'] = content['desc_short'] if content['desc_long'].nil?
 
   # basic tests
-  %w(changelog desc_short desc_long deps name maintainer priority section).each do |t|
+  %w(changelog desc_short desc_long name maintainer priority section).each do |t|
     raise "#{meta_file} requires key '#{t}'" unless content.key?(t)
   end
 
