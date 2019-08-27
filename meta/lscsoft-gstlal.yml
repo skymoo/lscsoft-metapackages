@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-03-04T09:58:18-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add gstlal-burst
+    version: 20190304
   - date: 2017-08-03T10:29:22+02:00
     author: Carsten Aulbert <carsten.aulbert@ligo.org>
     changes:
@@ -14,6 +19,7 @@ desc_long: |
   to get to a certain system state
 deps:
   gstlal:
+  gstlal-burst:
   gstlal-calibration:
   gstlal-devel:
     deb: gstlal-dev

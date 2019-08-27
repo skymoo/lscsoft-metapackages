@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-07-09T13:07:00+02:00
+    author: Steffen Grunewald <steffen.grunewald@ligo.org>
+    changes:
+      - libcfitsio, libgsl versions
+    version: 20190709
   - date: 2018-10-12T13:01:37-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -30,7 +35,7 @@ deps:
     deb: r-base-dev
     rpm:
   cfitsio:
-    deb: libcfitsio2 | libcfitsio5, libcfitsio-dev, libcfitsio-bin
+    deb: libcfitsio2 | libcfitsio5 | libcfitsio7, libcfitsio-dev, libcfitsio-bin
     rpm: cfitsio, cfitsio-devel, cfitsio-static
   fftw:
     deb: libfftw3-3, libfftw3-bin
@@ -39,7 +44,7 @@ deps:
     deb: libfftw3-dev
     rpm: fftw-devel, fftw-static
   gsl:
-    deb: libgsl0ldbl | libgsl2, gsl-bin
+    deb: libgsl0ldbl | libgsl2 | libgsl23, gsl-bin
     rpm:
   gsl-devel:
     deb: libgsl0-dev | libgsl-dev

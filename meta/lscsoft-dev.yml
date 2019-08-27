@@ -3,6 +3,17 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-07-09T13:07:00+02:00
+    author: Steffen Grunewald <steffen.grunewald@ligo.org>
+    changes:
+      - libasan version
+    version: 20190709
+  - date: 2019-02-27T08:29:23-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add libasan
+      - https://git.ligo.org/sccb/requests/issues/87
+    version: 20190227
   - date: 2018-06-29T16:34:10-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -20,6 +31,9 @@ desc_long: |
   to get to a certain system state
 deps:
   abi-dumper:
+  libasan:
+    deb: libasan3 | libasan5
+    rpm:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: lscsoft

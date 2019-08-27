@@ -3,6 +3,60 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-04-29T18:05:47-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python36-ligo-common
+    version: 20190429
+  - date: 2019-04-16T09:50:42-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add ligo-scald
+    version: 20190416
+  - date: 2019-04-11T16:06:15-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - remove ligo-scald
+      - add python-bruco
+    version: 20190411
+  - date: 2019-03-28T18:00:08-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - depend on ligo-scald
+    version: 20190328
+  - date: 2019-03-11T10:50:14-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - depend on python-gwtrigfind
+    version: 20190311
+  - date: 2019-02-07T08:02:13-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - depend on dqsegdb2
+    version: 20190207
+  - date: 2019-01-04T18:26:40+00:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - depend on python34-gwdatafind
+    version: 20190104
+  - date: 2018-12-19T13:25:48+00:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add nds2-client-swig-all
+    version: 20181219
+  - date: 2018-11-12T10:21:20-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python{2,34}-gwosc
+    version: 20181112
+  - date: 2018-10-18T16:26:57-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - obsolete lscsoft-gds for EL7
+      - obsolete lscsoft-glue for EL7
+      - obsolete lscsoft-nds2-client for EL7
+      - obsolete lscsoft-pylal for EL7
+    version: 20181018
   - date: 2018-10-12T14:11:44-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -53,13 +107,16 @@ deps:
   dqsegdb:
     deb: python-dqsegdb
     rpm:
+  dqsegdb2:
+    deb: python-dqsegdb2, python3-dqsegdb2
+    rpm: python2-dqsegdb2, python34-dqsegdb2
   gds-all:
   glue:
     deb: python-glue
     rpm:
   ligo-common:
     deb: python-ligo-common, python3-ligo-common
-    rpm: python2-ligo-common, python34-ligo-common
+    rpm: python2-ligo-common, python34-ligo-common, python36-ligo-common
   ligo-gracedb:
     deb: python-ligo-gracedb, python3-ligo-gracedb
     rpm: python2-ligo-gracedb, python34-ligo-gracedb
@@ -69,6 +126,9 @@ deps:
   ligo-lvalert:
     deb: python-ligo-lvalert, python3-ligo-lvalert
     rpm: python2-ligo-lvalert, python34-ligo-lvalert
+  ligo-scald:
+    deb: python-ligo-scald, python3-ligo-scald
+    rpm: python2-ligo-scald
   lscsoft-frame:
   lscsoft-gstlal:
   lscsoft-lalsuite:
@@ -76,16 +136,32 @@ deps:
   lscsoft-ligotools:
   lscsoft-metaio:
   nds2-client-all:
+  nds2-client-swig-all:
+  python-bruco:
+    deb: python-bruco, python3-bruco
+    rpm: python2-bruco
   python-gwdatafind:
     deb: python-gwdatafind, python3-gwdatafind
-    rpm: python2-gwdatafind
+    rpm: python2-gwdatafind, python34-gwdatafind
+  python-gwosc:
+    deb: python-gwosc, python3-gwosc
+    rpm: python2-gwosc, python34-gwosc
   python-gwpy:
     deb: python-gwpy, python3-gwpy
     rpm: python2-gwpy
+  python-gwtrigfind:
+    deb: python-gwtrigfind, python3-gwtrigfind
+    rpm: python2-gwtrigfind
   python-pyRXP:
     deb: python-pyrxp, python3-pyrxp
     rpm:
   python-voeventlib:
+extra_headers:
+  rpm:
+    - 'Obsoletes: lscsoft-gds'
+    - 'Obsoletes: lscsoft-glue'
+    - 'Obsoletes: lscsoft-nds2-client'
+    - 'Obsoletes: lscsoft-pylal'
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: lscsoft
