@@ -33,18 +33,20 @@ SPECSTART
   # add dependencies
   dep_list = []
 
-  pkg_data['deps'].each do |k,v|
-    # add key as package name if value is nil (simple package, same for deb and rpm)
-    if v.nil?
-      dep_list << k
-    # if our key (rpm/deb) exists use its value or the package name itself if value is empty
-    elsif v.key?('rpm')
-      dep_list << ( v['rpm'].nil? ? k : v['rpm'] )
+  if pkg_data.key? 'deps'
+    pkg_data['deps'].each do |k,v|
+      # add key as package name if value is nil (simple package, same for deb and rpm)
+      if v.nil?
+        dep_list << k
+      # if our key (rpm/deb) exists use its value or the package name itself if value is empty
+      elsif v.key?('rpm')
+        dep_list << ( v['rpm'].nil? ? k : v['rpm'] )
+      end
     end
-  end
 
-  dep_list.sort.each do |d|
-    spec.puts "Requires: #{d}"
+    dep_list.sort.each do |d|
+      spec.puts "Requires: #{d}"
+    end
   end
 
   spec.puts <<-SPECMID
