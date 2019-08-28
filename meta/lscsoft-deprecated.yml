@@ -6,7 +6,7 @@ changelog:
   - date: 2019-08-28T07:28:15-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
-       - inital version
+      - inital version
     version: 20190828
 desc_short: 'Metapackage to specify deprecated packages'
 desc_long: |
@@ -17,4 +17,4 @@ extra_headers:
     - 'Obsoletes: python34-pip'
 maintainer: CompSoft DevOps <daswg@ligo.org>
 priority: optional
-section: lscsoft  
+section: lscsoft
