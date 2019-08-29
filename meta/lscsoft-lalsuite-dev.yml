@@ -3,11 +3,16 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
-  - date: 2019-09-01T12:43:43+02:00
+  - date: 2019-10-11T07:54:25-07:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
       - added conda packages
-    version: 20190901
+    version: 20191011
+  - date: 2019-10-07T16:10:10-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - python34 - python36 transition
+    version: 20191007
   - date: 2019-07-26T13:50:15-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -158,23 +163,23 @@ deps:
     rpm:
   python-dateutil:
     deb: python-dateutil, python3-dateutil
-    rpm: python-dateutil, python34-dateutil
+    rpm: python-dateutil, python36-dateutil
   python-devel:
     conda: python
     deb: python-dev, python-all-dev, python3-dev, python3-all-dev
-    rpm: python-devel, python34-devel, python36-devel
+    rpm: python-devel, python36-devel
   python-freezegun:
     conda: freezegun
     deb: python-freezegun, python3-freezegun
-    rpm: python2-freezegun, python34-freezegun
+    rpm: python2-freezegun, python36-freezegun
   python-glue:
     conda: lscsoft-glue
     deb: python-glue, python3-glue
-    rpm: glue, python34-glue
+    rpm: glue, python36-glue
   python-gwdatafind:
     conda: gwdatafind
     deb: python-gwdatafind, python3-gwdatafind
-    rpm: python2-gwdatafind, python34-gwdatafind
+    rpm: python2-gwdatafind, python36-gwdatafind
   python-gwpy:
     conda: gwpy
     deb: python-gwpy, python3-gwpy
@@ -190,11 +195,11 @@ deps:
   python-ligo-gracedb:
     conda: ligo-gracedb
     deb: python-ligo-gracedb, python3-ligo-gracedb
-    rpm: python2-ligo-gracedb, python34-ligo-gracedb
+    rpm: python2-ligo-gracedb, python36-ligo-gracedb
   python-ligo-segments:
     conda: ligo-segments
     deb: python-ligo-segments, python3-ligo-segments
-    rpm: python2-ligo-segments, python34-ligo-segments
+    rpm: python2-ligo-segments, python36-ligo-segments
   python-matplotlib:
     conda: matplotlib
     deb: python-matplotlib, python3-matplotlib
@@ -206,11 +211,11 @@ deps:
   python-numpy:
     conda: numpy
     deb: python-numpy, python3-numpy
-    rpm: numpy, python34-numpy
+    rpm: numpy, python36-numpy
   python-pytest:
     conda: pytest
     deb: python-pytest, python3-pytest
-    rpm: python-pytest, python34-pytest
+    rpm: python-pytest, python36-pytest
   python-shapely:
     conda: shapely
     deb: python-shapely, python3-shapely
@@ -218,13 +223,13 @@ deps:
   python-six:
     conda: six
     deb: python-six, python3-six
-    rpm: python-six, python34-six
+    rpm: python-six, python36-six
   python-rpm-macros:
     rpm:
   python-scipy:
     conda: scipy
     deb: python-scipy, python3-scipy
-    rpm: scipy, python34-scipy
+    rpm: scipy, python36-scipy
   python-srpm-macros:
     rpm:
   python2-rpm-macros:
