@@ -3,6 +3,12 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-08-29T10:44:38-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python-pandas
+      - https://git.ligo.org/packaging/lscsoft-metapackages/issues/3
+    version: 20190829
   - date: 2019-04-18T09:13:03-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -144,6 +150,9 @@ deps:
   python-nose:
     deb: python-nose, python3-nose
     rpm: python-nose, python34-nose, python36-nose
+  python-pandas:
+    deb: python-pandas, python3-pandas
+    rpm:
   python-pep8:
     deb: pep8, python-pep8
     rpm:
