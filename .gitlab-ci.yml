@@ -12,7 +12,7 @@ lint:yaml:
     - yamllint meta/*.yml
 
 build:debian:
-  image: ligo/base:stretch
+  image: containers.ligo.org/docker/base:stretch
   stage: build
   dependencies: []
   before_script:
@@ -29,7 +29,7 @@ build:debian:
       - debs
 
 build:rhel:
-  image: ligo/base:el7
+  image: containers.ligo.org/docker/base:el7
   stage: build
   dependencies: []
   before_script:
@@ -51,7 +51,7 @@ build:rhel:
       - srpms
 
 test:debian:
-  image: ligo/base:stretch
+  image: containers.ligo.org/docker/base:stretch
   stage: test
   dependencies:
     - build:debian
@@ -61,7 +61,7 @@ test:debian:
     - dpkg -i debs/*.deb || apt-get --assume-yes -f install
 
 test:rhel:
-  image: ligo/base:el7
+  image: containers.ligo.org/docker/base:el7
   stage: test
   dependencies:
     - build:rhel
