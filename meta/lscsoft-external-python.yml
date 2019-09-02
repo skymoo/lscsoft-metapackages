@@ -144,7 +144,7 @@ deps:
     deb: python-bottle, python3-bottle
     rpm: python2-bottle, python34-bottle
   python-crypto:
-    conda: crypto
+    conda: pycrypto
     deb: python3-crypto
     rpm: python2-crypto, python34-crypto
   python-dev:
@@ -205,7 +205,7 @@ deps:
     conda: setuptools-git
     deb: python-setuptools-git, python3-setuptools-git
   python-setuptools-scm:
-    conda: setuptools-scm
+    conda: setuptools_scm
     deb: python-setuptools-scm, python3-setuptools-scm
     rpm: python34-setuptools_scm
   python-six:
