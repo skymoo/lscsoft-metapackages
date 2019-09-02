@@ -58,13 +58,13 @@ build:conda:
   stage: build
   dependencies: []
   before_script:
-    - /opt/conda/bin/conda install --yes ruby conda-build
+    - /opt/conda/bin/conda install --yes ruby conda-build pyyaml networkx
   script:
     - /opt/conda/bin/ruby generate.rb
     - |
-      for i in stage/*/conda/meta.yaml; do
-        recipe_dir=$(dirname ${i})
-        echo "---------- Processing $(basename $(dirname ${recipe_dir}))"
+      for pkg in $(python build-order.py); do
+        recipe_dir="stage/${pkg}/conda"
+        echo "---------- Processing ${pkg}"
         /opt/conda/bin/conda render ${recipe_dir}
         /opt/conda/bin/conda build ${recipe_dir}
       done
