@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-09-01T12:43:43+02:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - added conda packages
+    version: 20190901
   - date: 2018-10-15T13:28:50-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -27,6 +32,7 @@ deps:
   autoconf:
   automake:
   cmake:
+    conda:
     deb:
     rpm: cmake, cmake3
   bison:
@@ -34,19 +40,24 @@ deps:
   flex:
   libtool:
   numpy:
+    conda:
     deb: python-numpy, python3-numpy
     rpm:
   openssl-devel:
+    conda: openssl
     deb: libssl-dev
     rpm:
   pkgconfig:
+    conda: pkg-config
     deb: pkg-config
     rpm:
   python-devel:
+    conda: python
     deb: python-dev, python3-dev
     rpm:
   swig:
   zlib-devel:
+    conda: zlib
     deb: zlib1g-dev
     rpm:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
