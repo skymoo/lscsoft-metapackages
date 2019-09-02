@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-09-01T12:43:43+02:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - added conda packages
+    version: 20190901
   - date: 2018-10-12T13:34:11-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -24,13 +29,18 @@ desc_long: |
   to get to a certain system state
 deps:
   libframe:
+    conda:
     deb: libframe1
     rpm:
   libframe-devel:
     deb: libframe-dev
     rpm:
   libframe-matlab:
+    deb:
+    rpm:
   libframe-utils:
+    deb:
+    rpm:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: lscsoft
