@@ -36,7 +36,7 @@ SPECSTART
       # add key as package name if value is nil (simple package, same for deb and rpm)
       if v.nil?
         dep_list << k
-      # if our key (rpm/deb) exists use its value or the package name itself if value is empty
+      # if our key exists use its value or the package name itself if value is empty
       elsif v.key?('rpm')
         dep_list << ( v['rpm'].nil? ? k : v['rpm'] )
       end
@@ -187,7 +187,7 @@ CONTROLSTART
       # add key as package name if value is nil (simple package, same for deb and rpm)
       if v.nil?
         dep_list << k
-      # if our key (rpm/deb) exists use its value or the package name itself if value is empty
+      # if our key exists use its value or the package name itself if value is empty
       elsif v.key?('deb')
         dep_list << (v['deb'].nil? ? k : v['deb'])
       end
@@ -212,6 +212,66 @@ Description: #{pkg_data['desc_short']}
 CONTROLEND
   control.close
 end
+
+def conda_create_recipe(pkg_data)
+  # create conda meta-package
+  meta = File.open("#{ROOT}/stage/#{pkg_data['name']}/conda/meta.yaml", "w")
+  meta.puts <<-METASTART
+package:
+  name: #{pkg_data['name']}
+  version: #{pkg_data['changelog'][0]['version']}
+
+build:
+  number: 0
+  noarch: python
+
+about:
+  home: https://git.ligo.org/packaging/lscsoft-metapackages
+  license: GPLv3+
+  license_family: GPL
+  license_file: LICENSE
+  summary: #{pkg_data['desc_short']}
+  description: |
+    #{pkg_data['desc_long'].strip.sub("\n", "\n    ")}
+METASTART
+
+  # copy LICENSE file into recipe dir
+  FileUtils.cp("LICENSE", File.dirname(meta))
+
+  # add dependencies
+  dep_list = []
+
+  if pkg_data.key? 'deps'
+    pkg_data['deps'].each do |k,v|
+      # add key as package name if value is nil (simple package, same for all dists)
+      if v.nil?
+        dep_list << k
+      # if our key exists use its value or the package name itself if value is empty
+      elsif v.key?('conda')
+        (dep_list << ( v['conda'].nil? ? k : v['conda'].split(',') ))
+      end
+    end
+
+    # write out requirements/run block
+    meta.puts <<-METAREQS
+requirements:
+  run:
+METAREQS
+    dep_list.flatten.map{|d| d.strip}.uniq.sort.each do |d|
+      meta.puts "    - #{d}"
+    end
+  end
+
+  # if extra headers are specified, add them verbatim here
+  if pkg_data.key?('extra_headers') && pkg_data['extra_headers'].key?('conda')
+    meta.puts
+    pkg_data['extra_headers']['conda'].each do |h|
+      meta.puts h
+    end
+  end
+  meta.close
+end
+
 
 ############# MAIN
 
@@ -239,7 +299,7 @@ Dir.glob("#{ROOT}/meta/*.yml") do |meta_file|
     raise "#{meta_file} requires key '#{t}'" unless content.key?(t)
   end
   # ensure target dirs are is present
-  %w[deb rpm].each do |d|
+  %w[deb rpm conda].each do |d|
     FileUtils.mkpath("#{ROOT}/stage/#{pkg}/#{d}")
   end
 
@@ -256,6 +316,9 @@ Dir.glob("#{ROOT}/meta/*.yml") do |meta_file|
 
   # create deb source package
   deb_create_source(content)
+
+  # create conda source package
+  conda_create_recipe(content)
 
   # all done, then update version file
   version = File.open(last_version, 'w')
