@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-09-01T12:43:43+02:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - added conda packages
+    version: 20190901
   - date: 2018-10-18T18:00:07-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -35,42 +40,53 @@ desc_long: |
 deps:
   ldas-tools-cmake:
   ldas-tools-al:
+    conda:
     deb: ldas-tools-al, ldas-tools-al-dev
     rpm: ldas-tools-al, ldas-tools-al-devel
   ldas-tools-al-swig:
+    conda: python-ldas-tools-al
     deb: python-ldas-tools-al, python3-ldas-tools-al
     rpm: python2-ldas-tools-al, python34-ldas-tools-al
   ldas-tools-framecpp:
+    conda:
     deb: ldas-tools-framecpp, ldas-tools-framecpp-dev
     rpm: ldas-tools-framecpp, ldas-tools-framecpp-devel
   ldas-tools-framecpp-c:
     deb: ldas-tools-framecpp-c, ldas-tools-framecpp-c-dev
     rpm: ldas-tools-framecpp-c, ldas-tools-framecpp-c-devel
   ldas-tools-framecpp-swig:
+    conda: ldas-tools-framecpp-swig, python-ldas-tools-framecpp
     deb: python-ldas-tools-framecpp, python3-ldas-tools-framecpp
     rpm: python2-ldas-tools-framecpp, python34-ldas-tools-framecpp
   ldas-tools-filters:
+    conda:
     deb: ldas-tools-filters, ldas-tools-filters-dev
     rpm: ldas-tools-filters, ldas-tools-filters-devel
   ldas-tools-ldasgen:
+    conda:
     deb: ldas-tools-ldasgen, ldas-tools-ldasgen-dev
     rpm: ldas-tools-ldasgen, ldas-tools-ldasgen-devel
   ldas-tools-ldasgen-swig:
+    conda: ldas-tools-ldasgen-swig, python-ldas-tools-ldasgen
     deb: python-ldas-tools-ldasgen, python3-ldas-tools-ldasgen
     rpm: python2-ldas-tools-ldasgen, python34-ldas-tools-ldasgen
   ldas-tools-diskcacheAPI:
+    conda: ldas-tools-diskcacheapi
     deb: ldas-tools-diskcacheapi, ldas-tools-diskcacheapi-dev
     rpm: ldas-tools-diskcacheAPI, ldas-tools-diskcacheAPI-devel
   ldas-tools-diskcacheAPI-swig:
     deb: python-ldas-tools-diskcacheapi, python3-ldas-tools-diskcacheapi
     rpm: python2-ldas-tools-diskcacheAPI, python34-ldas-tools-diskcacheAPI
   ldas-tools-frameAPI:
+    conda: ldas-tools-frameapi
     deb: ldas-tools-frameapi, ldas-tools-frameapi-dev
     rpm: ldas-tools-frameAPI, ldas-tools-frameAPI-devel
   ldas-tools-frameAPI-swig:
     deb: python-ldas-tools-frameapi, python3-ldas-tools-frameapi
     rpm: python2-ldas-tools-frameAPI, python34-ldas-tools-frameAPI
   ldas-tools-utilities:
+    deb:
+    rpm:
 extra_headers:
   rpm:
     - 'Obsoletes: lscsoft-ldas'
