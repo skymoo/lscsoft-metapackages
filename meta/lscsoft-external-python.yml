@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-09-01T12:43:43+02:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - added conda packages
+    version: 20190901
   - date: 2019-08-29T10:44:38-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -97,6 +102,7 @@ desc_long: |
   to get to a certain system state
 deps:
   GitPython:
+    conda: gitpython
     deb: python-git
     rpm:
   # note Debian's astropy-utils depends ONLY only python3
@@ -104,89 +110,118 @@ deps:
     deb: astropy-utils
     rpm:
   h5py:
+    conda:
     deb: python-h5py, python3-h5py
     rpm:
   ipython:
+    conda:
     deb: ipython, ipython3
     rpm:
   numpy:
+    conda:
     deb: python-numpy, python3-numpy
     rpm: numpy, python2-numpy, python34-numpy, python36-numpy
   numpy-f2py:
     rpm: numpy-f2py, python34-numpy-f2py, python36-numpy-f2py
   pyflakes:
+    conda:
     deb: python-pyflakes, python3-pyflakes
     rpm: pyflakes, python34-pyflakes
   pylint:
+    conda:
     deb: pylint, pylint3
     rpm: pylint, python2-pylint, python34-pylint
   python:
+    conda: python 3.7
     deb: python, python3
     rpm: python, python34, python36
   python-basemap:
+    conda: basemap
     deb: python-mpltoolkits.basemap, python-mpltoolkits.basemap-data
     rpm: python-basemap,  python-basemap-data-hires, python-basemap-examples
   python-bottle:
+    conda: bottle
     deb: python-bottle, python3-bottle
     rpm: python2-bottle, python34-bottle
   python-crypto:
+    conda: crypto
     deb: python3-crypto
     rpm: python2-crypto, python34-crypto
   python-dev:
     deb: python-dev, python3-dev
     rpm: python-debug, python34-debug, python36-debug
   python-gpstime:
+    conda: gpstime
     deb: python-gpstime, python3-gpstime
     rpm: python2-gpstime, python34-gpstime
   python-libs:
     deb: libpython-dev, libpython3-dev
     rpm: python-libs, python34-libs, python36-libs
   python-matplotlib:
+    conda: matplotlib
     deb: python-matplotlib, python3-matplotlib
     rpm:
   python-mock:
+    conda: "mock  # [py27]"
     deb: python-mock, python3-mock
     rpm: python2-mock, python34-mock
   python-nose:
+    conda: nose
     deb: python-nose, python3-nose
     rpm: python-nose, python34-nose, python36-nose
   python-pandas:
+    conda: pandas
     deb: python-pandas, python3-pandas
     rpm:
   python-pep8:
+    conda: pep8
     deb: pep8, python-pep8
     rpm:
   python-pip:
+    conda: pip
     deb: python-pip, python3-pip
     rpm: python2-pip, python34-pip
   python-psutil:
+    conda: psutil
     deb: python-psutil, python3-psutil
     rpm: python2-psutil, python34-psutil
   python-pydot:
+    conda: pydot
     deb: python-pydot, python3-pydot
     rpm: python2-pydot
   python-pytest-cov:
+    conda: pytest-cov
     deb: python-pytest-cov, python3-pytest-cov
     rpm: python2-pytest-cov, python34-pytest-cov
   python-requests:
+    conda: requests
     deb: python-requests, python3-requests
     rpm: python2-requests, python34-requests, python36-requests
   python-setuptools:
+    conda: setuptools
     deb: python-setuptools, python3-setuptools
     rpm: python-setuptools, python34-setuptools, python36-setuptools
   python-setuptools-git:
+    conda: setuptools-git
     deb: python-setuptools-git, python3-setuptools-git
   python-setuptools-scm:
+    conda: setuptools-scm
     deb: python-setuptools-scm, python3-setuptools-scm
     rpm: python34-setuptools_scm
   python-six:
+    conda: six
     deb: python-six, python3-six
     rpm: python2-six, python34-six, python36-six
   python-sqlobject:
+    conda: sqlobject
+    deb:
+    rpm:
   python-urllib3:
+    conda: urllib3
     deb: python-urllib3, python3-urllib3
     rpm: python-urllib3, python34-urllib3, python36-urllib3
   python-virtualenv:
+    conda: virtualenv
     deb: python-virtualenv, python3-virtualenv
     rpm: python-virtualenv, python34-virtualenv
   python-rpm-macros:
@@ -194,9 +229,11 @@ deps:
   python-srpm-macros:
     rpm: python-srpm-macros
   scipy:
+    conda:
     deb: python-scipy, python3-scipy
     rpm: scipy, python34-scipy
   sympy:
+    conda:
     deb: python-sympy
     rpm:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
