@@ -58,15 +58,16 @@ build:conda:
   stage: build
   dependencies: []
   before_script:
-    - /opt/conda/bin/conda install --yes ruby conda-build pyyaml networkx
+    - export PATH="/opt/conda/bin:${PATH}"
+    - conda install --yes ruby conda-build pyyaml networkx
   script:
-    - /opt/conda/bin/ruby generate.rb
+    - ruby generate.rb
     - |
-      for pkg in $(/opt/conda/bin/python build-order.py); do
+      for pkg in $(python build-order.py); do
         recipe_dir="stage/${pkg}/conda"
         echo "---------- Processing ${pkg}"
-        /opt/conda/bin/conda render ${recipe_dir}
-        /opt/conda/bin/conda build ${recipe_dir}
+        conda render ${recipe_dir}
+        conda build ${recipe_dir}
       done
   artifacts:
     expire_in: 3h
