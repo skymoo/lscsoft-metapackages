@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-09-01T12:43:43+02:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - added conda packages
+    version: 20190901
   - date: 2019-07-09T13:07:00+02:00
     author: Steffen Grunewald <steffen.grunewald@ligo.org>
     changes:
@@ -35,12 +40,15 @@ desc_long: |
   to get to a certain system state
 deps:
   arpack-devel:
+    conda: arpack
     deb: libarpack2-dev, libparpack2-dev, libarpack++2-dev
     rpm:
   cmake:
+    conda:
     deb:
     rpm: cmake, cmake3
   cyrus-sasl-devel:
+    conda: cyrus-sasl
     deb: libsasl2-dev
     rpm:
   cyrus-sasl-gssapi:
@@ -53,32 +61,40 @@ deps:
     deb: default-jdk
     rpm:
   libcurl-devel:
+    conda: libcurl
     deb: libcurl4-openssl-dev | libcurl4-gnutls-dev | libcurl4-nss-dev
     rpm:
   libtool:
   make:
   mesa-libGLU-devel:
+    conda: mesalib
     deb: libglu1-mesa-dev
     rpm:
   numpy:
+    conda:
     deb: python-numpy
     rpm:
   octave-devel:
+    conda: octave
     deb: liboctave-dev
     rpm:
   pcre-devel:
+    conda: pcre
     deb: libpcre3-dev
     rpm:
   pkgconfig:
+    conda: pkg-config
     deb: pkg-config
     rpm:
   python-devel:
+    conda: python
     deb: python-dev, python3-dev
     rpm:
   qrupdate-devel:
     deb: libqrupdate-dev
     rpm:
   suitesparse-devel:
+    conda: suitesparse
     deb: libsuitesparse-dev
     rpm:
   swig:
