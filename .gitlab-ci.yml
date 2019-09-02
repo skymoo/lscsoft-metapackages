@@ -64,6 +64,7 @@ build:conda:
     - |
       for i in stage/*/conda/meta.yaml; do
         recipe_dir=$(dirname ${i})
+        echo "---------- Processing $(basename $(dirname ${recipe_dir}))"
         /opt/conda/bin/conda render ${recipe_dir}
         /opt/conda/bin/conda build ${recipe_dir}
       done
