@@ -3,6 +3,9 @@ stages:
   - build
   - test
 
+variables:
+  CONDA_BLD_PATH: "${CI_PROJECT_DIR}/conda-bld"
+
 lint:yaml:
   image: python:alpine
   stage: lint
@@ -50,6 +53,25 @@ build:rhel:
       - rpms
       - srpms
 
+build:conda:
+  image: containers.ligo.org/docker/base:conda
+  stage: build
+  dependencies: []
+  before_script:
+    - /opt/conda/bin/conda install --yes ruby conda-build
+  script:
+    - /opt/conda/bin/ruby generate.rb
+    - |
+      for i in stage/*/conda/meta.yaml; do
+        recipe_dir=$(dirname ${i})
+        /opt/conda/bin/conda render ${recipe_dir}
+        /opt/conda/bin/conda build ${recipe_dir}
+      done
+  artifacts:
+    expire_in: 3h
+    paths:
+      - conda-bld
+
 test:debian:
   image: containers.ligo.org/docker/base:stretch
   stage: test
@@ -68,3 +90,13 @@ test:rhel:
   script:
     - yum --assumeyes update
     - yum --assumeyes localinstall rpms/*.rpm
+
+test:conda:
+  image: containers.ligo.org/docker/base:conda
+  stage: test
+  dependencies:
+    - build:conda
+  script:
+    - pkglist=$(basename -s .yml */*.yml)
+    - /opt/conda/bin/conda create --name test --use-local ${pkglist}
+    - /opt/conda/bin/conda list --name test
