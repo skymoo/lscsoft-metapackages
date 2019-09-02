@@ -62,7 +62,7 @@ build:conda:
   script:
     - /opt/conda/bin/ruby generate.rb
     - |
-      for pkg in $(python build-order.py); do
+      for pkg in $(/opt/conda/bin/python build-order.py); do
         recipe_dir="stage/${pkg}/conda"
         echo "---------- Processing ${pkg}"
         /opt/conda/bin/conda render ${recipe_dir}
