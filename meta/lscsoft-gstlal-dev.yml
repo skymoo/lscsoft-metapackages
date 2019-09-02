@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-09-01T12:43:43+02:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - added conda packages
+    version: 20190901
   - date: 2019-08-14T09:06:28-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -30,65 +35,84 @@ desc_long: |
   to get to a certain system state
 deps:
   cyrus-sasl-devel:
+    conda: cyrus-sasl
     deb: libsasl2-dev
     rpm:
   doxygen:
   fftw-devel:
+    conda: fftw
     deb: libfftw3-dev
     rpm:
   gds-devel:
     deb: gds-dev
     rpm:
   gobject-introspection-devel:
+    conda: gobject-introspection
     deb: libgirepository1.0-dev
     rpm:
   graphviz:
   gsl-devel:
+    conda: gsl
     deb: libgsl0-dev
     rpm:
   gstreamer1-devel:
+    conda: gstreamer 1
     deb: libgstreamer1.0-dev
     rpm:
   gstreamer1-plugins-base-devel:
+    conda: gst-plugins-base
     deb: libgstreamer-plugins-base1.0-dev
     rpm:
   lal-devel:
+    conda: lal
     deb: lal-dev
     rpm:
   python-lal:
+    conda:
     deb: python-lal, python3-lal
     rpm: python2-lal
   lalburst-devel:
+    conda: lalburst
     deb: lalburst-dev
     rpm:
   lalinspiral-devel:
+    conda: lalinspiral
     deb: lalinspiral-dev
     rpm:
   python-lalinspiral:
+    conda:
     deb: python-lalinspiral, python3-lalinspiral
     rpm: python2-lalinspiral
   lalmetaio-devel:
+    conda: lalmetaio
     deb: lalmetaio-dev
     rpm:
   lalsimulation-devel:
+    conda: lalsimulation
     deb: lalsimulation-dev
     rpm:
   ldas-tools-framecpp-devel:
+    conda: ldas-tools-framecpp
     deb: ldas-tools-framecpp-dev
     rpm:
   nds2-client-devel:
+    conda: nds2-client
     deb: nds2-client-dev
     rpm: nds2-client-devel, nds2-client-headers
   numpy:
+    conda:
     deb: python-numpy, python3-numpy
     rpm:
   orc:
+    conda: gstreamer-orc
     deb: liborc-0.4-0
     rpm:
   pygobject3-devel:
+    conda: pygobject
     deb: python-gi-dev
     rpm:
   python-devel:
+    conda: python
     deb: python-dev, python3-dev
     rpm:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
