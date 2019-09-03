@@ -99,6 +99,6 @@ test:conda:
   dependencies:
     - build:conda
   script:
-    - pkglist=$(basename -s .yml */*.yml)
-    - /opt/conda/bin/conda create --name test --use-local ${pkglist}
-    - /opt/conda/bin/conda list --name test
+    - pkglist=$(python build-order.py)
+    - conda create --name test --use-local ${pkglist}
+    - conda list --name test
