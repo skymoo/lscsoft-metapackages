@@ -99,6 +99,8 @@ deps:
   lscsoft-external-cbc:
   lscsoft-external-octave:
   lscsoft-external-omega:
+    deb:
+    rpm:
   lscsoft-external-periodic:
   lscsoft-external-python:
   openblas-devel:
@@ -143,3 +145,5 @@ deps:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: lscsoft
+skip:
+  - conda
