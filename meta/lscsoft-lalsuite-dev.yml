@@ -108,7 +108,7 @@ deps:
     rpm:
   doxygen:
   fftw-devel:
-    conda: fftw3
+    conda: fftw 3
     deb: libfftw3-dev
     rpm:
   fftw-static:
