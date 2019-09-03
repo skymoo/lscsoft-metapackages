@@ -312,13 +312,19 @@ Dir.glob("#{ROOT}/meta/*.yml") do |meta_file|
   end
 
   # create rpm source package
-  rpm_create_source(content)
+  if !content.key?('skip') || !content['skip'].include?('rpm')
+    rpm_create_source(content)
+  end
 
   # create deb source package
-  deb_create_source(content)
+  if !content.key?('skip') || !content['skip'].include?('deb')
+    deb_create_source(content)
+  end
 
   # create conda source package
-  conda_create_recipe(content)
+  if !content.key?('skip') || !content['skip'].include?('conda')
+    conda_create_recipe(content)
+  end
 
   # all done, then update version file
   version = File.open(last_version, 'w')
