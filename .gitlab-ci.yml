@@ -58,7 +58,6 @@ build:conda:
   stage: build
   dependencies: []
   before_script:
-    - export PATH="/opt/conda/bin:${PATH}"
     - conda install --yes ruby conda-build pyyaml networkx
   script:
     - ruby generate.rb
@@ -98,6 +97,8 @@ test:conda:
   stage: test
   dependencies:
     - build:conda
+  before_script:
+    - conda install --yes pyyaml networkx
   script:
     - pkglist=$(python build-order.py)
     - conda create --name test --use-local ${pkglist}
