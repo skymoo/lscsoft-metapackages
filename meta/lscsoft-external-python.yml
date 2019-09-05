@@ -132,7 +132,7 @@ deps:
     deb: pylint, pylint3
     rpm: pylint, python2-pylint, python34-pylint
   python:
-    conda: python 3.7
+    conda: python
     deb: python, python3
     rpm: python, python34, python36
   python-basemap:
@@ -162,7 +162,7 @@ deps:
     deb: python-matplotlib, python3-matplotlib
     rpm:
   python-mock:
-    conda: "mock  # [py27]"
+    conda: "mock  # [py<33]"
     deb: python-mock, python3-mock
     rpm: python2-mock, python34-mock
   python-nose:
