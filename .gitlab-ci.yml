@@ -58,15 +58,29 @@ build:conda:
   stage: build
   dependencies: []
   before_script:
-    - conda install --yes conda-build "python>3.4" jinja2 pyyaml networkx
+    # install dependencies for generate.py, and conda builds
+    - conda install --yes \
+          "python>3.4" \
+          jinja2 \
+          pyyaml \
+          networkx \
+          conda-build \
+          conda-forge-pinning
   script:
     - python generate.py
     - |
       for pkg in $(python build-order.py); do
         recipe_dir="stage/${pkg}/conda"
         echo "---------- Processing ${pkg}"
-        conda render ${recipe_dir}
-        conda build ${recipe_dir}
+        conda render ${recipe_dir} \
+            --use-local \
+            --variant-config-files $(conda info --base)/conda_build_config.yaml
+        conda build ${recipe_dir} \
+            --error-overlinking \
+            --error-overdepending \
+            --no-anaconda-upload \
+            --use-local \
+            --variant-config-files $(conda info --base)/conda_build_config.yaml
       done
   artifacts:
     expire_in: 3h
