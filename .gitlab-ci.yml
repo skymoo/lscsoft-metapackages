@@ -71,7 +71,8 @@ build:conda:
   artifacts:
     expire_in: 3h
     paths:
-      - conda-bld
+      - conda-bld/noarch
+      - conda-bld/linux-64
 
 test:debian:
   image: containers.ligo.org/docker/base:stretch
