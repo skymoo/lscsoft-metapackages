@@ -250,7 +250,7 @@ def conda_create_recipe(pkg_data):
 
     # determine noarch based on python lists
     haspython = any(dep.startswith("python") for dep in dep_list)
-    if haspython and not any("# [py" in dep for dep in dep_list)
+    if haspython and not any("# [py" in dep for dep in dep_list):
         noarch = "python"
     else:
         noarch = None
