@@ -59,12 +59,12 @@ build:conda:
   dependencies: []
   before_script:
     # install dependencies for generate.py, and conda builds
-    - conda install --yes \
-          "python>3.4" \
-          jinja2 \
-          pyyaml \
-          networkx \
-          conda-build \
+    - conda install --yes
+          "python>3.4"
+          jinja2
+          pyyaml
+          networkx
+          conda-build
           conda-forge-pinning
   script:
     - python generate.py
