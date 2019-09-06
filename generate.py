@@ -221,9 +221,13 @@ package:
 
 build:
   number: 0
-  {% if noarch -%}noarch: python{%- endif %}
+{% if noarch %}  noarch: {{ noarch }}{%- endif %}
 
 requirements:
+{%- if not noarch and 'python' in dependencies %}
+  host:
+    - python
+{%- endif %}
   run:
 {%- for dep in dependencies|sort %}
     - {{ dep }}
@@ -246,7 +250,10 @@ def conda_create_recipe(pkg_data):
 
     # determine noarch based on python lists
     haspython = any(dep.startswith("python") for dep in dep_list)
-    noarch = haspython and not any("# [py" in dep for dep in dep_list)
+    if haspython and not any("# [py" in dep for dep in dep_list)
+        noarch = "python"
+    else:
+        noarch = None
 
     # write spec file
     meta = STAGE / pkg / "conda" / "meta.yaml"
