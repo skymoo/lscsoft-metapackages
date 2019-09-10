@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-10-07T16:11:34-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - python34 - python36 transition
+    version: 20191007
   - date: 2019-09-10T09:24:32-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -116,23 +121,23 @@ deps:
     rpm:
   dqsegdb2:
     deb: python-dqsegdb2, python3-dqsegdb2
-    rpm: python2-dqsegdb2, python34-dqsegdb2
+    rpm: python2-dqsegdb2, python36-dqsegdb2
   gds-all:
   glue:
     deb: python-glue
     rpm:
   ligo-common:
     deb: python-ligo-common, python3-ligo-common
-    rpm: python2-ligo-common, python34-ligo-common, python36-ligo-common
+    rpm: python2-ligo-common, python36-ligo-common
   ligo-gracedb:
     deb: python-ligo-gracedb, python3-ligo-gracedb
-    rpm: python2-ligo-gracedb, python34-ligo-gracedb
+    rpm: python2-ligo-gracedb, python36-ligo-gracedb
   ligo-lvalert-heartbeat:
     deb: python-ligo-lvalert-heartbeat
     rpm:
   ligo-lvalert:
     deb: python-ligo-lvalert, python3-ligo-lvalert
-    rpm: python2-ligo-lvalert, python34-ligo-lvalert
+    rpm: python2-ligo-lvalert, python36-ligo-lvalert
   ligo-scald:
     deb: python-ligo-scald, python3-ligo-scald
     rpm: python2-ligo-scald
@@ -149,10 +154,10 @@ deps:
     rpm: python2-bruco
   python-gwdatafind:
     deb: python-gwdatafind, python3-gwdatafind
-    rpm: python2-gwdatafind, python34-gwdatafind
+    rpm: python2-gwdatafind, python36-gwdatafind
   python-gwosc:
     deb: python-gwosc, python3-gwosc
-    rpm: python2-gwosc, python34-gwosc
+    rpm: python2-gwosc, python36-gwosc
   python-gwpy:
     deb: python-gwpy, python3-gwpy
     rpm: python2-gwpy
