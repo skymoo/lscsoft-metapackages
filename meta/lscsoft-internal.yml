@@ -3,6 +3,12 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-09-10T09:24:32-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add bayeswave
+      - https://git.ligo.org/packaging/lscsoft-metapackages/issues/5
+    version: 20190910
   - date: 2019-04-29T18:05:47-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -104,6 +110,7 @@ desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required
   to get to a certain system state
 deps:
+  bayeswave:
   dqsegdb:
     deb: python-dqsegdb
     rpm:
