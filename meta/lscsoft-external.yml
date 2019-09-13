@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-10-07T16:13:38-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - python34 - python36 transition
+    version: 20191007
   - date: 2019-07-11T15:31:18-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -118,7 +123,7 @@ deps:
     rpm:
   root-python:
     deb: libroot-bindings-python-dev
-    rpm: python2-root, python34-root, python36-root
+    rpm: python2-root, python36-root
   screen:
   swig:
     deb: swig3.0
