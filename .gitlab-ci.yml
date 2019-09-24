@@ -64,6 +64,7 @@ build:conda:
           jinja2
           pyyaml
           networkx
+          "conda<4.7.11a0"
           conda-build
           conda-forge-pinning
   script:
