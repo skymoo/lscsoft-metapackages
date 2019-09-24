@@ -82,6 +82,7 @@ deps:
     deb: ldas-tools-frameapi, ldas-tools-frameapi-dev
     rpm: ldas-tools-frameAPI, ldas-tools-frameAPI-devel
   ldas-tools-frameAPI-swig:
+    conda: ldas-tools-frameapi-swig, python-ldas-tools-frameapi
     deb: python-ldas-tools-frameapi, python3-ldas-tools-frameapi
     rpm: python2-ldas-tools-frameAPI, python34-ldas-tools-frameAPI
   ldas-tools-utilities:
