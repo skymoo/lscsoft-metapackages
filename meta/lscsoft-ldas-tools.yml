@@ -85,8 +85,6 @@ deps:
     deb: python-ldas-tools-frameapi, python3-ldas-tools-frameapi
     rpm: python2-ldas-tools-frameAPI, python34-ldas-tools-frameAPI
   ldas-tools-utilities:
-    deb:
-    rpm:
 extra_headers:
   rpm:
     - 'Obsoletes: lscsoft-ldas'
