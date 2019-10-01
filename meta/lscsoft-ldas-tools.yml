@@ -3,7 +3,7 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
-  - date: 2019-09-01T12:43:43+02:00
+  - date: 2019-10-01T20:34:56+01:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
       - added conda packages
@@ -44,7 +44,7 @@ deps:
     deb: ldas-tools-al, ldas-tools-al-dev
     rpm: ldas-tools-al, ldas-tools-al-devel
   ldas-tools-al-swig:
-    conda: python-ldas-tools-al
+    conda: ldas-tools-al-swig, python-ldas-tools-al
     deb: python-ldas-tools-al, python3-ldas-tools-al
     rpm: python2-ldas-tools-al, python34-ldas-tools-al
   ldas-tools-framecpp:
@@ -75,6 +75,7 @@ deps:
     deb: ldas-tools-diskcacheapi, ldas-tools-diskcacheapi-dev
     rpm: ldas-tools-diskcacheAPI, ldas-tools-diskcacheAPI-devel
   ldas-tools-diskcacheAPI-swig:
+    conda: ldas-tools-diskcacheapi-swig, python-ldas-tools-diskcacheapi
     deb: python-ldas-tools-diskcacheapi, python3-ldas-tools-diskcacheapi
     rpm: python2-ldas-tools-diskcacheAPI, python34-ldas-tools-diskcacheAPI
   ldas-tools-frameAPI:
