@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-10-02T10:22:10+01:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - added conda packages
+    version: 20191002
   - date: 2018-10-12T12:52:16-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -24,16 +29,17 @@ desc_long: |
   to get to a certain system state
 deps:
   cyrus-sasl-gssapi:
+    conda: cyrus-sasl
     deb: libsasl2-modules-gssapi-mit
     rpm:
   krb5-workstation:
+    conda: krb5
     deb: krb5-user
     rpm:
   python-kerberos:
+    conda: pykerberos
     deb: python-krbv
     rpm:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: lscsoft
-skip:
-  - conda
