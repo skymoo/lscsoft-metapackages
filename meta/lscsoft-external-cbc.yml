@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-10-02T10:22:10+01:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - added conda packages
+    version: 20191002
   - date: 2019-07-09T17:25:00+02:00
     author: Steffen Grunewald <steffen.grunewald@ligo.org>
     changes:
@@ -35,47 +40,62 @@ desc_long: |
   to get to a certain system state
 deps:
   cfitsio:
+    conda:
     deb: libcfitsio2 | libcfitsio5 | libcfitsio7, libcfitsio-dev, libcfitsio-bin
     rpm: cfitsio, cfitsio-devel, cfitsio-static
   chealpix-devel:
+    conda: chealpix
     deb: libchealpix-dev
     rpm:
   fftw:
+    conda: fftw
     deb: libfftw3-3, libfftw3-bin
     rpm:
   fftw-devel:
     deb: libfftw3-dev
     rpm: fftw-devel, fftw-static
   gsl:
+    conda: gsl
     deb: libgsl0ldbl | libgsl2 | libgsl23, gsl-bin
     rpm:
   gsl-devel:
     deb: libgsl0-dev | libgsl-dev
     rpm: gsl-devel, gsl-static
   healpix-c++-devel:
+    conda: healpix_cxx
     deb: libhealpix-cxx-dev
     rpm:
   healpy:
+    conda:
     deb: python-healpy, python3-healpy
     rpm:
   numpy:
+    conda:
     deb: python-numpy, python3-numpy
     rpm:
   pegasus:
+    conda: python-pegasus-wms
+    deb:
+    rpm:
   python-decorator:
+    conda: decorator
     deb: python-decorator, python3-decorator
     rpm:
   python-decoratortools:
     deb: python-decoratortools | python-peak.util.decorators
     rpm:
   python-matplotlib:
+    conda: matplotlib
     deb: python-matplotlib, python3-matplotlib
     rpm:
   python-sqlobject:
+    conda: sqlobject
   python-virtualenv:
+    conda: virtualenv
     deb: python-virtualenv, python3-virtualenv
     rpm:
   scipy:
+    conda:
     deb: python-scipy, python3-scipy
     rpm:
 extra_headers:
@@ -85,5 +105,3 @@ extra_headers:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: lscsoft
-skip:
-  - conda
