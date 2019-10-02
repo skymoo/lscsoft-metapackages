@@ -236,6 +236,7 @@ deps:
     deb: swig3.0
     rpm:
   texlive-bibtex:
+    conda: texlive-core
     deb: texlive-binaries
     rpm:
 maintainer: Computing and Software Committee <lvccomputing@ligo.org>
