@@ -17,7 +17,6 @@ lint:yaml:
 build:debian:
   image: containers.ligo.org/docker/base:stretch
   stage: build
-  dependencies: []
   before_script:
     - apt-get update
     - apt-get --assume-yes install equivs python3 python3-jinja2 python3-yaml
@@ -34,7 +33,6 @@ build:debian:
 build:rhel:
   image: containers.ligo.org/docker/base:el7
   stage: build
-  dependencies: []
   before_script:
     - yum --assumeyes install rpm-build rpmlint python34 python34-jinja2 python34-PyYAML
   script:
@@ -56,7 +54,6 @@ build:rhel:
 build:conda:
   image: containers.ligo.org/docker/base:conda
   stage: build
-  dependencies: []
   before_script:
     # install dependencies for generate.py, and conda builds
     - conda install --yes
@@ -92,7 +89,7 @@ build:conda:
 test:debian:
   image: containers.ligo.org/docker/base:stretch
   stage: test
-  dependencies:
+  needs:
     - build:debian
   script:
     - apt-get update
@@ -102,7 +99,7 @@ test:debian:
 test:rhel:
   image: containers.ligo.org/docker/base:el7
   stage: test
-  dependencies:
+  needs:
     - build:rhel
   script:
     - yum --assumeyes update
@@ -111,7 +108,7 @@ test:rhel:
 test:conda:
   image: containers.ligo.org/docker/base:conda
   stage: test
-  dependencies:
+  needs:
     - build:conda
   before_script:
     - conda install --yes networkx pyyaml
