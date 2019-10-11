@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-10-11T08:12:44-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - skip on Conda and Debian
+    version: 20191011
   - date: 2019-10-07T17:00:20-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -80,3 +85,6 @@ extra_headers:
 maintainer: CompSoft DevOps <daswg@ligo.org>
 priority: optional
 section: lscsoft
+skip:
+  - conda
+  - deb
