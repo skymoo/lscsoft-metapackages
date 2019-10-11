@@ -126,6 +126,8 @@ deps:
     deb: python-lalinference
     rpm: python2-lalinference
   lalapps:
+  lalsuite:
+    conda:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: lscsoft
