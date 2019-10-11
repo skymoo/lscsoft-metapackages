@@ -34,9 +34,9 @@ build:rhel:
   image: containers.ligo.org/docker/base:el7
   stage: build
   before_script:
-    - yum --assumeyes install rpm-build rpmlint python34 python34-jinja2 python34-PyYAML
+    - yum --assumeyes install rpm-build rpmlint python36 python36-jinja2 python36-PyYAML
   script:
-    - python3.4 generate.py
+    - python3.6 generate.py
     - |
       for i in stage/*/rpm/*.spec; do
         rpmlint $i
