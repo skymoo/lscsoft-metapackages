@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-10-02T10:22:10+01:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - added conda packages
+    version: 20191002
   - date: 2019-07-09T13:07:00+02:00
     author: Steffen Grunewald <steffen.grunewald@ligo.org>
     changes:
@@ -29,32 +34,44 @@ desc_long: |
   to get to a certain system state
 deps:
   R:
+    conda: r
     deb: r-recommended
     rpm:
   R-devel:
     deb: r-base-dev
     rpm:
   cfitsio:
+    conda: cfitsio
     deb: libcfitsio2 | libcfitsio5 | libcfitsio7, libcfitsio-dev, libcfitsio-bin
     rpm: cfitsio, cfitsio-devel, cfitsio-static
   fftw:
+    conda:
     deb: libfftw3-3, libfftw3-bin
     rpm:
   fftw-devel:
     deb: libfftw3-dev
     rpm: fftw-devel, fftw-static
   gsl:
+    conda:
     deb: libgsl0ldbl | libgsl2 | libgsl23, gsl-bin
     rpm:
   gsl-devel:
     deb: libgsl0-dev | libgsl-dev
     rpm: gsl-devel, gsl-static
   numpy:
+    conda:
     deb: python-numpy
     rpm:
   python-matplotlib:
+    conda: matplotlib
+    deb:
+    rpm:
   python-sqlobject:
+    conda: sqlobject
+    deb:
+    rpm:
   scipy:
+    conda:
     deb: python-scipy
     rpm:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>

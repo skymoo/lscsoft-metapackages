@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-09-01T12:43:43+02:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - added conda packages
+    version: 20190901
   - date: 2018-10-18T15:52:04-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -37,7 +42,10 @@ deps:
     deb: lal-dev
     rpm:
   lal-octave:
+    deb:
+    rpm:
   python-lal:
+    conda:
     deb: python-lal, python3-lal
     rpm: python2-lal
   lalframe:
@@ -45,7 +53,10 @@ deps:
     deb: lalframe-dev
     rpm:
   lalframe-octave:
+    deb:
+    rpm:
   python-lalframe:
+    conda:
     deb: python-lalframe, python3-lalframe
     rpm: python2-lalframe
   lalmetaio:
@@ -53,7 +64,10 @@ deps:
     deb: lalmetaio-dev
     rpm:
   lalmetaio-octave:
+    deb:
+    rpm:
   python-lalmetaio:
+    conda:
     deb: python-lalmetaio, python3-lalmetaio
     rpm: python2-lalmetaio
   lalsimulation:
@@ -61,7 +75,10 @@ deps:
     deb: lalsimulation-dev
     rpm:
   lalsimulation-octave:
+    deb:
+    rpm:
   python-lalsimulation:
+    conda:
     deb: python-lalsimulation, python3-lalsimulation
     rpm: python2-lalsimulation
   lalburst:
@@ -69,7 +86,10 @@ deps:
     deb: lalburst-dev
     rpm:
   lalburst-octave:
+    deb:
+    rpm:
   python-lalburst:
+    conda:
     deb: python-lalburst, python3-lalburst
     rpm: python2-lalburst
   lalinspiral:
@@ -77,7 +97,10 @@ deps:
     deb: lalinspiral-dev
     rpm:
   lalinspiral-octave:
+    deb:
+    rpm:
   python-lalinspiral:
+    conda:
     deb: python-lalinspiral, python3-lalinspiral
     rpm: python2-lalinspiral
   lalpulsar:
@@ -85,7 +108,10 @@ deps:
     deb: lalpulsar-dev
     rpm:
   lalpulsar-octave:
+    deb:
+    rpm:
   python-lalpulsar:
+    conda:
     deb: python-lalpulsar, python3-lalpulsar
     rpm: python2-lalpulsar
   lalinference:
@@ -93,7 +119,10 @@ deps:
     deb: lalinference-dev
     rpm:
   lalinference-octave:
+    deb:
+    rpm:
   python-lalinference:
+    conda:
     deb: python-lalinference
     rpm: python2-lalinference
   lalapps:
