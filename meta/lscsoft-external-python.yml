@@ -3,6 +3,12 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-10-15T08:45:00-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python3-matplotlib
+      - add python-condor on EL7
+    version: 20191015
   - date: 2019-10-11T07:53:18-07:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -148,6 +154,8 @@ deps:
     conda: bottle
     deb: python-bottle, python3-bottle
     rpm: python2-bottle, python36-bottle
+  python-condor:
+    rpm: python2-condor, python3-condor
   python-crypto:
     conda: pycrypto
     deb: python3-crypto
@@ -165,7 +173,7 @@ deps:
   python-matplotlib:
     conda: matplotlib
     deb: python-matplotlib, python3-matplotlib
-    rpm:
+    rpm: python2-matplotlib, python3-matplotlib
   python-mock:
     conda: "mock  # [py<33]"
     deb: python-mock
