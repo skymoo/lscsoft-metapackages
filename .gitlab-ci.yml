@@ -97,7 +97,7 @@ test:debian:
     - dpkg -i debs/*.deb || apt-get --assume-yes -f install
 
 test:rhel:
-  image: igwn/base:el7
+  image: igwn/base:el7-testing
   stage: test
   needs:
     - build:rhel
