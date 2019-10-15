@@ -3,6 +3,13 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-10-15T08:36:52-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add astropy
+      - add python3-matplotlib for EL7
+      - add python36-h5py for EL7
+    version: 20191015
   - date: 2019-10-11T07:54:25-07:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -161,6 +168,10 @@ deps:
     conda: pkg-config
     deb: pkg-config
     rpm:
+  python-astropy:
+    conda: astropy
+    deb: python-astropy, python3-astropy
+    rpm: python2-astropy, python3-astropy
   python-dateutil:
     deb: python-dateutil, python3-dateutil
     rpm: python-dateutil, python36-dateutil
@@ -187,7 +198,7 @@ deps:
   python-h5py:
     conda: h5py
     deb: python-h5py
-    rpm: h5py
+    rpm: h5py, python36-h5py
   python-healpy:
     conda: healpy
     deb: python-healpy, python3-healpy
@@ -203,7 +214,7 @@ deps:
   python-matplotlib:
     conda: matplotlib
     deb: python-matplotlib, python3-matplotlib
-    rpm:
+    rpm: python2-matplotlib, python3-matplotlib
   python-mock:
     conda: "mock  # [py<34]"
     deb: python-mock
