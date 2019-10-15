@@ -3,11 +3,6 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
-  - date: 2019-09-01T12:43:43+02:00
-    author: Duncan Macleod <duncan.macleod@ligo.org>
-    changes:
-      - added conda packages
-    version: 20190901
   - date: 2019-03-04T09:58:18-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -25,26 +20,20 @@ desc_long: |
 deps:
   gstlal:
   gstlal-burst:
-    deb:
-    rpm:
   gstlal-calibration:
-    deb:
-    rpm:
   gstlal-devel:
     deb: gstlal-dev
     rpm:
   gstlal-inspiral:
-    deb:
-    rpm:
   gstlal-inspiral-devel:
     deb: gstlal-inspiral-dev
     rpm:
   gstlal-ugly:
-    deb:
-    rpm:
   gstlal-ugly-devel:
     deb: gstlal-ugly-dev
     rpm:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: lscsoft
+skip:
+  - conda

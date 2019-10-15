@@ -1,0 +1,90 @@
+---
+# lscsoft-deprecated
+
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
+changelog:
+  - date: 2019-10-11T08:12:44-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - skip on Conda and Debian
+    version: 20191011
+  - date: 2019-10-07T17:00:20-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - inital version
+    version: 20191007
+desc_short: 'Metapackage to specify deprecated packages'
+desc_long: |
+  LSCSoft metapackages are "virtual" packages pulling in dependencies required
+  to get to a certain system state
+extra_headers:
+  rpm:
+    - 'Obsoletes: python34-astroid'
+    - 'Obsoletes: python34-bottle'
+    - 'Obsoletes: python34-cffi'
+    - 'Obsoletes: python34-chardet'
+    - 'Obsoletes: python34-coverage'
+    - 'Obsoletes: python34-crypto'
+    - 'Obsoletes: python34-cryptography'
+    - 'Obsoletes: python34-dateutil'
+    - 'Obsoletes: python34-devel'
+    - 'Obsoletes: python34-dns'
+    - 'Obsoletes: python34-dqsegdb2'
+    - 'Obsoletes: python34-freezegun'
+    - 'Obsoletes: python34-glue-common'
+    - 'Obsoletes: python34-glue'
+    - 'Obsoletes: python34-gpstime'
+    - 'Obsoletes: python34-gwdatafind'
+    - 'Obsoletes: python34-gwosc'
+    - 'Obsoletes: python34-idna'
+    - 'Obsoletes: python34-isort'
+    - 'Obsoletes: python34-lazy-object-proxy'
+    - 'Obsoletes: python34-ldas-tools-al'
+    - 'Obsoletes: python34-ldas-tools-diskcacheAPI'
+    - 'Obsoletes: python34-ldas-tools-frameAPI'
+    - 'Obsoletes: python34-ldas-tools-framecpp'
+    - 'Obsoletes: python34-ldas-tools-ldasgen'
+    - 'Obsoletes: python34-libs'
+    - 'Obsoletes: python34-ligo-common'
+    - 'Obsoletes: python34-ligo-gracedb'
+    - 'Obsoletes: python34-ligo-lvalert'
+    - 'Obsoletes: python34-ligo-segments'
+    - 'Obsoletes: python34-mccabe'
+    - 'Obsoletes: python34-mock'
+    - 'Obsoletes: python34-nds2-client'
+    - 'Obsoletes: python34-nose'
+    - 'Obsoletes: python34-numpy-f2py'
+    - 'Obsoletes: python34-numpy'
+    - 'Obsoletes: python34-pbr'
+    - 'Obsoletes: python34-pip'
+    - 'Obsoletes: python34-ply'
+    - 'Obsoletes: python34-psutil'
+    - 'Obsoletes: python34-py'
+    - 'Obsoletes: python34-pyasn1'
+    - 'Obsoletes: python34-pycparser'
+    - 'Obsoletes: python34-pyflakes'
+    - 'Obsoletes: python34-pyOpenSSL'
+    - 'Obsoletes: python34-pysocks'
+    - 'Obsoletes: python34-pytest-cov'
+    - 'Obsoletes: python34-pytest'
+    - 'Obsoletes: python34-requests'
+    - 'Obsoletes: python34-root'
+    - 'Obsoletes: python34-scipy'
+    - 'Obsoletes: python34-setuptools_scm'
+    - 'Obsoletes: python34-setuptools'
+    - 'Obsoletes: python34-six'
+    - 'Obsoletes: python34-sleekxmpp'
+    - 'Obsoletes: python34-test'
+    - 'Obsoletes: python34-tkinter'
+    - 'Obsoletes: python34-tools'
+    - 'Obsoletes: python34-urllib3'
+    - 'Obsoletes: python34-virtualenv'
+    - 'Obsoletes: python34-wrapt'
+    - 'Obsoletes: python34'
+
+maintainer: CompSoft DevOps <daswg@ligo.org>
+priority: optional
+section: lscsoft
+skip:
+  - conda
+  - deb
