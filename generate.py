@@ -139,13 +139,34 @@ DEBIAN_CHANGELOG_TEMPLATE = jinja2.Template("""
 {% endfor %}
 """.strip())
 
-DEBIAN_COPYRIGHT = """
-Upstream Author(s): The LIGO Scientific Collaboration
+DEBIAN_COPYRIGHT_TEMPLATE = jinja2.Template("""
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: {{ pkg_data["name"] }}
+Upstream-Contact: The LIGO Scientific Collaboration
+Source: https://git.ligo.org/packaging/lscsoft-metapackages
 
+Files: *
 Copyright: LIGO Scientific Collaboration
+License: GPL-2-or-later
 
-License: GPLv2 (or later)
-""".strip()
+License: GPL-2-or-later
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in `/usr/share/common-licenses/GPL-2'.
+
+""".strip())
 
 DEBIAN_CONTROL_TEMPLATE = jinja2.Template("""
 Section: {{ pkg_data['section'] }}
@@ -194,7 +215,9 @@ def _deb_changelog(pkg_data):
 def _deb_copyright(pkg_data):
     with (STAGE / pkg_data["name"] / "deb" / "copyright").open("w") as readme:
         print(
-            DEBIAN_COPYRIGHT,
+            DEBIAN_COPYRIGHT_TEMPLATE.render(
+                pkg_data=pkg_data,
+            ).strip(),
             file=readme,
         )
 
