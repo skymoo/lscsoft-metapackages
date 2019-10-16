@@ -19,12 +19,12 @@ build:debian:
   stage: build
   before_script:
     - apt-get update
-    - apt-get --assume-yes install equivs python3 python3-jinja2 python3-yaml
+    - apt-get --assume-yes install equivs lintian python3 python3-jinja2 python3-yaml
   script:
     - python3 generate.py
     - for i in stage/*/deb/; do ( cd $i; equivs-build control ); done
     - mkdir debs
-    - for i in stage/*/deb/*.deb; do cp $i debs; done
+    - for i in stage/*/deb/*.deb; do lintian --pedantic $i; cp $i debs; done
   artifacts:
     expire_in: 3h
     paths:
