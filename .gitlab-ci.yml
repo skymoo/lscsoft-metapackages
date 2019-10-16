@@ -24,7 +24,7 @@ build:debian:
     - python3 generate.py
     - for i in stage/*/deb/; do ( cd $i; equivs-build control ); done
     - mkdir debs
-    - for i in stage/*/deb/*.deb; do lintian --pedantic $i; cp $i debs; done
+    - for i in stage/*/deb/*.deb; do echo "-- $i"; lintian --pedantic $i; cp $i debs; done
   artifacts:
     expire_in: 3h
     paths:
