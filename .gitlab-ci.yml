@@ -22,7 +22,7 @@ build:debian:
     - apt-get --assume-yes install equivs lintian python3 python3-jinja2 python3-yaml
   script:
     - python3 generate.py
-    - for i in stage/*/deb/; do ( cd $i; equivs-build control ); done
+    - for i in stage/*/deb/; do ( echo "-- $i"; cd $i; equivs-build control ); done
     - mkdir debs
     - for i in stage/*/deb/*.deb; do echo "-- $i"; lintian --pedantic $i; cp $i debs; done
   artifacts:
