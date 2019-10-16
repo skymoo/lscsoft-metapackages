@@ -117,10 +117,10 @@ def rpm_create_source(pkg_data):
 DEBIAN_CHANGELOG_TEMPLATE = jinja2.Template("""
 {% for entry in pkg_data['changelog'] -%}
 {{ pkg_data["name"] }} ({{ entry['version'] }}) unstable; urgency=medium
+{% for change in entry['changes'] %}
+  * {{ change.replace('\n', '\n  * ') }}
+{%- endfor %}
 
-{% for change in entry['changes'] -%}
-{{ change.replace('\n', '\n  * ') }}
-{% endfor %}
  -- {{ entry['author'] }}  {{ entry['date'].strftime('%a, %d %b %Y %H:%M:%S %z') }}
 {% endfor %}
 """.strip())
