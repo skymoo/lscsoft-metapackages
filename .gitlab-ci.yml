@@ -87,7 +87,7 @@ build:conda:
       - conda-bld/linux-64
 
 test:debian:
-  image: igwn/base:stretch
+  image: igwn/base:stretch-proposed
   stage: test
   needs:
     - build:debian
