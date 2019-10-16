@@ -8,12 +8,25 @@ import shutil
 import textwrap
 from pathlib import Path
 
+from dateutil import parser as dateparser
 import jinja2
 import yaml
 
 # store path of this script
 ROOT = Path(__file__).parent.absolute()
 STAGE = ROOT / "stage"
+
+
+# improve datetime parsing
+def timestamp_constructor(loader, node):
+    return dateparser.parse(node.value)
+
+
+yaml.add_constructor(
+    'tag:yaml.org,2002:timestamp',
+    timestamp_constructor,
+    Loader=yaml.SafeLoader,
+)
 
 
 # -- RPM ----------------------------------------
