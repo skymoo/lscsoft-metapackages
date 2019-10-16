@@ -122,6 +122,7 @@ DEBIAN_CHANGELOG_TEMPLATE = jinja2.Template("""
 {%- endfor %}
 
  -- {{ entry['author'] }}  {{ entry['date'].strftime('%a, %d %b %Y %H:%M:%S %z') }}
+
 {% endfor %}
 """.strip())
 
@@ -172,7 +173,7 @@ def _deb_changelog(pkg_data):
         print(
             DEBIAN_CHANGELOG_TEMPLATE.render(
                 pkg_data=pkg_data,
-            ),
+            ).strip(),
             file=readme,
         )
 
