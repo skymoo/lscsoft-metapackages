@@ -97,4 +97,4 @@ extra_headers:
     - 'Obsoletes: lscsoft-ldas'
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
-section: lscsoft
+section: science

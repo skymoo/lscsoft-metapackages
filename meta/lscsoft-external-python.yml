@@ -252,4 +252,4 @@ deps:
     rpm:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
-section: lscsoft
+section: science

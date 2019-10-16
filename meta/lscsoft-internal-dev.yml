@@ -19,6 +19,6 @@ deps:
   lscsoft-nds2-client-dev:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
-section: lscsoft
+section: science
 skip:
   - conda
