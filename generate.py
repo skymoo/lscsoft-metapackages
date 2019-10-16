@@ -146,7 +146,7 @@ Upstream-Contact: The LIGO Scientific Collaboration
 Source: https://git.ligo.org/packaging/lscsoft-metapackages
 
 Files: *
-Copyright: LIGO Scientific Collaboration
+Copyright: {{ pkg_data["date"].strftime("%Y") }} LIGO Scientific Collaboration
 License: GPL-2-or-later
 
 License: GPL-2-or-later
@@ -336,6 +336,8 @@ if __name__ == "__main__":
         content["name"] = pkg
         # add long description unless given
         content.setdefault("desc_long", content["desc_short"])
+        # add date of most recent version
+        content["date"] = content["changelog"][0]["date"]
 
         # basic tests
         for key in {"changelog", "desc_short", "desc_long", "name", "maintainer", "priority", "section"}:
