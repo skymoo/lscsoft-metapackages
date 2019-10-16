@@ -257,4 +257,4 @@ deps:
     rpm:
 maintainer: Computing and Software Committee <lvccomputing@ligo.org>
 priority: optional
-section: lscsoft
+section: science

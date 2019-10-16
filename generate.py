@@ -8,12 +8,25 @@ import shutil
 import textwrap
 from pathlib import Path
 
+from dateutil import parser as dateparser
 import jinja2
 import yaml
 
 # store path of this script
 ROOT = Path(__file__).parent.absolute()
 STAGE = ROOT / "stage"
+
+
+# improve datetime parsing
+def timestamp_constructor(loader, node):
+    return dateparser.parse(node.value)
+
+
+yaml.add_constructor(
+    'tag:yaml.org,2002:timestamp',
+    timestamp_constructor,
+    Loader=yaml.SafeLoader,
+)
 
 
 # -- RPM ----------------------------------------
@@ -117,21 +130,43 @@ def rpm_create_source(pkg_data):
 DEBIAN_CHANGELOG_TEMPLATE = jinja2.Template("""
 {% for entry in pkg_data['changelog'] -%}
 {{ pkg_data["name"] }} ({{ entry['version'] }}) unstable; urgency=medium
+{% for change in entry['changes'] %}
+  * {{ change.replace('\n', '\n  * ') }}
+{%- endfor %}
 
-{% for change in entry['changes'] -%}
-{{ change.replace('\n', '\n  * ') }}
-{% endfor %}
  -- {{ entry['author'] }}  {{ entry['date'].strftime('%a, %d %b %Y %H:%M:%S %z') }}
+
 {% endfor %}
 """.strip())
 
-DEBIAN_COPYRIGHT = """
-Upstream Author(s): The LIGO Scientific Collaboration
+DEBIAN_COPYRIGHT_TEMPLATE = jinja2.Template("""
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: {{ pkg_data["name"] }}
+Upstream-Contact: The LIGO Scientific Collaboration
+Source: https://git.ligo.org/packaging/lscsoft-metapackages
 
-Copyright: LIGO Scientific Collaboration
+Files: *
+Copyright: {{ pkg_data["date"].strftime("%Y") }} LIGO Scientific Collaboration
+License: GPL-2-or-later
 
-License: GPLv2 (or later)
-""".strip()
+License: GPL-2-or-later
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in `/usr/share/common-licenses/GPL-2'.
+
+""".strip())
 
 DEBIAN_CONTROL_TEMPLATE = jinja2.Template("""
 Section: {{ pkg_data['section'] }}
@@ -172,7 +207,7 @@ def _deb_changelog(pkg_data):
         print(
             DEBIAN_CHANGELOG_TEMPLATE.render(
                 pkg_data=pkg_data,
-            ),
+            ).strip(),
             file=readme,
         )
 
@@ -180,7 +215,9 @@ def _deb_changelog(pkg_data):
 def _deb_copyright(pkg_data):
     with (STAGE / pkg_data["name"] / "deb" / "copyright").open("w") as readme:
         print(
-            DEBIAN_COPYRIGHT,
+            DEBIAN_COPYRIGHT_TEMPLATE.render(
+                pkg_data=pkg_data,
+            ).strip(),
             file=readme,
         )
 
@@ -299,6 +336,8 @@ if __name__ == "__main__":
         content["name"] = pkg
         # add long description unless given
         content.setdefault("desc_long", content["desc_short"])
+        # add date of most recent version
+        content["date"] = content["changelog"][0]["date"]
 
         # basic tests
         for key in {"changelog", "desc_short", "desc_long", "name", "maintainer", "priority", "section"}:

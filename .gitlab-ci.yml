@@ -19,12 +19,12 @@ build:debian:
   stage: build
   before_script:
     - apt-get update
-    - apt-get --assume-yes install equivs python3 python3-jinja2 python3-yaml
+    - apt-get --assume-yes install equivs lintian python3 python3-dateutil python3-jinja2 python3-yaml
   script:
     - python3 generate.py
-    - for i in stage/*/deb/; do ( cd $i; equivs-build control ); done
+    - for i in stage/*/deb/; do ( echo "-- $i"; cd $i; equivs-build control ); done
     - mkdir debs
-    - for i in stage/*/deb/*.deb; do cp $i debs; done
+    - for i in stage/*/deb/*.deb; do echo "-- $i"; lintian --pedantic $i; cp $i debs; done
   artifacts:
     expire_in: 3h
     paths:
@@ -34,7 +34,7 @@ build:rhel:
   image: igwn/base:el7
   stage: build
   before_script:
-    - yum --assumeyes install rpm-build rpmlint python36 python36-jinja2 python36-PyYAML
+    - yum --assumeyes install rpm-build rpmlint python36 python36-dateutil python36-jinja2 python36-PyYAML
   script:
     - python3.6 generate.py
     - |
@@ -59,6 +59,7 @@ build:conda:
     - conda install --yes
           "python>3.4"
           jinja2
+          python-dateutil
           pyyaml
           networkx
           "conda<4.7.11a0"

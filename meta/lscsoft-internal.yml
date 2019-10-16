@@ -176,6 +176,6 @@ extra_headers:
     - 'Obsoletes: lscsoft-pylal'
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
-section: lscsoft
+section: science
 skip:
   - conda

@@ -84,7 +84,7 @@ extra_headers:
 
 maintainer: CompSoft DevOps <daswg@ligo.org>
 priority: optional
-section: lscsoft
+section: science
 skip:
   - conda
   - deb
