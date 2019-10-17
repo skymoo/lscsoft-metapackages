@@ -40,4 +40,4 @@ skip:
 test:
   - export GSTLAL_FIR_WHITEN=0
   - gstlal_inspiral --help
-  - gstlal_compute_strain --help
+  #- gstlal_compute_strain --help
