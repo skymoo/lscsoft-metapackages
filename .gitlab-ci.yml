@@ -4,22 +4,47 @@ stages:
   - test
 
 variables:
+  APT_GET: "apt-get -y -q -q -o dir::cache::archives=${CI_PROJECT_DIR}/.cache/apt"
   CONDA_BLD_PATH: "${CI_PROJECT_DIR}/conda-bld"
+  CONDA_PKGS_DIRS: "${CI_PROJECT_DIR}/.cache/conda"
   PIP_CACHE_DIR: "${CI_PROJECT_DIR}/.cache/pip"
+  YUM: "yum --assumeyes --quiet --setopt=cachedir=${CI_PROJECT_DIR}/.cache/yum --setopt=keepcache=1"
+
+.apt-cache: &apt-cache
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .cache/apt
+
+.conda-cache: &conda-cache
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .cache/conda
+
+.pip-cache: &pip-cache
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .cache/pip
+
+.yum-cache: &yum-cache
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .cache/yum
 
 lint:yaml:
+  <<: *pip-cache
   image: python:alpine
   stage: generate
   before_script:
     - python -m pip install yamllint
   script:
     - yamllint meta/*.yml
-  cache:
-    key: "${CI_JOB_NAME}"
-    paths:
-      - .cache/pip
 
 generate:
+  <<: *pip-cache
   image: python:alpine
   stage: generate
   before_script:
@@ -30,19 +55,16 @@ generate:
     expire_in: 3h
     paths:
       - stage
-  cache:
-    key: "${CI_JOB_NAME}"
-    paths:
-      - .cache/pip
 
 build:debian:
+  <<: *apt-cache
   image: igwn/base:stretch
   stage: build
   needs:
     - generate
   before_script:
-    - apt-get update
-    - apt-get --assume-yes install equivs lintian
+    - ${APT_GET} update
+    - ${APT_GET} --assume-yes install equivs lintian
   script:
     - for i in stage/*/deb/; do (
           echo "-- $i";
@@ -61,12 +83,13 @@ build:debian:
       - debs
 
 build:rhel:
+  <<: *yum-cache
   image: igwn/base:el7
   stage: build
   needs:
     - generate
   before_script:
-    - yum --assumeyes install rpm-build rpmlint
+    - ${YUM} install rpm-build rpmlint
   script:
     - for i in stage/*/rpm/*.spec; do
           rpmlint $i;
@@ -82,6 +105,7 @@ build:rhel:
       - srpms
 
 build:conda:
+  <<: *conda-cache
   image: igwn/base:conda
   stage: build
   needs:
@@ -117,33 +141,36 @@ build:conda:
       - conda-bld/linux-64
 
 test:debian:
+  <<: *apt-cache
   image: igwn/base:stretch-proposed
   stage: test
   needs:
     - generate
     - build:debian
   before_script:
-    - apt-get update
-    - apt-get --assume-yes upgrade
+    - ${APT_GET} update
+    - ${APT_GET} --assume-yes upgrade
   script:
-    - dpkg -i debs/*.deb || { apt-get --assume-yes -f install; dpkg -i debs/*.deb; }
+    - dpkg -i debs/*.deb || { ${APT_GET} --assume-yes -f install; dpkg -i debs/*.deb; }
     - ls -1 stage/*/deb/test.sh | xargs -I $ -L1 sh -c "printf '%s testing ' '--'; echo $ | cut -d\/ -f2; bash -ex $"
 
 test:rhel:
+  <<: *yum-cache
   image: igwn/base:el7-testing
   stage: test
   needs:
     - generate
     - build:rhel
   before_script:
-    - yum clean all
-    - yum makecache
-    - yum --assumeyes update
+    - ${YUM} clean all
+    - ${YUM} makecache
+    - ${YUM} update
   script:
-    - yum --assumeyes localinstall rpms/*.rpm
+    - ${YUM} localinstall rpms/*.rpm
     - ls -1 stage/*/rpm/test.sh | xargs -I $ -L1 sh -c "printf '%s testing ' '--'; echo $ | cut -d\/ -f2; bash -ex $"
 
 test:conda:
+  <<: *conda-cache
   image: igwn/base:conda
   stage: test
   needs:
