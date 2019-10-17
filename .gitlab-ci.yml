@@ -96,6 +96,7 @@ build:conda:
           conda-build
           conda-forge-pinning
   script:
+    - set -x;
     - for pkg in $(python build-order.py); do
         recipe_dir="stage/${pkg}/conda";
         echo "---------- Processing ${pkg}";
