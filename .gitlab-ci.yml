@@ -99,14 +99,14 @@ build:conda:
     - for pkg in $(python build-order.py); do
         recipe_dir="stage/${pkg}/conda";
         echo "---------- Processing ${pkg}";
-        conda render ${recipe_dir} \
-            --use-local \
+        conda render ${recipe_dir}
+            --use-local
             --variant-config-files $(conda info --base)/conda_build_config.yaml;
-        conda build ${recipe_dir} \
-            --error-overlinking \
-            --error-overdepending \
-            --no-anaconda-upload \
-            --use-local \
+        conda build ${recipe_dir}
+            --error-overlinking
+            --error-overdepending
+            --no-anaconda-upload
+            --use-local
             --variant-config-files $(conda info --base)/conda_build_config.yaml;
       done
   artifacts:
