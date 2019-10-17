@@ -179,12 +179,14 @@ Changelog: changelog.Debian
 Copyright: copyright
 Architecture: all
 
-{% for line in pkg_data.get("extra_headers", {}).get("rpm", []) -%}
+{% for line in pkg_data.get("extra_headers", {}).get("deb", []) -%}
 {{ line }}
 {% endfor %}
-{% for dep in dependencies -%}
-Depends: {{ dep }}
-{% endfor %}
+Depends:
+{%- for dep in dependencies %}
+ {{ dep }},
+{%- endfor %}
+
 Description: {{ pkg_data['desc_short'] }}
 {{ pkg_data['desc_long'] }}
 """.strip())
