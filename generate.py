@@ -313,6 +313,30 @@ def conda_create_recipe(pkg_data):
     )
 
 
+# -- tests --------------------------------------
+
+TESTS_TEMPLATE = jinja2.Template("""
+#!/bin/bash
+
+set -ex
+
+{%- for cmd in commands %}
+{{ cmd }}
+{%- endfor %}
+""".strip())
+
+
+def write_tests(pkg_data, dist):
+    pkg = pkg_data["name"]
+    with (STAGE / pkg / dist / "test.sh").open("w") as testf:
+        print(
+            TESTS_TEMPLATE.render(
+                commands=content.get("test", []),
+            ).strip(),
+            file=testf,
+        )
+
+
 # -- main ---------------------------------------
 
 BUILDERS = {
@@ -365,6 +389,7 @@ if __name__ == "__main__":
                 except FileExistsError:
                     pass
                 build_func(content)
+                write_tests(content, build)
 
         # all done, then update version file
         with versionfile.open("w") as verf:

@@ -1,5 +1,5 @@
 stages:
-  - lint
+  - generate
   - build
   - test
 
@@ -8,23 +8,44 @@ variables:
 
 lint:yaml:
   image: python:alpine
-  stage: lint
+  stage: generate
   before_script:
     - pip install yamllint
   script:
     - yamllint meta/*.yml
 
+generate:
+  image: python:alpine
+  stage: generate
+  before_script:
+    - python -m pip install python-dateutil jinja2 PyYAML
+  script:
+    - python generate.py
+  artifacts:
+    expire_in: 3h
+    paths:
+      - stage
+
 build:debian:
   image: igwn/base:stretch
   stage: build
+  needs:
+    - generate
   before_script:
     - apt-get update
-    - apt-get --assume-yes install equivs lintian python3 python3-dateutil python3-jinja2 python3-yaml
+    - apt-get --assume-yes install equivs lintian
   script:
-    - python3 generate.py
-    - for i in stage/*/deb/; do ( echo "-- $i"; cd $i; equivs-build control ); done
+    - for i in stage/*/deb/; do (
+          echo "-- $i";
+          cd $i;
+          equivs-build control
+      ); done
     - mkdir debs
-    - for i in stage/*/deb/*.deb; do echo "-- $i"; lintian --pedantic $i; cp $i debs; done
+    - for i in stage/*/deb/*.deb; do
+          echo "-- $i";
+          lintian --pedantic $i;
+          cp $i debs;
+      done
   artifacts:
     expire_in: 3h
     paths:
@@ -33,14 +54,14 @@ build:debian:
 build:rhel:
   image: igwn/base:el7
   stage: build
+  needs:
+    - generate
   before_script:
-    - yum --assumeyes install rpm-build rpmlint python36 python36-dateutil python36-jinja2 python36-PyYAML
+    - yum --assumeyes install rpm-build rpmlint
   script:
-    - python3.6 generate.py
-    - |
-      for i in stage/*/rpm/*.spec; do
-        rpmlint $i
-        rpmbuild -ba --define "_topdir $CI_PROJECT_DIR/rpmbuild" $i
+    - for i in stage/*/rpm/*.spec; do
+          rpmlint $i;
+          rpmbuild -ba --define "_topdir $CI_PROJECT_DIR/rpmbuild" $i;
       done
     - mkdir rpms srpms
     - mv rpmbuild/RPMS/noarch/*.rpm rpms
@@ -54,32 +75,30 @@ build:rhel:
 build:conda:
   image: igwn/base:conda
   stage: build
+  needs:
+    - generate
   before_script:
     # install dependencies for generate.py, and conda builds
     - conda install --yes
           "python>3.4"
-          jinja2
-          python-dateutil
           pyyaml
           networkx
           "conda<4.7.11a0"
           conda-build
           conda-forge-pinning
   script:
-    - python generate.py
-    - |
-      for pkg in $(python build-order.py); do
-        recipe_dir="stage/${pkg}/conda"
-        echo "---------- Processing ${pkg}"
+    - for pkg in $(python build-order.py); do
+        recipe_dir="stage/${pkg}/conda";
+        echo "---------- Processing ${pkg}";
         conda render ${recipe_dir} \
             --use-local \
-            --variant-config-files $(conda info --base)/conda_build_config.yaml
+            --variant-config-files $(conda info --base)/conda_build_config.yaml;
         conda build ${recipe_dir} \
             --error-overlinking \
             --error-overdepending \
             --no-anaconda-upload \
             --use-local \
-            --variant-config-files $(conda info --base)/conda_build_config.yaml
+            --variant-config-files $(conda info --base)/conda_build_config.yaml;
       done
   artifacts:
     expire_in: 3h
@@ -91,27 +110,34 @@ test:debian:
   image: igwn/base:stretch-proposed
   stage: test
   needs:
+    - generate
     - build:debian
-  script:
+  before_script:
     - apt-get update
     - apt-get --assume-yes upgrade
-    - dpkg -i debs/*.deb || apt-get --assume-yes -f install
+  script:
+    - dpkg -i debs/*.deb || { apt-get --assume-yes -f install; dpkg -i debs/*.deb }
+    - ls -1 stage/*/deb/test.sh | xargs -L1 bash
 
 test:rhel:
   image: igwn/base:el7-testing
   stage: test
   needs:
+    - generate
     - build:rhel
-  script:
+  before_script:
     - yum clean all
     - yum makecache
     - yum --assumeyes update
+  script:
     - yum --assumeyes localinstall rpms/*.rpm
+    - ls -1 stage/*/rpm/test.sh | xargs -L1 bash
 
 test:conda:
   image: igwn/base:conda
   stage: test
   needs:
+    - generate
     - build:conda
   before_script:
     - conda install --yes networkx pyyaml
@@ -119,3 +145,4 @@ test:conda:
     - pkglist=$(python build-order.py)
     - conda create --name test --use-local ${pkglist}
     - conda list --name test
+    - ls -1 stage/*/conda/test.sh | xargs -L1 bash
