@@ -152,7 +152,10 @@ test:debian:
     - ${APT_GET} --assume-yes upgrade
   script:
     - dpkg -i debs/*.deb || { ${APT_GET} --assume-yes -f install; dpkg -i debs/*.deb; }
-    - ls -1 stage/*/deb/test.sh | xargs -I $ -L1 sh -c "printf '%s testing ' '--'; echo $ | cut -d\/ -f2; bash -ex $"
+    - for testscript in stage/*/deb/test.sh; do
+          echo "-- testing $(echo ${testscript} | cut -d\/ -f2);"
+          bash ${testscript};
+      done
 
 test:rhel:
   <<: *yum-cache
@@ -167,7 +170,10 @@ test:rhel:
     - ${YUM} update
   script:
     - ${YUM} localinstall rpms/*.rpm
-    - ls -1 stage/*/rpm/test.sh | xargs -I $ -L1 sh -c "printf '%s testing ' '--'; echo $ | cut -d\/ -f2; bash -ex $"
+    - for testscript in stage/*/rpm/test.sh; do
+          echo "-- testing $(echo ${testscript} | cut -d\/ -f2);"
+          bash ${testscript};
+      done
 
 test:conda:
   <<: *conda-cache
@@ -182,4 +188,7 @@ test:conda:
     - pkglist=$(python build-order.py)
     - conda create --name test --use-local ${pkglist}
     - conda list --name test
-    - ls -1 stage/*/conda/test.sh | xargs -I $ -L1 sh -c "printf '%s testing ' '--'; echo $ | cut -d\/ -f2; bash -ex $"
+    - for testscript in stage/*/conda/test.sh; do
+          echo "-- testing $(echo ${testscript} | cut -d\/ -f2);"
+          bash ${testscript};
+      done
