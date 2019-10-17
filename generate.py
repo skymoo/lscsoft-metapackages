@@ -272,6 +272,12 @@ requirements:
     - {{ dep }}
 {%- endfor %}
 
+test:
+  commands:
+{%- for cmd in pkg_data.get("test", []) %}
+    - {{ cmd }}
+{%- endfor %}
+
 about:
   home: "https://git.ligo.org/packaging/lscsoft-metapackages"
   license: "GPL-3.0-or-later"
