@@ -188,6 +188,7 @@ test:conda:
     - generate
     - build:conda
   before_script:
+    - source /opt/conda/etc/profile.d/conda.sh
     - conda install --yes networkx pyyaml
   script:
     - pkglist=$(python build-order.py)
