@@ -193,6 +193,7 @@ test:conda:
     - pkglist=$(python build-order.py)
     - conda create --name test --use-local ${pkglist}
     - conda list --name test
+    - conda activate test
     - for testscript in stage/*/conda/test.sh; do
           echo "-- testing $(echo ${testscript} | cut -d\/ -f2)";
           bash ${testscript};
