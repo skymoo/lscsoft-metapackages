@@ -38,4 +38,4 @@ skip:
 test:
   - lalapps_version
   - python -c "import lalapps"
-  - tconvert
+  - tconvert now

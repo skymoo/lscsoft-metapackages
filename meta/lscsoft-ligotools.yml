@@ -21,4 +21,4 @@ maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
 test:
-  - tconvert
+  - tconvert now
