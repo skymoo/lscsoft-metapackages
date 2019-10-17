@@ -159,3 +159,9 @@ priority: optional
 section: science
 skip:
   - conda
+test:
+  - clang --version
+  - doxygen --version
+  - pdflatex --version
+  - swig --version
+  - python -c "import ROOT"

@@ -105,3 +105,9 @@ extra_headers:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
+test:
+  # use virtualenv just to test one more thing
+  - python -m virtualenv venv --system-site-packages
+  - python -c "import matplotlib"
+  - python -c "import numpy"
+  - python -c "import Pegasus.DAX3"

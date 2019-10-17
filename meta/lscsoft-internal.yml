@@ -184,3 +184,18 @@ priority: optional
 section: science
 skip:
   - conda
+test:
+  - BayesWave --help
+  - FrChannels
+  - gw_data_find --version
+  - lalapps_version
+  - nds-client-config --libdir --py27dir --py36dir
+  - python -c "import bruco"
+  - python -c "import dqsegdb"
+  - python -c "import dqsegdb2"
+  - python -c "import gwosc"
+  - python -c "import gwpy"
+  - python -c "import gwtrigfind"
+  - python -c "import ligo.gracedb"
+  - python -c "import ligo.lvalert"
+  - python -m gwdatafind --version

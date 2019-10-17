@@ -69,3 +69,7 @@ deps:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
+test:
+  - autoreconf --version
+  - pkg-config --modversion zlib
+  - swig -version

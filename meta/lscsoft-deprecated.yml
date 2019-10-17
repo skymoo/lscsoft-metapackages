@@ -97,3 +97,5 @@ section: science
 skip:
   - conda
   - deb
+test:
+  - test ! -f /usr/bin/python3.4
