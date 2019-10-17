@@ -39,4 +39,4 @@ section: science
 skip:
   - conda
 test:
-  - convert --help
+  - convert --version
