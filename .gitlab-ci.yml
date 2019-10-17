@@ -125,7 +125,7 @@ test:debian:
     - apt-get update
     - apt-get --assume-yes upgrade
   script:
-    - dpkg -i debs/*.deb || { apt-get --assume-yes -f install; dpkg -i debs/*.deb }
+    - dpkg -i debs/*.deb || { apt-get --assume-yes -f install; dpkg -i debs/*.deb; }
     - ls -1 stage/*/deb/test.sh | xargs -L1 bash
 
 test:rhel:
