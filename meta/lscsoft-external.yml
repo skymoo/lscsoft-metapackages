@@ -163,5 +163,5 @@ test:
   - clang --version
   - doxygen --version
   - pdflatex --version
-  - swig --version
+  - swig -version
   - python -c "import ROOT"
