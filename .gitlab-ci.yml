@@ -4,11 +4,11 @@ stages:
   - test
 
 variables:
-  APT_GET: "apt-get -y -q -q -o dir::cache::archives=${CI_PROJECT_DIR}/.cache/apt"
+  APT_GET: "apt-get -y -o dir::cache::archives=${CI_PROJECT_DIR}/.cache/apt"
   CONDA_BLD_PATH: "${CI_PROJECT_DIR}/conda-bld"
   CONDA_PKGS_DIRS: "${CI_PROJECT_DIR}/.cache/conda"
   PIP_CACHE_DIR: "${CI_PROJECT_DIR}/.cache/pip"
-  YUM: "yum --assumeyes --quiet --setopt=cachedir=${CI_PROJECT_DIR}/.cache/yum --setopt=keepcache=1"
+  YUM: "yum --assumeyes --setopt=cachedir=${CI_PROJECT_DIR}/.cache/yum --setopt=keepcache=1"
 
 .apt-cache: &apt-cache
   cache:
