@@ -158,7 +158,7 @@ test:debian:
   script:
     - dpkg -i debs/*.deb || { ${APT_GET} --assume-yes -f install; dpkg -i debs/*.deb; }
     - for testscript in stage/*/deb/test.sh; do
-          echo "-- testing $(echo ${testscript} | cut -d\/ -f2);"
+          echo "-- testing $(echo ${testscript} | cut -d\/ -f2)";
           bash ${testscript};
       done
 
@@ -176,7 +176,7 @@ test:rhel:
   script:
     - ${YUM} localinstall rpms/*.rpm
     - for testscript in stage/*/rpm/test.sh; do
-          echo "-- testing $(echo ${testscript} | cut -d\/ -f2);"
+          echo "-- testing $(echo ${testscript} | cut -d\/ -f2)";
           bash ${testscript};
       done
 
@@ -194,6 +194,6 @@ test:conda:
     - conda create --name test --use-local ${pkglist}
     - conda list --name test
     - for testscript in stage/*/conda/test.sh; do
-          echo "-- testing $(echo ${testscript} | cut -d\/ -f2);"
+          echo "-- testing $(echo ${testscript} | cut -d\/ -f2)";
           bash ${testscript};
       done
