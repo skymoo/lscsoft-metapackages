@@ -128,5 +128,5 @@ test:
   - doxygen --version
   - framecpp_sample
   - framecpp_verify --verbose --verbose Z-ilwd_test_frame-600000000-1.gwf
-  - python -c "import lalinference"
+  - python -c "import lalinspiral"
   - python -c "import numpy"
