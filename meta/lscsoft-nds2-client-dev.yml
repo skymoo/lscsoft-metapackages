@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-10-29T18:13:18+00:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - add lscsoft-packaging-tools
+    version: 20191029
   - date: 2019-09-01T12:43:43+02:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -65,6 +70,7 @@ deps:
     deb: libcurl4-openssl-dev | libcurl4-gnutls-dev | libcurl4-nss-dev
     rpm:
   libtool:
+  lscsoft-packaging-tools:
   make:
   mesa-libGLU-devel:
     conda: mesalib

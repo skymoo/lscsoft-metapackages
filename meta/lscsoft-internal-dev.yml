@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-10-29T18:13:18+00:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - add lscsoft-packaging-tools
+    version: 20191029
   - date: 2018-01-24T14:31:30-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -17,6 +22,7 @@ deps:
   lscsoft-lalsuite-dev:
   lscsoft-ldas-tools-dev:
   lscsoft-nds2-client-dev:
+  lscsoft-packaging-tools:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science

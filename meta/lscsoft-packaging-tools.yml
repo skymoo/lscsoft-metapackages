@@ -1,0 +1,27 @@
+---
+# lscsoft-packaging-tools
+
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
+changelog:
+  - date: 2019-10-29T18:13:18+00:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - first release
+    version: 20191029
+desc_short: 'Metapackage to pull in general packaging tools'
+desc_long: |
+  LSCSoft metapackages are "virtual" packages pulling in dependencies required
+  to get to a certain system state.  lscsoft-packaging-tools brings in
+  utilities needed to build native packages for the relevant platform.
+deps:
+  conda-forge-build:
+    conda: conda-build, conda-forge-pinning, conda-smithy, conda-verify
+  dpkg:
+    deb: dpkg-dev, devscripts, lintian
+  rpmbuild:
+    rpm: rpm-build, rpmdevtools, rpmlint, yum-utils
+  rpm-macros:
+    rpm: python-srpm-macros, python-rpm-macros, python2-rpm-macros, python3-rpm-macros, epel-rpm-macros
+maintainer: Computing and Software Committee (CompSoft) <lvccomputing@ligo.org>
+priority: optional
+section: science

@@ -3,10 +3,10 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
-  - date: 2019-10-29T09:59:19-07:00
-    author: Adam Mercer <adam.mercer@ligo.org>
+  - date: 2019-10-29T18:13:18+00:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
-      - add epel-rpm-macros
+      - add lscsoft-packaging-tools
     version: 20191029
   - date: 2019-10-15T08:36:52-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
@@ -124,8 +124,6 @@ deps:
     deb: libchealpix-dev
     rpm:
   doxygen:
-  epel-rpm-macros:
-    rpm:
   fftw-devel:
     conda: fftw
     deb: libfftw3-dev
@@ -163,6 +161,7 @@ deps:
     conda: libxml2
     deb: libxml2-dev
     rpm:
+  lscsoft-packaging-tools:
   octave-devel:
     conda: octave
     deb: octave3.2-headers | liboctave-dev
@@ -242,18 +241,10 @@ deps:
     conda: six
     deb: python-six, python3-six
     rpm: python-six, python36-six
-  python-rpm-macros:
-    rpm:
   python-scipy:
     conda: scipy
     deb: python-scipy, python3-scipy
     rpm: scipy, python36-scipy
-  python-srpm-macros:
-    rpm:
-  python2-rpm-macros:
-    rpm:
-  python3-rpm-macros:
-    rpm:
   swig:
     conda:
     deb: swig3.0
