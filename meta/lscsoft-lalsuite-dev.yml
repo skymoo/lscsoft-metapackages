@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-10-29T09:59:19-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add epel-rpm-macros
+    version: 20191029
   - date: 2019-10-15T08:36:52-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -119,6 +124,8 @@ deps:
     deb: libchealpix-dev
     rpm:
   doxygen:
+  epel-rpm-macros:
+    rpm:
   fftw-devel:
     conda: fftw
     deb: libfftw3-dev
