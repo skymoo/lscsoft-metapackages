@@ -3,6 +3,12 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-10-29T09:56:05-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python3-ipython on EL7
+      - https://git.ligo.org/sccb/requests/issues/315
+    version: 20191029
   - date: 2019-10-16T08:29:50-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -127,7 +133,7 @@ deps:
   ipython:
     conda:
     deb: ipython, ipython3
-    rpm:
+    rpm: python-ipython, python3-ipython
   numpy:
     conda:
     deb: python-numpy, python3-numpy
