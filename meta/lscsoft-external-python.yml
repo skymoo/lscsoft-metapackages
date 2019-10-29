@@ -3,9 +3,10 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
-  - date: 2019-10-29T09:56:05-07:00
-    author: Adam Mercer <adam.mercer@ligo.org>
+  - date: 2019-10-29T18:13:18+00:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
+      - removed macros packages, these are now in lscsoft-packaging-tools
       - add python3-ipython on EL7
       - https://git.ligo.org/sccb/requests/issues/315
     version: 20191029
@@ -244,10 +245,6 @@ deps:
     conda: virtualenv
     deb: python-virtualenv, python3-virtualenv
     rpm: python-virtualenv, python36-virtualenv
-  python-rpm-macros:
-    rpm: python-rpm-macros, python2-rpm-macros, python3-rpm-macros
-  python-srpm-macros:
-    rpm: python-srpm-macros
   scipy:
     conda:
     deb: python-scipy, python3-scipy
