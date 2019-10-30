@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-10-30T07:37:24-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python3-gwpy
+    version: 20192030
   - date: 2019-10-07T16:11:34-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -160,7 +165,7 @@ deps:
     rpm: python2-gwosc, python36-gwosc
   python-gwpy:
     deb: python-gwpy, python3-gwpy
-    rpm: python2-gwpy
+    rpm: python2-gwpy, python3-gwpy
   python-gwtrigfind:
     deb: python-gwtrigfind, python3-gwtrigfind
     rpm: python2-gwtrigfind
