@@ -170,7 +170,7 @@ test:rhel:
     - generate
     - build:rhel
   before_script:
-    - ${YUM} clean all
+    - ${YUM} clean expire-cache metadata dbcache headers
     - ${YUM} makecache
     - ${YUM} update
   script:
