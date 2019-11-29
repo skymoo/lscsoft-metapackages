@@ -131,3 +131,14 @@ deps:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
+test:
+  - lalapps_version --verbose
+  - python -c "import lal"
+  - python -c "import lalframe"
+  - python -c "import lalmetaio"
+  - python -c "import lalsimulation"
+  - python -c "import lalburst"
+  - python -c "import lalpulsar"
+  - python -c "import lalinspiral"
+  - python -c "import lalinference"
+  - python -c "import lalapps"

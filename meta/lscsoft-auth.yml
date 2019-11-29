@@ -43,3 +43,5 @@ deps:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
+test:
+  - python -c "import kerberos"

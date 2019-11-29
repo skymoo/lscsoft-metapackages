@@ -98,3 +98,8 @@ extra_headers:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
+test:
+  - diskcache --help
+  - framecpp_sample
+  - framecpp_verify --verbose --verbose Z-ilwd_test_frame-600000000-1.gwf
+  - python -c "from LDAStools import frameCPP; stream = frameCPP.IFrameFStream('Z-ilwd_test_frame-600000000-1.gwf'); print(stream.GetTOC().GetADC())"

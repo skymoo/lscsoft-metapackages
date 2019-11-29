@@ -256,3 +256,10 @@ deps:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: science
+test:
+  - python -m virtualenv --system-site-packages venv
+  - python -c "import git"
+  - python -c "import numpy"
+  - python -c "import scipy"
+  - python -c "import six"
+  - python -c "import sympy"

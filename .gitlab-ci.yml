@@ -1,46 +1,103 @@
 stages:
-  - lint
+  - generate
   - build
   - test
 
 variables:
+  APT_GET: "apt-get -y -o dir::cache::archives=${CI_PROJECT_DIR}/.cache/apt"
   CONDA_BLD_PATH: "${CI_PROJECT_DIR}/conda-bld"
+  CONDA_PKGS_DIRS: "${CI_PROJECT_DIR}/.cache/conda"
+  PIP_CACHE_DIR: "${CI_PROJECT_DIR}/.cache/pip"
+  YUM: "yum --assumeyes --setopt=cachedir=${CI_PROJECT_DIR}/.cache/yum --setopt=keepcache=1"
+
+.apt-cache: &apt-cache
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .cache/apt
+
+.apt-init: &apt-init
+  mkdir -p "${CI_PROJECT_DIR}/.cache/apt/partial" &&
+  ${APT_GET} update
+
+.conda-cache: &conda-cache
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .cache/conda
+
+.pip-cache: &pip-cache
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .cache/pip
+
+.yum-cache: &yum-cache
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .cache/yum
 
 lint:yaml:
+  <<: *pip-cache
   image: python:alpine
-  stage: lint
+  stage: generate
   before_script:
-    - pip install yamllint
+    - python -m pip install yamllint
   script:
     - yamllint meta/*.yml
 
+generate:
+  <<: *pip-cache
+  image: python:alpine
+  stage: generate
+  before_script:
+    - python -m pip install python-dateutil jinja2 PyYAML
+  script:
+    - python generate.py
+  artifacts:
+    expire_in: 3h
+    paths:
+      - stage
+
 build:debian:
+  <<: *apt-cache
   image: igwn/base:stretch
   stage: build
+  needs:
+    - generate
   before_script:
-    - apt-get update
-    - apt-get --assume-yes install equivs lintian python3 python3-dateutil python3-jinja2 python3-yaml
+    - *apt-init
+    - ${APT_GET} --assume-yes install equivs lintian
   script:
-    - python3 generate.py
-    - for i in stage/*/deb/; do ( echo "-- $i"; cd $i; equivs-build control ); done
+    - for i in stage/*/deb/; do (
+          echo "-- $i";
+          cd $i;
+          equivs-build control
+      ); done
     - mkdir debs
-    - for i in stage/*/deb/*.deb; do echo "-- $i"; lintian --pedantic $i; cp $i debs; done
+    - for i in stage/*/deb/*.deb; do
+          echo "-- $i";
+          lintian --pedantic $i;
+          cp $i debs;
+      done
   artifacts:
     expire_in: 3h
     paths:
       - debs
 
 build:rhel:
+  <<: *yum-cache
   image: igwn/base:el7
   stage: build
+  needs:
+    - generate
   before_script:
-    - yum --assumeyes install rpm-build rpmlint python36 python36-dateutil python36-jinja2 python36-PyYAML
+    - ${YUM} install rpm-build rpmlint
   script:
-    - python3.6 generate.py
-    - |
-      for i in stage/*/rpm/*.spec; do
-        rpmlint $i
-        rpmbuild -ba --define "_topdir $CI_PROJECT_DIR/rpmbuild" $i
+    - for i in stage/*/rpm/*.spec; do
+          rpmlint $i;
+          rpmbuild -ba --define "_topdir $CI_PROJECT_DIR/rpmbuild" $i;
       done
     - mkdir rpms srpms
     - mv rpmbuild/RPMS/noarch/*.rpm rpms
@@ -52,34 +109,34 @@ build:rhel:
       - srpms
 
 build:conda:
+  <<: *conda-cache
   image: igwn/base:conda
   stage: build
+  needs:
+    - generate
   before_script:
     # install dependencies for generate.py, and conda builds
     - conda install --yes
           "python>3.4"
-          jinja2
-          python-dateutil
           pyyaml
           networkx
           "conda<4.7.11a0"
           conda-build
           conda-forge-pinning
   script:
-    - python generate.py
-    - |
-      for pkg in $(python build-order.py); do
-        recipe_dir="stage/${pkg}/conda"
-        echo "---------- Processing ${pkg}"
-        conda render ${recipe_dir} \
-            --use-local \
-            --variant-config-files $(conda info --base)/conda_build_config.yaml
-        conda build ${recipe_dir} \
-            --error-overlinking \
-            --error-overdepending \
-            --no-anaconda-upload \
-            --use-local \
-            --variant-config-files $(conda info --base)/conda_build_config.yaml
+    - set -x;
+    - for pkg in $(python build-order.py); do
+        recipe_dir="stage/${pkg}/conda";
+        echo "---------- Processing ${pkg}";
+        conda render ${recipe_dir}
+            --use-local
+            --variant-config-files $(conda info --base)/conda_build_config.yaml;
+        conda build ${recipe_dir}
+            --error-overlinking
+            --error-overdepending
+            --no-anaconda-upload
+            --use-local
+            --variant-config-files $(conda info --base)/conda_build_config.yaml;
       done
   artifacts:
     expire_in: 3h
@@ -88,34 +145,56 @@ build:conda:
       - conda-bld/linux-64
 
 test:debian:
+  <<: *apt-cache
   image: igwn/base:stretch-proposed
   stage: test
   needs:
+    - generate
     - build:debian
+  before_script:
+    - *apt-init
+    - ${APT_GET} --assume-yes upgrade
   script:
-    - apt-get update
-    - apt-get --assume-yes upgrade
-    - dpkg -i debs/*.deb || apt-get --assume-yes -f install
+    - dpkg -i debs/*.deb || { ${APT_GET} --assume-yes -f install; dpkg -i debs/*.deb; }
+    - for testscript in stage/*/deb/test.sh; do
+          echo "-- testing $(echo ${testscript} | cut -d\/ -f2)";
+          bash ${testscript};
+      done
 
 test:rhel:
+  <<: *yum-cache
   image: igwn/base:el7-testing
   stage: test
   needs:
+    - generate
     - build:rhel
+  before_script:
+    - ${YUM} clean expire-cache metadata dbcache headers
+    - ${YUM} makecache
+    - ${YUM} update
   script:
-    - yum clean all
-    - yum makecache
-    - yum --assumeyes update
-    - yum --assumeyes localinstall rpms/*.rpm
+    - ${YUM} localinstall rpms/*.rpm
+    - for testscript in stage/*/rpm/test.sh; do
+          echo "-- testing $(echo ${testscript} | cut -d\/ -f2)";
+          bash ${testscript};
+      done
 
 test:conda:
+  <<: *conda-cache
   image: igwn/base:conda
   stage: test
   needs:
+    - generate
     - build:conda
   before_script:
+    - source /opt/conda/etc/profile.d/conda.sh
     - conda install --yes networkx pyyaml
   script:
     - pkglist=$(python build-order.py)
     - conda create --name test --use-local ${pkglist}
     - conda list --name test
+    - conda activate test
+    - for testscript in stage/*/conda/test.sh; do
+          echo "-- testing $(echo ${testscript} | cut -d\/ -f2)";
+          bash ${testscript};
+      done

@@ -38,3 +38,5 @@ priority: optional
 section: science
 skip:
   - conda
+test:
+  - convert --version

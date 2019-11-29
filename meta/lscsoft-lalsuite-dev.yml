@@ -256,3 +256,12 @@ deps:
 maintainer: Computing and Software Committee <lvccomputing@ligo.org>
 priority: optional
 section: science
+test:
+  - pkg-config --modversion fftw3 fftw3f
+  - pkg-config --modversion gsl
+  - pkg-config --modversion libframe
+  - python -c "import astropy"
+  - python -c "import matplotlib"
+  - python -c "import numpy"
+  - python -c "import scipy"
+  - python -c "import six"

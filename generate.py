@@ -67,7 +67,7 @@ SPEC_TEMPLATE = jinja2.Template("""
 Name: {{ pkg_data['name'] }}
 Version: {{ pkg_data['changelog'][0]['version'] }}
 Release: 1%{?dist}
-License: GPLv3+
+License: GPL-3.0-or-later
 URL: https://git.ligo.org/packaging/lscsoft-metapackages
 Summary: {{ pkg_data['desc_short'] }}
 BuildArch: noarch
@@ -147,9 +147,9 @@ Source: https://git.ligo.org/packaging/lscsoft-metapackages
 
 Files: *
 Copyright: {{ pkg_data["date"].strftime("%Y") }} LIGO Scientific Collaboration
-License: GPL-2-or-later
+License: GPL-2.0-or-later
 
-License: GPL-2-or-later
+License: GPL-2.0-or-later
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -255,8 +255,8 @@ def _deb_control(pkg_data):
 
 CONDA_TEMPLATE = jinja2.Template("""
 package:
-  name: {{ pkg_data['name'] }}
-  version: {{ pkg_data['changelog'][0]['version'] }}
+  name: "{{ pkg_data['name'] }}"
+  version: "{{ pkg_data['changelog'][0]['version'] }}"
 
 build:
   number: 0
@@ -272,12 +272,18 @@ requirements:
     - {{ dep }}
 {%- endfor %}
 
+test:
+  commands:
+{%- for cmd in pkg_data.get("test", []) %}
+    - {{ cmd }}
+{%- endfor %}
+
 about:
-  home: https://git.ligo.org/packaging/lscsoft-metapackages
-  license: GPLv3+
-  license_family: GPL
-  license_file: LICENSE
-  summary: {{ pkg_data['desc_short'] }}
+  home: "https://git.ligo.org/packaging/lscsoft-metapackages"
+  license: "GPL-3.0-or-later"
+  license_family: "GPL"
+  license_file: "LICENSE"
+  summary: "{{ pkg_data['desc_short'] }}"
   description: |
     {{ pkg_data['desc_long'].strip()|indent }}
 """)
@@ -311,6 +317,30 @@ def conda_create_recipe(pkg_data):
         str(ROOT / "LICENSE"),
         str(meta.parent / "LICENSE"),
     )
+
+
+# -- tests --------------------------------------
+
+TESTS_TEMPLATE = jinja2.Template("""
+#!/bin/bash
+
+set -ex
+
+{%- for cmd in commands %}
+{{ cmd }}
+{%- endfor %}
+""".strip())
+
+
+def write_tests(pkg_data, dist):
+    pkg = pkg_data["name"]
+    with (STAGE / pkg / dist / "test.sh").open("w") as testf:
+        print(
+            TESTS_TEMPLATE.render(
+                commands=content.get("test", []),
+            ).strip(),
+            file=testf,
+        )
 
 
 # -- main ---------------------------------------
@@ -365,6 +395,7 @@ if __name__ == "__main__":
                 except FileExistsError:
                     pass
                 build_func(content)
+                write_tests(content, build)
 
         # all done, then update version file
         with versionfile.open("w") as verf:

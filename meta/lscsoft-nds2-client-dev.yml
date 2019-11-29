@@ -107,3 +107,6 @@ deps:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
+test:
+  - pkg-config --modversion libcurl
+  - python -c "import numpy"
