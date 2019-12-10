@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-12-10T22:20:00+00:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - add python-coverage
+    version: 20191029
   - date: 2019-10-29T18:13:18+00:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -178,6 +183,10 @@ deps:
     conda: astropy
     deb: python-astropy, python3-astropy
     rpm: python2-astropy, python3-astropy
+  python-coverage:
+    conda: coverage
+    deb: python-coverage, python3-coverage
+    rpm: python-coverage, python36-coverage
   python-dateutil:
     deb: python-dateutil, python3-dateutil
     rpm: python-dateutil, python36-dateutil
