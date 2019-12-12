@@ -29,6 +29,22 @@ yaml.add_constructor(
 )
 
 
+def get_package_name( pkg_data, build, default):
+    #----------
+    # Allow renaming of package via package_name attribute.
+    # If not explicitly set for build system, then the
+    #   default value (usually the filename) will be used.
+    #
+    # Ex:
+    # package_name:
+    #   deb: gds-dev
+    #----------
+    package_name = default
+    if "package_name" in pkg_data:
+        if pkg_data["package_name"].get(build, '') is not None:
+            package_name = pkg_data["package_name"].get(build, '')
+    return package_name
+
 # -- RPM ----------------------------------------
 
 def _get_dependencies(pkg_data, build):
@@ -375,23 +391,24 @@ if __name__ == "__main__":
         for key in {"changelog", "desc_short", "desc_long", "name", "maintainer", "priority", "section"}:
             assert content.get(key), "{} requires key '{}'".format(meta_file, key)
 
-        # once we get here, check if we need to work at all on this one
-        # for that, check its version file and compare to latest one from changelog
-        versionfile = (STAGE / pkg / "version")
-        try:
-            with versionfile.open("r") as verf:
-                version = verf.read().strip()
-        except FileNotFoundError:
-            pass
-        else:
-            if version == str(content['changelog'][0]['version']).strip():
-                continue
-
         # build for each type
         for build, build_func in BUILDERS.items():
             if build not in content.get("skip", []):
+                content["name"] = get_package_name(content, build, pkg)
+                # once we get here, check if we need to work at all on this one
+                # for that, check its version file and compare to latest one from changelog
+                versionfile = (STAGE / content["name"] / "version")
                 try:
-                    (STAGE / pkg / build).mkdir(parents=True)
+                    with versionfile.open("r") as verf:
+                        version = verf.read().strip()
+                except FileNotFoundError:
+                    pass
+                else:
+                    if version == str(content['changelog'][0]['version']).strip():
+                        continue
+
+                try:
+                    (STAGE / content["name"] / build).mkdir(parents=True)
                 except FileExistsError:
                     pass
                 build_func(content)
