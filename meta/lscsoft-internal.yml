@@ -7,7 +7,7 @@ changelog:
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - add gpstime
-    versin: 20191213
+    version: 20191213
   - date: 2019-10-30T07:37:24-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
