@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-12-13T15:38:01-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add new Python3 packages
+    version: 20191213
   - date: 2019-09-01T12:43:43+02:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -47,7 +52,7 @@ deps:
   python-lal:
     conda:
     deb: python-lal, python3-lal
-    rpm: python2-lal
+    rpm: python2-lal, python3-lal
   lalframe:
   lalframe-devel:
     deb: lalframe-dev
@@ -58,7 +63,7 @@ deps:
   python-lalframe:
     conda:
     deb: python-lalframe, python3-lalframe
-    rpm: python2-lalframe
+    rpm: python2-lalframe, python3-lalframe
   lalmetaio:
   lalmetaio-devel:
     deb: lalmetaio-dev
@@ -69,7 +74,7 @@ deps:
   python-lalmetaio:
     conda:
     deb: python-lalmetaio, python3-lalmetaio
-    rpm: python2-lalmetaio
+    rpm: python2-lalmetaio, python3-lalmetaio
   lalsimulation:
   lalsimulation-devel:
     deb: lalsimulation-dev
@@ -80,7 +85,7 @@ deps:
   python-lalsimulation:
     conda:
     deb: python-lalsimulation, python3-lalsimulation
-    rpm: python2-lalsimulation
+    rpm: python2-lalsimulation, python3-lalsimulation
   lalburst:
   lalburst-devel:
     deb: lalburst-dev
@@ -91,7 +96,7 @@ deps:
   python-lalburst:
     conda:
     deb: python-lalburst, python3-lalburst
-    rpm: python2-lalburst
+    rpm: python2-lalburst, python3-lalburst
   lalinspiral:
   lalinspiral-devel:
     deb: lalinspiral-dev
@@ -102,7 +107,7 @@ deps:
   python-lalinspiral:
     conda:
     deb: python-lalinspiral, python3-lalinspiral
-    rpm: python2-lalinspiral
+    rpm: python2-lalinspiral, python3-lalinspiral
   lalpulsar:
   lalpulsar-devel:
     deb: lalpulsar-dev
@@ -113,7 +118,7 @@ deps:
   python-lalpulsar:
     conda:
     deb: python-lalpulsar, python3-lalpulsar
-    rpm: python2-lalpulsar
+    rpm: python2-lalpulsar, python3-lalpulsar
   lalinference:
   lalinference-devel:
     deb: lalinference-dev
@@ -123,8 +128,8 @@ deps:
     rpm:
   python-lalinference:
     conda:
-    deb: python-lalinference
-    rpm: python2-lalinference
+    deb: python-lalinference, python3-lalinference
+    rpm: python2-lalinference, python3-lalinference
   lalapps:
   lalsuite:
     conda:
