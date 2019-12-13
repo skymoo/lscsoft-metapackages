@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-12-13T15:45:52-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add fish
+    version: 20191213
   - date: 2019-10-16T13:54:54-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -74,6 +79,7 @@ deps:
   fftw-devel:
     deb: libfftw3-dev
     rpm: fftw-devel, fftw-static
+  fish:
   fuse-sshfs:
     deb: sshfs
     rpm:
