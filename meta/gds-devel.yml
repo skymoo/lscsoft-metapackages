@@ -21,7 +21,6 @@ priority: optional
 section: lscsoft
 skip:
   - conda
-  - deb
 extra_headers:
   rpm:
     - 'Obsoletes: gds-devel <= 2.18.18'
