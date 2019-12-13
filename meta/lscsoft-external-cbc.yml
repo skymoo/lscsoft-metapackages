@@ -3,6 +3,12 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-12-13T15:54:03-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add lapack
+      - https://git.ligo.org/sccb/requests/issues/352
+    version: 20191213
   - date: 2019-10-02T10:22:10+01:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -69,6 +75,10 @@ deps:
     conda:
     deb: python-healpy, python3-healpy
     rpm:
+  lapack:
+    conda: lapack
+    deb: liblapack3, liblapack-dev
+    rpm: lapack, lapack-devel
   numpy:
     conda:
     deb: python-numpy, python3-numpy
