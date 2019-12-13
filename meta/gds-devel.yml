@@ -1,0 +1,31 @@
+---
+# gds-devel
+
+package_name:
+  deb: gds-dev
+
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%z'
+changelog:
+  - date: 2019-12-12T15:14:14-08:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - replace old gds-dev
+    version: 20191212
+desc_short: 'GDS header files'
+desc_long: |
+  GDS header files for development and root interpretation
+deps:
+  gds-lowlatency-headers:
+maintainer: Data Analysis Software Working Group <daswg@ligo.org>
+priority: optional
+section: lscsoft
+skip:
+  - conda
+  - deb
+extra_headers:
+  rpm:
+    - 'Obsoletes: gds-devel <= 2.18.18'
+  deb:
+    - 'Provides: gds-dev'
+    - 'Replaces: gds-dev (<= 2.18.18)'
+    - 'Conflicts: gds-dev (<= 2.18.18)'
