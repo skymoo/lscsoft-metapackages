@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-12-14T10:09:44-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add finesee and pykat
+    version: 20191214
   - date: 2019-12-13T15:43:15-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -132,6 +137,7 @@ deps:
   dqsegdb2:
     deb: python-dqsegdb2, python3-dqsegdb2
     rpm: python2-dqsegdb2, python36-dqsegdb2
+  finesse:
   gds-all:
   glue:
     deb: python-glue
@@ -177,6 +183,9 @@ deps:
   python-gwtrigfind:
     deb: python-gwtrigfind, python3-gwtrigfind
     rpm: python2-gwtrigfind
+  python-pykat:
+    deb: python-pykat, python3-pykat
+    rpm: python36-pykat
   python-pyRXP:
     deb: python-pyrxp, python3-pyrxp
     rpm:
