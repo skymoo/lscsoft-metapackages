@@ -7,7 +7,7 @@ changelog:
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - add finesee and pykat
-    version: 20191214
+    version: 20192030.1
   - date: 2019-12-13T15:43:15-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
