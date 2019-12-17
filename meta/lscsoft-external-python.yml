@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-12-17T08:44:12-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python-networkx
+    version: 20191217
   - date: 2019-10-29T18:13:18+00:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -186,6 +191,10 @@ deps:
     conda: "mock  # [py<33]"
     deb: python-mock
     rpm: python2-mock
+  python-networkx:
+    conda: networkx
+    deb: python3-networkx
+    rpm: python36-networkx
   python-nose:
     conda: nose
     deb: python-nose, python3-nose
