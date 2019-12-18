@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-12-18T11:53:22-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add ligo-lw-bin
+    version: 20191218
   - date: 2019-03-04T09:58:18-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -32,6 +37,7 @@ deps:
   gstlal-ugly-devel:
     deb: gstlal-ugly-dev
     rpm:
+  ligo-lw-bin:
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: science
