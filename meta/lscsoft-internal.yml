@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2019-12-18T07:49:37-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - fix typo in gpstime for Debian
+    version: 20192030.2
   - date: 2019-12-14T10:09:44-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -143,7 +148,7 @@ deps:
     deb: python-glue
     rpm:
   gpstime:
-    deb: python-gpstime, python2-gpstime
+    deb: python-gpstime, python3-gpstime
     rpm: python3-gpstime, python36-gpstime
   ligo-common:
     deb: python-ligo-common, python3-ligo-common
