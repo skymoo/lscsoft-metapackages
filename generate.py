@@ -29,7 +29,7 @@ yaml.add_constructor(
 )
 
 
-def get_package_name( pkg_data, build, default):
+def get_package_name(pkg_data, build, default):
     #----------
     # Allow renaming of package via package_name attribute.
     # If not explicitly set for build system, then the
