@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2020-01-11T18:23:23-07:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - add pytest-xdist
+    version: 20200111.1
   - date: 2020-01-11T10:30:12-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -232,6 +237,10 @@ deps:
     conda: pytest-cov
     deb: python-pytest-cov, python3-pytest-cov
     rpm: python2-pytest-cov, python36-pytest-cov
+  python-pytest-xdist:
+    conda: pytest-xdist
+    deb: python-pytest-xdist, python3-pytest-xdist
+    rpm: python2-pytest-xdist, python36-pytest-xdist
   python-requests:
     conda: requests
     deb: python-requests, python3-requests
