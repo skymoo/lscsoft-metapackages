@@ -39,11 +39,10 @@ def get_package_name(pkg_data, build, default):
     # package_name:
     #   deb: gds-dev
     #----------
-    package_name = default
-    if "package_name" in pkg_data:
-        if pkg_data["package_name"].get(build, '') is not None:
-            package_name = pkg_data["package_name"].get(build, '')
-    return package_name
+    try:
+        return pkg_data["package_name"][build]
+    except KeyError:
+        return default
 
 # -- RPM ----------------------------------------
 
