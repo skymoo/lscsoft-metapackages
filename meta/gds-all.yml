@@ -3,30 +3,60 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%z'
 changelog:
-  - date: 2019-12-12T15:14:14-08:00
+  - date: 2020-02-10T09:36:07-08:00
     author: Edward Maros <ed.maros@ligo.org>
     changes:
       - replace old gds-all
-    version: 20191212
+    version: 20200210
 desc_short: 'GDS meta package'
 desc_long: |
   This package installs all GDS packages (except gds-runtime)
 deps:
-  gds-core:
-  gds-lowlatency:
-  gds-frameio:
-  gds-headers:
-  gds-crtools:
-  gds-devel:
-    deb: gds-dev
+  gds-base:
+  gds-dmt-base:
+  gds-utilities-base:
+  gds-base-lowlatency:
+  gds-utilities-lowlatency:
+  gds-base-frameio:
+  gds-utilities-frameio:
+  gds-base-headers:
+  gds-gui-headers:
+  gds-monitors-headers:
+  gds-dtt-headers:
+  gds-dmt-headers:
+  gds-base-crtools:
+  gds-root-crtools:
+  gds-gui-crtools:
+  gds-dtt-crtools:
+  py-gds-dtt:
+  gds-base-devel:
+    deb: gds-base-dev
+  gds-root-devel:
+    deb: gds-root-dev
+  gds-dmt-devel:
+    deb: gds-dmt-dev
+  gds-dtt-devel:
+    deb: gds-dtt-dev
+  gds-monitors-devel:
+    deb: gds-monitors-dev
+  gds-gui-devel:
+    deb: gds-gui-dev
   gds-services:
-  gds-monitors:
-  gds-root:
+  gds-base-monitors:
+  gds-monitors-base:
+  gds-dmt-monitors:
+  gds-dtt-monitors:
+  gds-utilities-monitors:
+  gds-base-root:
+  gds-root-base:
+  gds-dmt-root:
+  gds-utilities-root:
   gds-pygds:
-  gds-web:
+  gds-base-web:
+  gds-utilities-web:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
-section: lscsoft
+section: science
 skip:
   - conda
 extra_headers:

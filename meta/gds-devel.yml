@@ -11,20 +11,31 @@ changelog:
     changes:
       - replace old gds-dev
     version: 20191212
-desc_short: 'GDS header files'
+desc_short: 'GDS development files'
 desc_long: |
-  GDS header files for development and root interpretation
+  GDS software development files.
 deps:
-  gds-lowlatency-headers:
+  gds-base-devel:
+    deb: gds-base-dev
+  gds-root-devel:
+    deb: gds-root-dev
+  gds-dmt-devel:
+    deb: gds-dmt-dev
+  gds-dtt-devel:
+    deb: gds-dtt-dev
+  gds-monitors-devel:
+    deb: gds-monitors-dev
+  gds-gui-devel:
+    deb: gds-gui-dev
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
-section: lscsoft
+section: science
 skip:
   - conda
 extra_headers:
   rpm:
-    - 'Obsoletes: gds-devel <= 2.18.18'
+    - 'Obsoletes: gds-devel <= 2.18.19'
   deb:
     - 'Provides: gds-dev'
-    - 'Replaces: gds-dev (<= 2.18.18)'
-    - 'Conflicts: gds-dev (<= 2.18.18)'
+    - 'Replaces: gds-dev (<= 2.18.19)'
+    - 'Conflicts: gds-dev (<= 2.18.19)'

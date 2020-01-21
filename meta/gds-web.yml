@@ -1,0 +1,28 @@
+---
+# gds-web
+
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:%z'
+changelog:
+  - date: 2019-02-25T11:29:56-08:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - replace old gds-web metapackage
+    version: 20190225
+desc_short: 'DMT web services'
+desc_long: |
+  GDS web services provided by DMT
+deps:
+  gds-base-web:
+  gds-utilities-web:
+maintainer: Data Analysis Software Working Group <daswg@ligo.org>
+priority: optional
+section: science
+skip:
+  - conda
+extra_headers:
+  rpm:
+    - 'Obsoletes: gds-web <= 2.18.19'
+  deb:
+    - 'Provides: gds-web'
+    - 'Replaces: gds-web (<= 2.18.19)'
+    - 'Conflicts: gds-web (<= 2.18.19)'
