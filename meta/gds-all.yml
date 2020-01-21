@@ -61,8 +61,8 @@ skip:
   - conda
 extra_headers:
   rpm:
-    - 'Obsoletes: gds-all <= 2.18.18'
+    - 'Obsoletes: gds-all <= 2.18.19'
   deb:
     - 'Provides: gds-all'
-    - 'Replaces: gds-all (<= 2.18.18)'
-    - 'Conflicts: gds-all (<= 2.18.18)'
+    - 'Replaces: gds-all (<= 2.18.19)'
+    - 'Conflicts: gds-all (<= 2.18.19)'
