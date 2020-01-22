@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2020-01-06T18:11:40+00:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - add gwpy-plot
+    version: 20200106
   - date: 2019-12-18T09:49:47-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -188,8 +193,8 @@ deps:
     deb: python-gwosc, python3-gwosc
     rpm: python2-gwosc, python36-gwosc
   python-gwpy:
-    deb: python-gwpy, python3-gwpy
-    rpm: python2-gwpy, python3-gwpy
+    deb: python-gwpy, python3-gwpy, gwpy-plot
+    rpm: python2-gwpy, python3-gwpy, gwpy-plot
   python-gwtrigfind:
     deb: python-gwtrigfind, python3-gwtrigfind
     rpm: python2-gwtrigfind
