@@ -150,7 +150,7 @@ deps:
     deb: swig3.0-doc
     rpm:
   texlive:
-    deb: texlive-latex-extra, texlive-science texlive-publishers
+    deb: texlive-latex-extra, texlive-science, texlive-publishers
     rpm: texlive-multirow,  texlive-sectsty, texlive-tocloft, texlive-xtab, texlive-revtex
   tmux:
   tree:
