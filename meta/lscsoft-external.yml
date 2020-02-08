@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2020-02-07T17:16:47-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add revtex4 for EL7
+    version: 20200207.1
   - date: 2020-02-07T15:15:35-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -151,7 +156,7 @@ deps:
     rpm:
   texlive:
     deb: texlive-latex-extra, texlive-science, texlive-publishers
-    rpm: texlive-multirow,  texlive-sectsty, texlive-tocloft, texlive-xtab, texlive-revtex
+    rpm: texlive-multirow, texlive-sectsty, texlive-tocloft, texlive-xtab, texlive-revtex, texlive-revtex4
   tmux:
   tree:
   valgrind:
