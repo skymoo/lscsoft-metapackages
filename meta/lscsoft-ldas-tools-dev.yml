@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2020-03-25T10:05:50-07:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - add boost169-devel (SL7 from EPEL)
+    version: 20200325
   - date: 2019-10-29T18:13:18+00:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -41,6 +46,8 @@ deps:
     deb:
     rpm: cmake, cmake3
   bison:
+  boost169-devel:
+    rpm:
   doxygen:
   flex:
   libtool:
