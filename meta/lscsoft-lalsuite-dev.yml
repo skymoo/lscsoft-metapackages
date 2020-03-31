@@ -3,6 +3,12 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: date +%Y-%m-%dT%H:%M:%S%:z
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add lcov
+      - https://git.ligo.org/sccb/requests/-/issues/476
+    version: 20200331
   - date: 2019-12-10T22:20:00+00:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
