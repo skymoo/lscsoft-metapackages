@@ -3,12 +3,12 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
-  - date: 2020-03-31T13:10:24-07:00
+  - date: 2020-03-31T13:25:59-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - add lcov
       - https://git.ligo.org/sccb/requests/-/issues/476
-    version: 20200331
+    version: 20200331.1
   - date: 2019-12-10T22:20:00+00:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -155,6 +155,7 @@ deps:
   hdf5-static:
     rpm:
   help2man:
+  lcov:
   ldas-tools-framecpp-c-devel:
     conda: ldas-tools-framecpp
     deb: ldas-tools-framecpp-c-dev
