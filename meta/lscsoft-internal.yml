@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2020-04-23T09:32:27-07:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - update for new GDS packages
+    version: 20200423
   - date: 2020-01-22T14:25:21-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -158,7 +163,6 @@ deps:
     deb: python-dqsegdb2, python3-dqsegdb2
     rpm: python2-dqsegdb2, python36-dqsegdb2
   finesse:
-  gds-all:
   glue:
     deb: python-glue
     rpm:
@@ -181,6 +185,7 @@ deps:
     deb: python-ligo-scald, python3-ligo-scald
     rpm: python2-ligo-scald
   lscsoft-frame:
+  lscsoft-gds:
   lscsoft-gstlal:
   lscsoft-lalsuite:
   lscsoft-ldas-tools:
@@ -212,7 +217,6 @@ deps:
   python-voeventlib:
 extra_headers:
   rpm:
-    - 'Obsoletes: lscsoft-gds'
     - 'Obsoletes: lscsoft-glue'
     - 'Obsoletes: lscsoft-nds2-client'
     - 'Obsoletes: lscsoft-pylal'
