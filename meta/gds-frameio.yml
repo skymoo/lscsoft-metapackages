@@ -1,0 +1,28 @@
+---
+# gds-frameio
+
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%z'
+changelog:
+  - date: 2019-12-12T15:14:14-08:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - replace old gds-frameio
+    version: 20191212
+desc_short: 'GDS Frame I/O libraries'
+desc_long: |
+  Frame I/O libraries
+deps:
+  gds-base-frameio:
+  gds-utilities-frameio:
+maintainer: Data Analysis Software Working Group <daswg@ligo.org>
+priority: optional
+section: science
+skip:
+  - conda
+extra_headers:
+  rpm:
+    - 'Obsoletes: gds-frameio <= 2.18.19'
+  deb:
+    - 'Provides: gds-frameio'
+    - 'Replaces: gds-frameio (<= 2.18.19)'
+    - 'Conflicts: gds-frameio (<= 2.18.19)'

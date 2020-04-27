@@ -1,0 +1,31 @@
+---
+# gds-headers
+
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%z'
+changelog:
+  - date: 2019-12-12T15:14:14-08:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - replace old gds-headers
+    version: 20191212
+desc_short: 'GDS header files'
+desc_long: |
+  GDS software header files
+deps:
+  gds-base-headers:
+  gds-gui-headers:
+  gds-monitors-headers:
+  gds-dtt-headers:
+  gds-dmt-headers:
+maintainer: Data Analysis Software Working Group <daswg@ligo.org>
+priority: optional
+section: science
+skip:
+  - conda
+extra_headers:
+  rpm:
+    - 'Obsoletes: gds-headers <= 2.18.19'
+  deb:
+    - 'Provides: gds-headers'
+    - 'Replaces: gds-headers (<= 2.18.19)'
+    - 'Conflicts: gds-headers (<= 2.18.19)'

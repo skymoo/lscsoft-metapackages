@@ -1,0 +1,31 @@
+---
+# gds-monitors
+
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:%z'
+changelog:
+  - date: 2019-02-25T11:29:56-08:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - replace old gds-monitors metapackage on EL7
+    version: 20190225
+desc_short: 'DMT Monitor programs'
+desc_long: |
+  GDS DMT monitor programs
+deps:
+  gds-base-monitors:
+  gds-monitors-base:
+  gds-dmt-monitors:
+  gds-dtt-monitors:
+  gds-utilities-monitors:
+maintainer: Data Analysis Software Working Group <daswg@ligo.org>
+priority: optional
+section: science
+skip:
+  - conda
+extra_headers:
+  rpm:
+    - 'Obsoletes: gds-monitors <= 2.18.19'
+  deb:
+    - 'Provides: gds-monitors'
+    - 'Replaces: gds-monitors (<= 2.18.19)'
+    - 'Conflicts: gds-monitors (<= 2.18.19)'
