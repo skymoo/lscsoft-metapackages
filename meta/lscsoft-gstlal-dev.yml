@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2020-04-27T15:53:28-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python36-gstreamer1
+    version: 20200427
   - date: 2019-10-29T18:13:18+00:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -121,6 +126,10 @@ deps:
     conda: python
     deb: python-dev, python3-dev
     rpm:
+  python-gstreamer:
+    conda: gst-python
+    deb: python-gst-1.0, python3-gst-1.0
+    rpm: python2-gstreamer1, python3-gstreamer1
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
