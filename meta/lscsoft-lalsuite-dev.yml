@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2020-05-13T09:36:35-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - rename libframe to framel
+    version: 20200513
   - date: 2020-03-31T13:25:59-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -160,10 +165,10 @@ deps:
     conda: ldas-tools-framecpp
     deb: ldas-tools-framecpp-c-dev
     rpm:
-  libframe-devel:
-    conda: libframe
-    deb: libframe-dev
-    rpm:
+  libframel-devel:
+    conda: framel
+    deb: libframel-dev
+    rpm: libframel-devel
   libmetaio-devel:
     conda: metaio
     deb: libmetaio-dev
