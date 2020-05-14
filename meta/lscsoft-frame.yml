@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2020-05-13T12:57:46-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - update for new framel package
+    version: 20200513
   - date: 2019-09-01T12:43:43+02:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -28,19 +33,19 @@ desc_long: |
   LSCSoft metapackage are "virtual" packages pulling in dependencies required
   to get to a certain system state
 deps:
-  libframe:
-    conda:
-    deb: libframe1
-    rpm:
-  libframe-devel:
-    deb: libframe-dev
-    rpm:
-  libframe-matlab:
+  framel:
+  framel-matlab:
     deb:
     rpm:
-  libframe-utils:
-    deb:
+  libframel:
+    deb: libframel8
     rpm:
+  libframel-devel:
+    deb: libframel-dev
+    rpm:
+  python-framel:
+    deb: python3-framel
+    rpm: python36-framel
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
