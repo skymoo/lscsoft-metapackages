@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%z'
 changelog:
+  - date: 2020-07-09T10:11:21-0700
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - ensure devlopment packages are present on EL7
+    version: 20200709
   - date: 2020-02-10T09:36:07-0800
     author: Edward Maros <ed.maros@ligo.org>
     changes:
@@ -31,16 +36,22 @@ deps:
   py-gds-dtt:
   gds-base-devel:
     deb: gds-base-dev
+    rpm:
   gds-root-devel:
     deb: gds-root-dev
+    rpm:
   gds-dmt-devel:
     deb: gds-dmt-dev
+    rpm:
   gds-dtt-devel:
     deb: gds-dtt-dev
+    rpm:
   gds-monitors-devel:
     deb: gds-monitors-dev
+    rpm:
   gds-gui-devel:
     deb: gds-gui-dev
+    rpm:
   gds-services:
   gds-base-monitors:
   gds-monitors-base:
