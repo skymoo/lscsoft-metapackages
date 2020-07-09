@@ -1,14 +1,14 @@
 ---
 # gds-all
 
-# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%z'
+# dates should be formatted using: date: 2020-07-09T10:11:21-0700
 changelog:
-  - date: 2020-07-09T10:11:21-0700
+  - date: 2020-07-09T10:11:21-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - ensure devlopment packages are present on EL7
     version: 20200709
-  - date: 2020-02-10T09:36:07-0800
+  - date: 2020-02-10T09:36:07-08:00
     author: Edward Maros <ed.maros@ligo.org>
     changes:
       - replace old gds-all
