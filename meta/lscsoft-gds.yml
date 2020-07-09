@@ -3,7 +3,7 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%z'
 changelog:
-  - date: 2020-02-10T09:36:07-08:00
+  - date: 2020-02-10T09:36:07-0800
     author: Edward Maros <ed.maros@ligo.org>
     changes:
       - replace old gds-all
