@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2020-08-26T16:00:45+00:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python{2,3}-avahi for EL7 to assist in Python3 port of gstlal
+    version: 20200826
   - date: 2020-04-27T15:53:28-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -130,6 +135,8 @@ deps:
     conda: gst-python
     deb: python-gst-1.0, python3-gst-1.0
     rpm: python2-gstreamer1, python3-gstreamer1
+  python-avahi:
+    rpm: python2-avahi, python3-avahi
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
