@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2020-08-27T09:00:00+02:00
+    author: Steffen Grunewald <steffen.grunewald@ligo.org>
+    changes:
+      - Bullseye transitions for cfitsio, gsl, asan, jsoncpp
+    version: 20200827
   - date: 2020-06-08T11:02:55-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -156,7 +161,7 @@ deps:
     rpm:
   gsl-devel:
     conda: gsl
-    deb: libgsl0-dev
+    deb: libgsl0-dev | libgsl-dev
     rpm:
   hdf5-devel:
     conda: hdf5
