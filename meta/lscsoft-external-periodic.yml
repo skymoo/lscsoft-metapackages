@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2020-08-27T09:00:00+02:00
+    author: Steffen Grunewald <steffen.grunewald@ligo.org>
+    changes:
+      - Bullseye transitions for cfitsio, gsl, asan, jsoncpp
+    version: 20200827
   - date: 2019-10-02T10:22:10+01:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -42,7 +47,7 @@ deps:
     rpm:
   cfitsio:
     conda: cfitsio
-    deb: libcfitsio2 | libcfitsio5 | libcfitsio7, libcfitsio-dev, libcfitsio-bin
+    deb: libcfitsio2 | libcfitsio5 | libcfitsio7 | libcfitsio8 | libcfitsio9, libcfitsio-dev, libcfitsio-bin
     rpm: cfitsio, cfitsio-devel, cfitsio-static
   fftw:
     conda:
@@ -53,7 +58,7 @@ deps:
     rpm: fftw-devel, fftw-static
   gsl:
     conda:
-    deb: libgsl0ldbl | libgsl2 | libgsl23, gsl-bin
+    deb: libgsl0ldbl | libgsl2 | libgsl23 | libgsl25, gsl-bin
     rpm:
   gsl-devel:
     deb: libgsl0-dev | libgsl-dev
