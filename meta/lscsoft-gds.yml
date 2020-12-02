@@ -1,8 +1,13 @@
 ---
 # gds-all
 
-# dates should be formatted using: date: 2020-07-09T10:11:21-0700
+# dates should be formatted using: date "+date: %Y-%m-%dT%H:%M:%S%z"
 changelog:
+  - date: 2021-02-25T21:26:29-08:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - Updated for code refactoring related to lowlatency split
+    version: 20210225
   - date: 2020-07-09T10:11:21-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -17,53 +22,77 @@ desc_short: 'GDS meta package'
 desc_long: |
   This package installs all GDS packages (except gds-runtime)
 deps:
+  # From the gds source package
   gds-base:
-  gds-dmt-base:
-  gds-utilities-base:
-  gds-base-lowlatency:
-  gds-utilities-lowlatency:
-  gds-base-frameio:
-  gds-utilities-frameio:
   gds-base-headers:
-  gds-gui-headers:
-  gds-monitors-headers:
-  gds-dtt-headers:
-  gds-dmt-headers:
-  gds-base-crtools:
-  gds-root-crtools:
-  gds-gui-crtools:
-  gds-dtt-crtools:
-  py-gds-dtt:
   gds-base-devel:
     deb: gds-base-dev
     rpm:
-  gds-root-devel:
-    deb: gds-root-dev
+  gds-base-crtools:
+  gds-base-frameio:
+  gds-framexmit:
+  gds-framexmit-headers:
+  gds-framexmit-devel:
+    deb: gds-framexmit-dev
     rpm:
+  gds-base-monitors:
+  gds-base-root:
+  gds-base-web:
+  gds-services:
+  # From the gds-frameio source package
+  gds-frameio-base:
+  gds-frameio-devel:
+    deb: gds-frameio-dev
+    rpm:
+  # From the gds-lsmp source package
+  gds-lsmp:
+  gds-lsmp-devel:
+    deb: gds-lsmp-dev
+    rpm:
+  gds-lsmp-headers:
+  # From the gds-lowlatency-tools source package
+  gds-lowlatency-tools:
+  # From the gds-dmt source package
+  gds-dmt-base:
+  gds-dmt-headers:
   gds-dmt-devel:
     deb: gds-dmt-dev
     rpm:
+  gds-dmt-root:
+  gds-dmt-monitors:
+  # From the gds-dtt source package
+  gds-dtt-headers:
   gds-dtt-devel:
     deb: gds-dtt-dev
     rpm:
-  gds-monitors-devel:
-    deb: gds-monitors-dev
-    rpm:
+  gds-dtt-crtools:
+  gds-dtt-monitors:
+  py-gds-dtt:
+  # From the gds-gui source package
+  gds-gui-crtools:
+  gds-gui-headers:
   gds-gui-devel:
     deb: gds-gui-dev
     rpm:
-  gds-services:
-  gds-base-monitors:
-  gds-monitors-base:
-  gds-dmt-monitors:
-  gds-dtt-monitors:
-  gds-utilities-monitors:
-  gds-base-root:
-  gds-root-base:
-  gds-dmt-root:
-  gds-utilities-root:
+  # From the gds-monitor-apps source package
+  gds-monitor-apps:
+  gds-monitors-headers:
+  gds-monitors-devel:
+    deb: gds-monitors-dev
+    rpm:
+  # From the gds-swig source package
   gds-pygds:
-  gds-base-web:
+  # From the gds-root-extensions source package
+  gds-root-extensions-base:
+  gds-root-extensions-devel:
+    deb: gds-root-extensions-dev
+    rpm:
+  gds-root-extensions-crtools:
+  # From the gds-utilities source package
+  gds-utilities-base:
+  gds-utilities-frameio:
+  gds-utilities-monitors:
+  gds-utilities-root:
   gds-utilities-web:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional

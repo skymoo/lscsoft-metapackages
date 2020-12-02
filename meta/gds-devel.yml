@@ -6,6 +6,11 @@ package_name:
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%z'
 changelog:
+  - date: 2020-11-20T15:28:29-08:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - Updated for code refactoring related to lowlatency split
+    version: 20201120
   - date: 2019-12-12T15:14:14-08:00
     author: Edward Maros <ed.maros@ligo.org>
     changes:
@@ -17,16 +22,35 @@ desc_long: |
 deps:
   gds-base-devel:
     deb: gds-base-dev
-  gds-root-devel:
-    deb: gds-root-dev
+    rpm:
+  gds-base-framexmit-devel:
+    deb: gds-base-framexmit-dev
+    rpm:
+  gds-frameio-devel:
+    deb: gds-frameio-dev
+    rpm:
+  gds-lsmp-headers:
+  gds-lsmp-devel:
+    deb: gds-lsmp-dev
+    rpm:
+  gds-frameio-devel:
+    deb: gds-frameio-dev
+    rpm:
+  gds-root-extensions-devel:
+    deb: gds-root-extensions-dev
+    rpm:
   gds-dmt-devel:
     deb: gds-dmt-dev
+    rpm:
   gds-dtt-devel:
     deb: gds-dtt-dev
+    rpm:
   gds-monitors-devel:
     deb: gds-monitors-dev
+    rpm:
   gds-gui-devel:
     deb: gds-gui-dev
+    rpm:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science

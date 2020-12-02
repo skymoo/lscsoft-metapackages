@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%z'
 changelog:
+  - date: 2021-02-25T21:26:29-08:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - Updated for code refactoring related to lowlatency split
+    version: 20210225
   - date: 2019-12-12T15:14:14-08:00
     author: Edward Maros <ed.maros@ligo.org>
     changes:
@@ -13,6 +18,7 @@ desc_long: |
   Frame I/O libraries
 deps:
   gds-base-frameio:
+  gds-frameio-base:
   gds-utilities-frameio:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
