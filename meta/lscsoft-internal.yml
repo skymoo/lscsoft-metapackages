@@ -194,7 +194,7 @@ deps:
   lscsoft-gstlal:
   lscsoft-lalsuite:
     deb:
-    rpm: lalsuite, lalsuite-dev
+    rpm: lalsuite, lalsuite-devel
   lscsoft-ldas-tools:
   lscsoft-ligotools:
   lscsoft-metaio:
