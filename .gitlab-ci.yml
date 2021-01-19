@@ -62,7 +62,7 @@ generate:
 
 build:debian:
   <<: *apt-cache
-  image: igwn/base:stretch
+  image: igwn/base:stretch-proposed
   stage: build
   needs:
     - generate
@@ -88,7 +88,7 @@ build:debian:
 
 build:rhel:
   <<: *yum-cache
-  image: igwn/base:el7
+  image: igwn/base:el7-testing
   stage: build
   needs:
     - generate
