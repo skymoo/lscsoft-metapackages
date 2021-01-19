@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-01-19T12:01:14-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - lscsoft-lalsuite has been replaced by lalsuite on EL7
+    version: 20210119
   - date: 2019-12-13T15:38:01-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -43,99 +48,52 @@ desc_long: |
   to get to a certain system state
 deps:
   lal:
-  lal-devel:
-    deb: lal-dev
-    rpm:
+  lal-dev:
   lal-octave:
-    deb:
-    rpm:
   python-lal:
-    conda:
     deb: python-lal, python3-lal
-    rpm: python2-lal, python3-lal
   lalframe:
-  lalframe-devel:
-    deb: lalframe-dev
-    rpm:
+  lalframe-dev:
   lalframe-octave:
-    deb:
-    rpm:
   python-lalframe:
-    conda:
     deb: python-lalframe, python3-lalframe
-    rpm: python2-lalframe, python3-lalframe
   lalmetaio:
-  lalmetaio-devel:
-    deb: lalmetaio-dev
-    rpm:
+  lalmetaio-dev:
   lalmetaio-octave:
-    deb:
-    rpm:
   python-lalmetaio:
-    conda:
     deb: python-lalmetaio, python3-lalmetaio
-    rpm: python2-lalmetaio, python3-lalmetaio
   lalsimulation:
-  lalsimulation-devel:
-    deb: lalsimulation-dev
-    rpm:
+  lalsimulation-dev:
   lalsimulation-octave:
-    deb:
-    rpm:
   python-lalsimulation:
-    conda:
     deb: python-lalsimulation, python3-lalsimulation
-    rpm: python2-lalsimulation, python3-lalsimulation
   lalburst:
-  lalburst-devel:
-    deb: lalburst-dev
-    rpm:
+  lalburst-dev:
   lalburst-octave:
-    deb:
-    rpm:
   python-lalburst:
-    conda:
     deb: python-lalburst, python3-lalburst
-    rpm: python2-lalburst, python3-lalburst
   lalinspiral:
-  lalinspiral-devel:
-    deb: lalinspiral-dev
-    rpm:
+  lalinspiral-dev:
   lalinspiral-octave:
-    deb:
-    rpm:
   python-lalinspiral:
-    conda:
     deb: python-lalinspiral, python3-lalinspiral
-    rpm: python2-lalinspiral, python3-lalinspiral
   lalpulsar:
-  lalpulsar-devel:
-    deb: lalpulsar-dev
-    rpm:
+  lalpulsar-dev:
   lalpulsar-octave:
-    deb:
-    rpm:
   python-lalpulsar:
-    conda:
     deb: python-lalpulsar, python3-lalpulsar
-    rpm: python2-lalpulsar, python3-lalpulsar
   lalinference:
-  lalinference-devel:
-    deb: lalinference-dev
-    rpm:
+  lalinference-dev:
   lalinference-octave:
-    deb:
-    rpm:
   python-lalinference:
-    conda:
     deb: python-lalinference, python3-lalinference
-    rpm: python2-lalinference, python3-lalinference
   lalapps:
-  lalsuite:
-    conda:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
+skip:
+  - conda
+  - rpm
 test:
   - lalapps_version --verbose
   - python -c "import lal"
