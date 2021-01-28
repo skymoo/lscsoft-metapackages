@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-01-27T15:29:09-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - update for new lal package structure
+    version: 20210127
   - date: 2021-01-19T12:01:14-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -48,45 +53,37 @@ desc_long: |
   to get to a certain system state
 deps:
   lal:
-  lal-dev:
+  liblal-dev:
   lal-octave:
-  python-lal:
-    deb: python-lal, python3-lal
+  python3-lal:
   lalframe:
-  lalframe-dev:
+  liblalframe-dev:
   lalframe-octave:
-  python-lalframe:
-    deb: python-lalframe, python3-lalframe
+  python3-lalframe:
   lalmetaio:
-  lalmetaio-dev:
+  liblalmetaio-dev:
   lalmetaio-octave:
-  python-lalmetaio:
-    deb: python-lalmetaio, python3-lalmetaio
+  python3-lalmetaio:
   lalsimulation:
-  lalsimulation-dev:
+  liblalsimulation-dev:
   lalsimulation-octave:
-  python-lalsimulation:
-    deb: python-lalsimulation, python3-lalsimulation
+  python3-lalsimulation:
   lalburst:
-  lalburst-dev:
+  liblalburst-dev:
   lalburst-octave:
-  python-lalburst:
-    deb: python-lalburst, python3-lalburst
+  python3-lalburst:
   lalinspiral:
-  lalinspiral-dev:
+  liblalinspiral-dev:
   lalinspiral-octave:
-  python-lalinspiral:
-    deb: python-lalinspiral, python3-lalinspiral
+  python3-lalinspiral:
   lalpulsar:
-  lalpulsar-dev:
+  liblalpulsar-dev:
   lalpulsar-octave:
-  python-lalpulsar:
-    deb: python-lalpulsar, python3-lalpulsar
+  python3-lalpulsar:
   lalinference:
-  lalinference-dev:
+  liblalinference-dev:
   lalinference-octave:
-  python-lalinference:
-    deb: python-lalinference, python3-lalinference
+  python3-lalinference:
   lalapps:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
