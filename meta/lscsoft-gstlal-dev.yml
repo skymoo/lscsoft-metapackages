@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-02-05T15:10:57-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - update for gstlal python3 release
+    version: 20210205
   - date: 2020-08-27T09:00:00+02:00
     author: Steffen Grunewald <steffen.grunewald@ligo.org>
     changes:
@@ -83,33 +88,33 @@ deps:
     conda: gst-plugins-base
     deb: libgstreamer-plugins-base1.0-dev
     rpm:
-  lal-devel:
+  liblal-devel:
     conda: lal
-    deb: lal-dev
+    deb: liblal-dev
     rpm:
   python-lal:
     conda:
-    deb: python-lal, python3-lal
-    rpm: python2-lal
-  lalburst-devel:
+    deb: python3-lal
+    rpm: python3-lal
+  liblalburst-devel:
     conda: lalburst
-    deb: lalburst-dev
+    deb: liblalburst-dev
     rpm:
-  lalinspiral-devel:
+  liblalinspiral-devel:
     conda: lalinspiral
-    deb: lalinspiral-dev
+    deb: liblalinspiral-dev
     rpm:
   python-lalinspiral:
     conda:
-    deb: python-lalinspiral, python3-lalinspiral
-    rpm: python2-lalinspiral
-  lalmetaio-devel:
+    deb: python3-lalinspiral
+    rpm: python3-lalinspiral
+  liblalmetaio-devel:
     conda: lalmetaio
-    deb: lalmetaio-dev
+    deb: liblalmetaio-dev
     rpm:
-  lalsimulation-devel:
+  liblalsimulation-devel:
     conda: lalsimulation
-    deb: lalsimulation-dev
+    deb: liblalsimulation-dev
     rpm:
   ldas-tools-framecpp-devel:
     conda: ldas-tools-framecpp
@@ -122,26 +127,26 @@ deps:
     rpm: nds2-client-devel, nds2-client-headers
   numpy:
     conda:
-    deb: python-numpy, python3-numpy
-    rpm:
+    deb: python3-numpy
+    rpm: python3-numpy
   orc:
     conda: gstreamer-orc
     deb: liborc-0.4-0
     rpm:
   pygobject3-devel:
     conda: pygobject
-    deb: python-gi-dev
+    deb: python-gi-dev, python3-gi
     rpm:
-  python-devel:
+  python3-devel:
     conda: python
-    deb: python-dev, python3-dev
+    deb: python3-dev
     rpm:
   python-gstreamer:
     conda: gst-python
-    deb: python-gst-1.0, python3-gst-1.0
-    rpm: python2-gstreamer1, python3-gstreamer1
+    deb: python3-gst-1.0
+    rpm: python3-gstreamer1
   python-avahi:
-    rpm: python2-avahi, python3-avahi
+    rpm: python3-avahi
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
