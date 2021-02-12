@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-02-12T21:32:18+00:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - Add python36-healpy for RHEL
+    version: 20210212
   - date: 2020-08-27T09:00:00+02:00
     author: Steffen Grunewald <steffen.grunewald@ligo.org>
     changes:
@@ -238,7 +243,7 @@ deps:
   python-healpy:
     conda: healpy
     deb: python-healpy, python3-healpy
-    rpm: healpy >= 1.8.5
+    rpm: healpy >= 1.8.5, python36-healpy
   python-ligo-gracedb:
     conda: ligo-gracedb
     deb: python-ligo-gracedb, python3-ligo-gracedb
