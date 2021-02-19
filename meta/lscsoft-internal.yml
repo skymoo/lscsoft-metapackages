@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-02-19T12:25:27-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - also add lalsuite-octave for EL7
+    version: 20210219
   - date: 2021-01-19T12:08:58-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -194,7 +199,7 @@ deps:
   lscsoft-gstlal:
   lscsoft-lalsuite:
     deb:
-    rpm: lalsuite, lalsuite-devel
+    rpm: lalsuite, lalsuite-devel, lalsuite-octave
   lscsoft-ldas-tools:
   lscsoft-ligotools:
   lscsoft-metaio:
