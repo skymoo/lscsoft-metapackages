@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:%z'
 changelog:
+  - date: 2021-02-25T21:26:29-08:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - Updated for code refactoring related to lowlatency split
+    version: 20210225
   - date: 2019-02-25T11:29:56-08:00
     author: Edward Maros <ed.maros@ligo.org>
     changes:
@@ -13,7 +18,7 @@ desc_long: |
   GDS DMT monitor programs
 deps:
   gds-base-monitors:
-  gds-monitors-base:
+  gds-monitor-apps:
   gds-dmt-monitors:
   gds-dtt-monitors:
   gds-utilities-monitors:

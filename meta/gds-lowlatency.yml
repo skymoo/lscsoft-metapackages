@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:%z'
 changelog:
+  - date: 2020-11-20T15:28:29-08:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - Updated for code refactoring related to lowlatency split
+    version: 20201120
   - date: 2019-02-25T11:29:56-08:00
     author: Edward Maros <ed.maros@ligo.org>
     changes:
@@ -12,8 +17,11 @@ desc_short: 'Global Diagnostics Software lowlatency runtime files'
 desc_long: |
   Lowlatency libraries that implement the GDS shared memory and interconnects
 deps:
-  gds-base-lowlatency:
-  gds-utilities-lowlatency:
+  gds-lsmp:
+  gds-lsmp-devel:
+    deb: gds-lsmp-dev
+    rpm:
+  gds-lowlatency-tools:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science

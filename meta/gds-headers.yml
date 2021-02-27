@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%z'
 changelog:
+  - date: 2020-11-20T15:28:29-08:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - Updated for code refactoring related to lowlatency split
+    version: 20201120
   - date: 2019-12-12T15:14:14-08:00
     author: Edward Maros <ed.maros@ligo.org>
     changes:
@@ -13,6 +18,9 @@ desc_long: |
   GDS software header files
 deps:
   gds-base-headers:
+  gds-frameio-devel:
+    deb: gds-frameio-dev
+    rpm:
   gds-gui-headers:
   gds-monitors-headers:
   gds-dtt-headers:
