@@ -1,9 +1,9 @@
 ---
 # gds-crtools
 
-# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%z'
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
-  - date: 2021-03-03T16:24:08-0700
+  - date: 2021-03-03T16:24:08-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
       - replace gds-root-crtools with gds-root-extensions-crtools
