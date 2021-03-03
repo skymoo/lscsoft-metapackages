@@ -3,6 +3,12 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-03-03T10:16:04-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - update for ligo-lw-bin package name change
+      - remove python2-confluent-kafka
+    version: 20210303
   - date: 2020-01-11T16:09:55-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -43,9 +49,11 @@ deps:
     deb: gstlal-ugly-dev
     rpm:
   ligo-lw-bin:
+    deb: python3-ligo-lw-bin
+    rpm: python36-ligo-lw-bin
   python-confluent-kafka:
-    deb: python-confluent-kafka, python3-confluent-kafka
-    rpm: python2-confluent-kafka, python36-confluent-kafka
+    deb: python3-confluent-kafka
+    rpm: python36-confluent-kafka
 maintainer: LIGO software packaging group <software-packaging@ligo.org>
 priority: optional
 section: science
