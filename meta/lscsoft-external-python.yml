@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-03-04T11:03:08-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - remove python2-confluent-kakfa
+    version: 20210304
   - date: 2020-01-11T18:23:23-07:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -181,8 +186,8 @@ deps:
     rpm: python2-condor, python3-condor
   python-confluent-kafka:
     conda: python-confluent-kafka
-    deb: python-confluent-kafka, python3-confluent-kafka
-    rpm: python2-confluent-kafka, python36-confluent-kafka
+    deb: python3-confluent-kafka
+    rpm: python36-confluent-kafka
   python-crypto:
     conda: pycrypto
     deb: python3-crypto
