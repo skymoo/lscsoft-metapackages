@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-03-04T09:13:14-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - add python2-gstreamer1 back for ongoing analyses
+    version: 20210304
   - date: 2021-02-05T15:10:57-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -81,7 +86,7 @@ deps:
     deb: libgsl0-dev | libgsl-dev
     rpm:
   gstreamer1-devel:
-    conda: gstreamer 1
+    conda: gstreamer=1
     deb: libgstreamer1.0-dev
     rpm:
   gstreamer1-plugins-base-devel:
@@ -143,8 +148,8 @@ deps:
     rpm:
   python-gstreamer:
     conda: gst-python
-    deb: python3-gst-1.0
-    rpm: python3-gstreamer1
+    deb: python-gst-1.0, python3-gst-1.0
+    rpm: python2-gstreamer1, python3-gstreamer1
   python-avahi:
     rpm: python3-avahi
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
