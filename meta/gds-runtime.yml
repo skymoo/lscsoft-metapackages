@@ -1,7 +1,7 @@
 ---
 # gds-runtime
 
-# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:%z'
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
   - date: 2019-02-25T11:29:56-08:00
     author: Edward Maros <ed.maros@ligo.org>

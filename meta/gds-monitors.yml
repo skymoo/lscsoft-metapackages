@@ -1,7 +1,7 @@
 ---
 # gds-monitors
 
-# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:%z'
+# dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
   - date: 2021-02-25T21:26:29-08:00
     author: Edward Maros <ed.maros@ligo.org>
