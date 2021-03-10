@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-03-10T14:15:00+01:00
+    author: Steffen Grunewald <steffen.grunewald@ligo.org>
+    changes:
+      - depend on swig >= 3.0 (Bullseye comes with 4)
+    version: 20210310.1
   - date: 2021-03-10T14:00:00+01:00
     author: Steffen Grunewald <steffen.grunewald@ligo.org>
     changes:
@@ -159,10 +164,10 @@ deps:
     rpm: python2-root, python36-root
   screen:
   swig:
-    deb: swig3.0
+    deb: swig (>= 3.0) | swig3.0
     rpm:
   swig-doc:
-    deb: swig3.0-doc
+    deb: swig-doc (>= 3.0) | swig3.0-doc
     rpm:
   texlive:
     deb: texlive-latex-extra, texlive-science, texlive-publishers
