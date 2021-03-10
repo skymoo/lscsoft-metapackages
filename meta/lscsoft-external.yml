@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-03-10T14:00:00+01:00
+    author: Steffen Grunewald <steffen.grunewald@ligo.org>
+    changes:
+      - lscsoft-external no longer depends on root-system and libroot-* for Buster and up
+    version: 20210310
   - date: 2020-08-27T09:00:00+02:00
     author: Steffen Grunewald <steffen.grunewald@ligo.org>
     changes:
@@ -144,13 +149,13 @@ deps:
     rpm:
   qgit:
   root:
-    deb: root-system
+    deb: root-cds | root-system
     rpm:
   root-physics:
-    deb: libroot-math-physics-dev
+    deb: root-cds | libroot-math-physics-dev
     rpm:
   root-python:
-    deb: libroot-bindings-python-dev
+    deb: root-cds | libroot-bindings-python-dev
     rpm: python2-root, python36-root
   screen:
   swig:
