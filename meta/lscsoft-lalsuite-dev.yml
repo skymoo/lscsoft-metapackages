@@ -7,6 +7,7 @@ changelog:
     author: Steffen Grunewald <steffen.grunewald@ligo.org>
     changes:
       - depend on swig >= 3.0 (Bullseye comes with 4)
+    version: 20210310
   - date: 2021-02-12T21:32:18+00:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
