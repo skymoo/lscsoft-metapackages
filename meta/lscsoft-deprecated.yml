@@ -3,6 +3,12 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-03-30T15:00:59-07:00
+    author: Adam Mercer <adam.mercer@ligo.org>
+    changes:
+      - obsolete libframe
+      - https://git.ligo.org/sccb/requests/-/issues/655
+    version: 20210330
   - date: 2019-10-30T08:13:19-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -26,6 +32,11 @@ desc_long: |
 extra_headers:
   rpm:
     - 'Obsoletes: glue-segments'
+    - 'Obsoletes: libframe-debuginfo'
+    - 'Obsoletes: libframe-devel'
+    - 'Obsoletes: libframe-matlab'
+    - 'Obsoletes: libframe-utils'
+    - 'Obsoletes: libframe'
     - 'Obsoletes: ligo-lars'
     - 'Obsoletes: python34-astroid'
     - 'Obsoletes: python34-bottle'
