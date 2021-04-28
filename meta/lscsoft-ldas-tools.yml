@@ -102,4 +102,4 @@ test:
   - diskcache --help
   - framecpp_sample
   - framecpp_verify --verbose --verbose Z-ilwd_test_frame-600000000-1.gwf
-  - python -c "from LDAStools import frameCPP; stream = frameCPP.IFrameFStream('Z-ilwd_test_frame-600000000-1.gwf'); print(stream.GetTOC().GetADC())"
+  - python3 -c "from LDAStools import frameCPP; stream = frameCPP.IFrameFStream('Z-ilwd_test_frame-600000000-1.gwf'); print(stream.GetTOC().GetADC())"
