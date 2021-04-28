@@ -252,3 +252,9 @@ test:
   - python -c "import ligo.gracedb"
   - python -c "import ligo.lvalert"
   - python -m gwdatafind --version
+  - python3 -c "import dqsegdb2"
+  - python3 -c "import gwosc"
+  - python3 -c "import gwpy"
+  - python3 -c "import ligo.gracedb"
+  - python3 -c "import ligo.lvalert"
+  - python3 -m gwdatafind --version
