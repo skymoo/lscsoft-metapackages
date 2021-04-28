@@ -83,6 +83,6 @@ maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
 test:
-  - python -c "import matplotlib"
-  - python -c "import numpy"
-  - python -c "import scipy"
+  - python3 -c "import matplotlib"
+  - python3 -c "import numpy"
+  - python3 -c "import scipy"
