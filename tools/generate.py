@@ -12,8 +12,7 @@ from dateutil import parser as dateparser
 import jinja2
 import yaml
 
-# store path of this script
-ROOT = Path(__file__).parent.absolute()
+ROOT = Path.cwd().absolute()
 STAGE = ROOT / "stage"
 
 

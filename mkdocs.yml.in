@@ -1,0 +1,34 @@
+# metadata
+site_name: 'IGWN | Metapackages'
+site_description: 'IGWN Metapackages'
+site_author: 'Duncan Macleod'
+site_url: 'https://packaging.docs.ligo.org/lscsoft-metapackages'
+repo_url: 'https://git.ligo.org/packaging/lscsoft-metapackages'
+repo_name: 'GitLab'
+copyright: 'Copyright &copy; 2021 Cardiff University'
+
+# configuration
+theme:
+  name: 'material'
+  custom_dir: 'theme'
+  favicon: 'https://computing.docs.ligo.org/logo/favicon.ico'
+  logo: 'https://computing.docs.ligo.org/logo/igwn-logo-64.png'
+  features:
+    - navigation.expand
+
+# extensions
+markdown_extensions:
+  - admonition
+  - attr_list
+  - markdown.extensions.codehilite
+  - meta
+  - toc:
+      permalink: true
+
+# navigation links
+nav:
+  - 'index.md'
+
+# customisation
+extra_css:
+  - 'https://computing.docs.ligo.org/guide/css/gwcomputing.css'

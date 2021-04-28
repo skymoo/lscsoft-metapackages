@@ -1,0 +1,7 @@
+jinja2
+mkdocs
+mkdocs-material ~=5.0
+mkdocs-minify-plugin
+mkdocs-redirects >=1.0.0
+python-dateutil
+PyYAML
