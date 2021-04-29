@@ -256,7 +256,7 @@ test:bullseye:
     - .rhel:base
     - .test
   script:
-    - yum -y -q clean expire-cache metadata dbcache headers
+    - yum -y -q clean expire-cache metadata dbcache
     - yum -y -q makecache
     - yum -y -q update
     - yum -y -q localinstall rpms/*.rpm
