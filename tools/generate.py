@@ -307,12 +307,9 @@ def conda_create_recipe(pkg_data):
     # get dependencies
     dep_list = _get_dependencies(pkg_data, "conda")
 
-    # determine noarch based on python lists
-    haspython = any(dep.startswith("python") for dep in dep_list)
-    if haspython and not any("# [py" in dep for dep in dep_list):
-        noarch = "python"
-    else:
-        noarch = None
+    # all conda packages are noarch: generic because they don't
+    # bundle any files at all
+    noarch = "generic"
 
     # write spec file
     meta = STAGE / pkg / "conda" / "meta.yaml"
