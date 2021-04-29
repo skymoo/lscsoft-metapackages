@@ -219,11 +219,11 @@ build:conda:
     - echo "Installing metapackages:"; for MPKG in ${METAPACKAGES}; do echo " ${MPKG}"; done
     # install new packages
     - xargs apt-get -y install <<< ${METAPACKAGES}
+    # prepare a virtualenv to support the tests
+    - python3 -m venv __test
+    - __test/bin/python -m pip install pytest
     # run the tests
-    - for testscript in stage/*/deb/test.sh; do
-          echo "-- testing $(echo ${testscript} | cut -d\/ -f2)";
-          bash ${testscript};
-      done
+    - __test/bin/python -m pytest -v tools/test.py --script stage/*/deb/test.sh
 
 test:stretch:
   extends:
@@ -260,10 +260,11 @@ test:bullseye:
     - yum -y -q makecache
     - yum -y -q update
     - yum -y -q localinstall rpms/*.rpm
-    - for testscript in stage/*/rpm/test.sh; do
-          echo "-- testing $(echo ${testscript} | cut -d\/ -f2)";
-          bash  ${testscript};
-      done
+    # prepare a virtualenv to support the tests
+    - python3 -m venv __test
+    - __test/bin/python -m pip install pytest
+    # run the tests
+    - __test/bin/python -m pytest -v tools/test.py --script stage/*/rpm/test.sh
 
 test:el7:
   extends:
@@ -297,10 +298,11 @@ test:conda:
     - conda create --name test --use-local ${pkglist}
     - conda list --name test
     - conda activate test
-    - for testscript in stage/*/conda/test.sh; do
-          echo "-- testing $(echo ${testscript} | cut -d\/ -f2)";
-          bash ${testscript};
-      done
+    # prepare a virtualenv to support the tests
+    - python3 -m venv __test
+    - __test/bin/python -m pip install pytest
+    # run the tests
+    - __test/bin/python -m pytest -v tools/test.py --script stage/*/conda/test.sh
 
 # -- docs -------------------
 

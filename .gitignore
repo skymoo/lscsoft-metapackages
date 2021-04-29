@@ -2,4 +2,6 @@
 *.py[cod]
 docs/*.md
 mkdocs.yml
+
+__pycache__/
 stage/
