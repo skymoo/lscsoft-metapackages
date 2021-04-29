@@ -155,8 +155,20 @@ test:debian:
   before_script:
     - *apt-init
     - ${APT_GET} --assume-yes upgrade
+    # setup local apt repository
+    - apt-get -y -q install local-apt-repository liblz4-tool
+    - mkdir /srv/local-apt-repository
   script:
-    - dpkg -i debs/*.deb || { ${APT_GET} --assume-yes -f install; dpkg -i debs/*.deb; }
+    # fill our local apt repo and rebuild it
+    - cp -v debs/*.deb /srv/local-apt-repository
+    - /usr/lib/local-apt-repository/rebuild
+    - apt-get -y -q update
+    # get the list of metapackages
+    - METAPACKAGES=$(lz4cat -d /var/lib/apt/lists/_var_lib_local-apt-repository_._Packages* | grep "^Package:" | awk '{print $2}')
+    - echo "Installing metapackages:"; for MPKG in ${METAPACKAGES}; do echo " ${MPKG}"; done
+    # install new packages
+    - xargs apt-get -y install <<< ${METAPACKAGES}
+    # run the tests
     - for testscript in stage/*/deb/test.sh; do
           echo "-- testing $(echo ${testscript} | cut -d\/ -f2)";
           bash ${testscript};
