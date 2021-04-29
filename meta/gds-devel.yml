@@ -38,9 +38,6 @@ deps:
   gds-lsmp-devel:
     deb: gds-lsmp-dev
     rpm:
-  gds-frameio-devel:
-    deb: gds-frameio-dev
-    rpm:
   gds-root-extensions-devel:
     deb: gds-root-extensions-dev
     rpm:
