@@ -4,16 +4,21 @@
 and what is already present under the target directory
 """
 
+import re
 import shutil
 import textwrap
 from pathlib import Path
 
-from dateutil import parser as dateparser
 import jinja2
-import yaml
+from dateutil import parser as dateparser
+from ruamel import yaml
 
 ROOT = Path.cwd().absolute()
 STAGE = ROOT / "stage"
+
+SELECTOR_REGEX = re.compile(
+    r" # \[(.*)\](\Z|,)",
+)
 
 
 # improve datetime parsing
@@ -43,24 +48,60 @@ def get_package_name(pkg_data, build, default):
     except KeyError:
         return default
 
-# -- RPM ----------------------------------------
+
+def _parse_key_comment(mapping, key):
+    try:
+        return mapping.ca.items[key][2].value.strip()
+    except (AttributeError, KeyError):
+        return None
+
+
+def _parse_list_comment(parent, item):
+    try:
+        return parent.ca.items[item][0].value.strip()
+    except (AttributeError, KeyError):
+        return None
+
+
+def _rejoin_comment(value, comment):
+    return "{}  {}".format(value.strip(), comment or "").strip()
+
 
 def _get_dependencies(pkg_data, build):
-    # get dependencies
-    dependencies = []
-    if "deps" in pkg_data:
-        for k, v in pkg_data["deps"].items():
-            # add key as package name if value is nil
-            # (simple package, same for all builds)
-            if v is None:
-                dependencies.append(k)
-            # if our key exists use its value or the
-            # package name itself if value is empty
-            elif v.get(build, '') is None:
-                dependencies.append(k)
-            elif v.get(build):
-                dependencies.extend(map(str.strip, v[build].split(',')))
-    return dependencies
+    """Parse the dependencies for this build
+    """
+    for k, v in pkg_data.get("deps", {}).items():
+        if (
+            v is None  # no build specifics for any build
+            or v.get(build, '') is None  # empty build key for this build
+        ):
+            # just use the package reference name
+            yield k
+            continue
+
+        if build not in v:
+            # package is not required for this build:
+            continue
+
+        raw = v[build]
+
+        # parse a comma-separated list
+        if not isinstance(raw, list):
+            raw = raw.split(",")
+            comment = _parse_key_comment(v, build)
+            if comment and len(raw) != 1:
+                raise ValueError(
+                    "invalid use of selector, one package per line please",
+                )
+            elif comment:
+                yield _rejoin_comment(raw.pop(), _parse_key_comment(v, build))
+            else:
+                yield from raw
+            continue
+
+        # or a yaml list
+        for i, pkg in enumerate(raw):
+            yield _rejoin_comment(pkg, _parse_list_comment(raw, i))
 
 
 def _debian_format(text, width=78):
@@ -122,7 +163,7 @@ def rpm_create_source(pkg_data):
     pkg = pkg_data["name"]
 
     # get dependencies
-    dep_list = _get_dependencies(pkg_data, "rpm")
+    dep_list = list(_get_dependencies(pkg_data, "rpm"))
 
     # if extra headers are specified, add them verbatim here
     extra_headers = pkg_data.get("extra_headers", {}).get("rpm", [])
@@ -242,7 +283,7 @@ def _deb_control(pkg_data):
     pkg = pkg_data["name"]
 
     # get dependencies
-    dep_list = _get_dependencies(pkg_data, "deb")
+    dep_list = list(_get_dependencies(pkg_data, "deb"))
 
     # if extra headers are specified, add them verbatim here
     extra_headers = pkg_data.get("extra_headers", {}).get("deb", [])
@@ -305,11 +346,15 @@ about:
 
 def conda_create_recipe(pkg_data):
     # get dependencies
-    dep_list = _get_dependencies(pkg_data, "conda")
+    dep_list = list(_get_dependencies(pkg_data, "conda"))
 
-    # all conda packages are noarch: generic because they don't
-    # bundle any files at all
-    noarch = "generic"
+    # if any packages use selectors, they can't be noarch
+    if any(map(SELECTOR_REGEX.search, dep_list)):
+        noarch = None
+    # otherwise they will be noarch generic since they don't
+    # bundle any content
+    else:
+        noarch = "generic"
 
     # write spec file
     meta = STAGE / pkg / "conda" / "meta.yaml"
@@ -369,7 +414,7 @@ if __name__ == "__main__":
 
         pkg = meta_file.stem
         with meta_file.open("r") as metaf:
-            content = yaml.load(metaf, Loader=yaml.SafeLoader)
+            content = yaml.round_trip_load(metaf)
 
         # a few modifications need to be done (convenience)
         # parse date/times from changelog and sort them with newest first
