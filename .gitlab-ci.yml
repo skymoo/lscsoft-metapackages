@@ -24,12 +24,14 @@ stages:
 
 .bullseye:
   image: igwn/base:bullseye
+  allow_failure: true
 
 .el7:
   image: igwn/base:el7-testing
 
 .el8:
   image: igwn/base:el8-testing
+  allow_failure: true
 
 .conda:
   image: igwn/base:conda
