@@ -21,6 +21,27 @@ PACKAGE_MANAGERS = {
     "rpm": "RHEL",
 }
 
+INDEX_TEMPLATE = jinja2.Template("""---
+title: Introduction
+---
+
+# IGWN Software Metapackages
+
+This page describes the metapackages that are available in the IGWN
+Software Distributions to simplify software envirnoment configuration.
+
+The available metapackages are:
+
+| Package name | Description |
+| ------------ | ----------- |
+{%- for pkg in metapackages %}
+| [`{{ pkg['name'] }}`]({{ pkg['name'] }}.md) | {{ pkg['desc_short'] }} |{% endfor %}
+
+For instructions how to configure your package manager to be able to install
+the metapackages, see
+<https://computing.docs.ligo.org/guide/software/installation/>.
+""")  # noqa: E501
+
 METAPACKAGE_PAGE_TEMPLATE = jinja2.Template("""---
 title: {{ name }}
 ---
@@ -79,7 +100,7 @@ to validate this metapackage works as advertised:
 {% for change in item.changes %}
 - {{ change }}{% endfor %}
 {% endfor %}
-""")
+""")  # noqa: E501,W291
 METAPACKAGE_PAGE_TEMPLATE.globals = {
     "PACKAGE_MANAGERS": PACKAGE_MANAGERS,
 }
@@ -91,6 +112,8 @@ FORMATTING = {
 
 
 def create_parser():
+    """Create an `argparse.ArgumentParser` for this tool
+    """
     parser = argparse.ArgumentParser(
         description=__doc__,
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
@@ -109,6 +132,8 @@ def create_parser():
 
 
 def write_mkdocs_yml(pkgfiles, outfile):
+    """Render the `mkdocs.yml` for the given list of metapackage files
+    """
     tmplt = outfile.with_suffix(".yml.in")
     metapages = sorted(x.with_suffix('.md').name for x in pkgfiles)
     with open(tmplt, "r") as tmplf:
@@ -118,19 +143,38 @@ def write_mkdocs_yml(pkgfiles, outfile):
         yaml.dump(mkconf, ymlf)
 
 
-def write_metapackage_md(infile, outdir):
+def write_index_md(metas, outfile):
+    """Write the top-level `index.md` documentation page.
+    """
+    content = INDEX_TEMPLATE.render(metapackages=metas.values())
+    with open(outfile, "w") as outf:
+        outf.write(content)
+
+
+def parse_metapackages(files):
+    """Parse all of the metapackage files
+    """
+    return {f: parse_metapackage(f) for f in sorted(files)}
+
+
+def parse_metapackage(metafile):
+    """Parse the given metapackage YAML file
+
+    This returns a slightly modified version of the original YAML file
+    with some extra keys to help with documentation rendering.
+    """
     # read the file with some formatting substitutions
-    with open(infile, "r") as inf:
+    with open(metafile, "r") as inf:
         text = inf.read()
     for regex, repl in FORMATTING.items():
         text = regex.sub(repl, text)
     meta = yaml.safe_load(text)
 
     # post-process
-    meta["name"] = infile.stem
+    meta["name"] = metafile.stem
     meta["changelog"].sort(key=itemgetter("date"), reverse=True)
 
-    contents = {
+    meta["contents"] = {
         mgr: sorted(generate._get_dependencies(meta, mgr))
         for mgr in PACKAGE_MANAGERS
         if mgr not in meta.get("skip", [])
@@ -140,18 +184,35 @@ def write_metapackage_md(infile, outdir):
         for mgr in PACKAGE_MANAGERS
         if mgr not in meta.get("skip", [])
     }
+    return meta
 
-    # render the page
-    content = METAPACKAGE_PAGE_TEMPLATE.render(contents=contents, **meta)
-    with open(outdir / infile.with_suffix('.md').name, "w") as outf:
+
+def write_metapackage_md(meta, outfile):
+    """Write the given metapackage mapping to markdown
+    """
+    content = METAPACKAGE_PAGE_TEMPLATE.render(**meta)
+    with open(outfile, "w") as outf:
         outf.write(content)
 
 
 def find_metapackages(metadir):
+    """Find all of the metapackages in the given directory
+
+    Just a dumb glob of all `*.yml` files.
+    """
     return Path(metadir).glob("*.yml")
 
 
 def make_docs(args=None):
+    """Generate the documentation website for this metapackage repo
+
+    Steps:
+
+    - find all of the metapackages and parse them
+    - write a top-level MKDocs configuration file
+    - write the top-level `index.md` docs file
+    - write a `<metapackage>.md` docs file for each metapackage
+    """
     parser = create_parser()
     args = parser.parse_args(args=args)
     metadir = getattr(args, "metapackage-directory")
@@ -162,15 +223,24 @@ def make_docs(args=None):
     # find metapackages
     metapackagefiles = list(find_metapackages(metadir))
 
+    # parse metapackages
+    metapackages = parse_metapackages(metapackagefiles)
+
     # write the mkdocs file
-    index = write_mkdocs_yml(
+    write_mkdocs_yml(
         metapackagefiles,
         outdir / "mkdocs.yml",
     )
+    write_index_md(
+        metapackages,
+        docsdir / "index.md",
+    )
     # write a page for each page
-    for metapkg in metapackagefiles:
-        write_metapackage_md(metapkg, docsdir)
+    for path, meta in metapackages.items():
+        outfile = docsdir / path.with_suffix('.md').name
+        write_metapackage_md(meta, outfile)
 
 
+# run the thing from the command-line
 if __name__ == "__main__":
     make_docs()
