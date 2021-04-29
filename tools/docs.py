@@ -21,6 +21,27 @@ PACKAGE_MANAGERS = {
     "rpm": "RHEL",
 }
 
+INDEX_TEMPLATE = jinja2.Template("""---
+title: Introduction
+---
+
+# IGWN Software Metapackages
+
+This page describes the metapackages that are available in the IGWN
+Software Distributions to simplify software envirnoment configuration.
+
+The available metapackages are:
+
+| Package name | Description |
+| ------------ | ----------- |
+{%- for pkg in metapackages %}
+| [`{{ pkg['name'] }}`]({{ pkg['name'] }}.md) | {{ pkg['desc_short'] }} |{% endfor %}
+
+For instructions how to configure your package manager to be able to install
+the metapackages, see
+<https://computing.docs.ligo.org/guide/software/installation/>.
+""")
+
 METAPACKAGE_PAGE_TEMPLATE = jinja2.Template("""---
 title: {{ name }}
 ---
@@ -118,19 +139,29 @@ def write_mkdocs_yml(pkgfiles, outfile):
         yaml.dump(mkconf, ymlf)
 
 
-def write_metapackage_md(infile, outdir):
+def write_index_md(metas, outfile):
+    content = INDEX_TEMPLATE.render(metapackages=metas.values())
+    with open(outfile, "w") as outf:
+        outf.write(content)
+
+
+def parse_metapackages(files):
+    return {f: parse_metapackage(f) for f in sorted(files)}
+
+
+def parse_metapackage(metafile):
     # read the file with some formatting substitutions
-    with open(infile, "r") as inf:
+    with open(metafile, "r") as inf:
         text = inf.read()
     for regex, repl in FORMATTING.items():
         text = regex.sub(repl, text)
     meta = yaml.safe_load(text)
 
     # post-process
-    meta["name"] = infile.stem
+    meta["name"] = metafile.stem
     meta["changelog"].sort(key=itemgetter("date"), reverse=True)
 
-    contents = {
+    meta["contents"] = {
         mgr: sorted(generate._get_dependencies(meta, mgr))
         for mgr in PACKAGE_MANAGERS
         if mgr not in meta.get("skip", [])
@@ -140,10 +171,12 @@ def write_metapackage_md(infile, outdir):
         for mgr in PACKAGE_MANAGERS
         if mgr not in meta.get("skip", [])
     }
+    return meta
 
-    # render the page
-    content = METAPACKAGE_PAGE_TEMPLATE.render(contents=contents, **meta)
-    with open(outdir / infile.with_suffix('.md').name, "w") as outf:
+
+def write_metapackage_md(meta, outfile):
+    content = METAPACKAGE_PAGE_TEMPLATE.render(**meta)
+    with open(outfile, "w") as outf:
         outf.write(content)
 
 
@@ -162,14 +195,22 @@ def make_docs(args=None):
     # find metapackages
     metapackagefiles = list(find_metapackages(metadir))
 
+    # parse metapackages
+    metapackages = parse_metapackages(metapackagefiles)
+
     # write the mkdocs file
-    index = write_mkdocs_yml(
+    write_mkdocs_yml(
         metapackagefiles,
         outdir / "mkdocs.yml",
     )
+    write_index_md(
+        metapackages,
+        docsdir / "index.md",
+    )
     # write a page for each page
-    for metapkg in metapackagefiles:
-        write_metapackage_md(metapkg, docsdir)
+    for path, meta in metapackages.items():
+        outfile = docsdir / path.with_suffix('.md').name
+        write_metapackage_md(meta, outfile)
 
 
 if __name__ == "__main__":

@@ -1,6 +1,5 @@
 *.swp
 *.py[cod]
 docs/*.md
-!docs/index.md
 mkdocs.yml
 stage/
