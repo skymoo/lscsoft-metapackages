@@ -300,9 +300,10 @@ test:conda:
     - generate
     - build:conda
   script:
-    - conda install --yes networkx pyyaml
-    - pkglist=$(python build-order.py)
-    - conda create --name test --use-local ${pkglist}
+    # get list of packages in the local conda-bld repo
+    - METAPACKAGES=$(conda search --override-channels --channel local --json | python -c "import json, sys; print('\n'.join(json.load(sys.stdin).keys()))")
+    # create a new environment containing the metapackages
+    - xargs conda create --name test --use-local <<< ${METAPACKAGES}
     - conda list --name test
     - conda activate test
     # prepare a virtualenv to support the tests
