@@ -35,6 +35,11 @@ stages:
 
 .conda:
   image: igwn/base:conda
+  after_script:
+    - find ${CI_PROJECT_DIR}/.cache/conda/pkgs
+          -mindepth 1
+          -maxdepth 1
+          -type d
 
 # -- lint -------------------
 
