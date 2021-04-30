@@ -300,8 +300,8 @@ test:
   - pkg-config --modversion fftw3 fftw3f
   - pkg-config --modversion gsl
   - pkg-config --modversion framel
-  - python -c "import astropy"
-  - python -c "import matplotlib"
-  - python -c "import numpy"
-  - python -c "import scipy"
-  - python -c "import six"
+  - python3 -c "import astropy"
+  - python3 -c "import matplotlib"
+  - python3 -c "import numpy"
+  - python3 -c "import scipy"
+  - python3 -c "import six"

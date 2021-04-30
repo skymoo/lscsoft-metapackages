@@ -121,8 +121,8 @@ maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
 test:
-  # use virtualenv just to test one more thing
-  - python -m virtualenv venv --system-site-packages
-  - python -c "import matplotlib"
-  - python -c "import numpy"
+  - python3 -m virtualenv venv --system-site-packages
+  - python3 -c "import matplotlib"
+  - python3 -c "import numpy"
+  # pegasus 4.x is python3 only
   - python -c "import Pegasus.DAX3"

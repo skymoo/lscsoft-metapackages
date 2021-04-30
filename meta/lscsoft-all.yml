@@ -37,5 +37,5 @@ skip:
   - conda
 test:
   - lalapps_version
-  - python -c "import lalapps"
+  - python3 -c "import lalapps"
   - tconvert now

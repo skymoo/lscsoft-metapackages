@@ -93,12 +93,12 @@ skip:
   - rpm
 test:
   - lalapps_version --verbose
-  - python -c "import lal"
-  - python -c "import lalframe"
-  - python -c "import lalmetaio"
-  - python -c "import lalsimulation"
-  - python -c "import lalburst"
-  - python -c "import lalpulsar"
-  - python -c "import lalinspiral"
-  - python -c "import lalinference"
-  - python -c "import lalapps"
+  - python3 -c "import lal"
+  - python3 -c "import lalframe"
+  - python3 -c "import lalmetaio"
+  - python3 -c "import lalsimulation"
+  - python3 -c "import lalburst"
+  - python3 -c "import lalpulsar"
+  - python3 -c "import lalinspiral"
+  - python3 -c "import lalinference"
+  - python3 -c "import lalapps"
