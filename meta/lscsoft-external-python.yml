@@ -207,7 +207,6 @@ deps:
     deb: python-matplotlib, python3-matplotlib
     rpm: python2-matplotlib, python3-matplotlib
   python-mock:
-    conda: "mock  # [py<33]"
     deb: python-mock
     rpm: python2-mock
   python-networkx:
