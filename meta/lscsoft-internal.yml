@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-03-28T03:04:36+01:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - remove python3*-ligo-common
+    version: 20210329
   - date: 2021-02-19T12:25:27-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -180,8 +185,8 @@ deps:
     deb: python-gpstime, python3-gpstime
     rpm: python2-gpstime, python36-gpstime
   ligo-common:
-    deb: python-ligo-common, python3-ligo-common
-    rpm: python2-ligo-common, python36-ligo-common
+    deb: python-ligo-common
+    rpm: python2-ligo-common
   ligo-gracedb:
     deb: python-ligo-gracedb, python3-ligo-gracedb
     rpm: python2-ligo-gracedb, python36-ligo-gracedb
