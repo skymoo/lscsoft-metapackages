@@ -95,16 +95,17 @@ generate:
     - .debian:base
     - .build
   script:
+    - DIST=${CI_JOB_NAME##*:}
     - apt-get -y -q install
           equivs
           lintian
-    - for i in stage/*/deb/; do (
+    - for i in stage/*/${DIST}/; do (
           echo "-- $i";
           cd $i;
           equivs-build control
       ); done
     - mkdir debs
-    - for i in stage/*/deb/*.deb; do
+    - for i in stage/*/${DIST}/*.deb; do
           echo "-- $i";
           lintian --pedantic $i;
           cp $i debs;
@@ -137,10 +138,11 @@ build:bullseye:
     - .build
   image: igwn/base:el7-testing
   script:
+    - DIST=${CI_JOB_NAME##*:}
     - yum -y -q install
           rpm-build
           rpmlint
-    - for i in stage/*/rpm/*.spec; do
+    - for i in stage/*/${DIST}/*.spec; do
           rpmlint $i;
           rpmbuild -ba --define "_topdir $CI_PROJECT_DIR/rpmbuild" $i;
       done
@@ -170,6 +172,8 @@ build:conda:
     - .conda:base
     - .conda
     - .build
+  variables:
+    GIT_STRATEGY: fetch
   script:
     # install dependencies for generate.py, and conda builds
     - conda install --yes --quiet
@@ -230,7 +234,8 @@ build:conda:
     - python3 -m venv __test
     - __test/bin/python -m pip install pytest
     # run the tests
-    - __test/bin/python -m pytest -v tools/test.py --script stage/*/deb/test.sh
+    - DIST=${CI_JOB_NAME##*:}
+    - __test/bin/python -m pytest -v tools/test.py --script stage/*/${DIST}/test.sh
 
 test:stretch:
   extends:
@@ -271,7 +276,8 @@ test:bullseye:
     - python3 -m venv __test
     - __test/bin/python -m pip install pytest
     # run the tests
-    - __test/bin/python -m pytest -v tools/test.py --script stage/*/rpm/test.sh
+    - DIST=${CI_JOB_NAME##*:}
+    - __test/bin/python -m pytest -v tools/test.py --script stage/*/${DIST}/test.sh
 
 test:el7:
   extends:

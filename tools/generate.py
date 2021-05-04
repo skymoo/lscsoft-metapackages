@@ -20,6 +20,19 @@ SELECTOR_REGEX = re.compile(
     r" # \[(.*)\](\Z|,)",
 )
 
+# supported distributions
+RPM_DISTS = (
+    "el7",
+    "el8",
+)
+DEBIAN_DISTS = (
+    "stretch",
+    "buster",
+    "bullseye",
+    "bookworm",
+    "trixie",
+)
+
 
 # improve datetime parsing
 def timestamp_constructor(loader, node):
@@ -33,20 +46,37 @@ yaml.add_constructor(
 )
 
 
-def get_package_name(pkg_data, build, default):
+def _platform(dist):
+    if dist in RPM_DISTS:
+        return "rpm"
+    if dist in DEBIAN_DISTS:
+        return "deb"
+    return dist
+
+
+def _dist_and_platform(dist):
+    plat = _platform(dist)
+    if dist == plat:
+        return (dist,)
+    return (dist, plat)
+
+
+def get_package_name(pkg_data, dist, default):
     #----------
     # Allow renaming of package via package_name attribute.
-    # If not explicitly set for build system, then the
+    # If not explicitly set for a distribution, then the
     #   default value (usually the filename) will be used.
     #
     # Ex:
     # package_name:
     #   deb: gds-dev
     #----------
-    try:
-        return pkg_data["package_name"][build]
-    except KeyError:
-        return default
+    for key in _dist_and_platform(dist):
+        try:
+            return pkg_data["package_name"][key]
+        except KeyError:
+            pass
+    return default
 
 
 def _parse_key_comment(mapping, key):
@@ -67,41 +97,51 @@ def _rejoin_comment(value, comment):
     return "{}  {}".format(value.strip(), comment or "").strip()
 
 
-def _get_dependencies(pkg_data, build):
-    """Parse the dependencies for this build
+def _get_dependencies(pkg_data, dist):
+    """Parse the dependencies for this distribution
     """
-    for k, v in pkg_data.get("deps", {}).items():
-        if (
-            v is None  # no build specifics for any build
-            or v.get(build, '') is None  # empty build key for this build
-        ):
-            # just use the package reference name
-            yield k
+    for pkg, req in pkg_data.get("deps", {}).items():
+
+        if req is None:  # no build specifics for any build
+            yield pkg
             continue
 
-        if build not in v:
-            # package is not required for this build:
+        # find if package is specified by dist (e.g. 'buster')
+        # or build (e.g. 'deb') if at all
+        try:
+            key = [
+                key for key in _dist_and_platform(dist)
+                if key is not None and key in req
+            ][0]
+        except IndexError:  # not specified
             continue
 
-        raw = v[build]
+        # key is specified, if no value just use the parent name
+        raw = req[key] or pkg
 
         # parse a comma-separated list
         if not isinstance(raw, list):
             raw = raw.split(",")
-            comment = _parse_key_comment(v, build)
+            comment = _parse_key_comment(req, key)
             if comment and len(raw) != 1:
                 raise ValueError(
                     "invalid use of selector, one package per line please",
                 )
             elif comment:
-                yield _rejoin_comment(raw.pop(), _parse_key_comment(v, build))
+                yield _rejoin_comment(raw.pop(), _parse_key_comment(req, build))
             else:
                 yield from raw
             continue
 
         # or a yaml list
-        for i, pkg in enumerate(raw):
-            yield _rejoin_comment(pkg, _parse_list_comment(raw, i))
+        for i, dep in enumerate(raw):
+            yield _rejoin_comment(dep, _parse_list_comment(raw, i))
+
+
+def _get_extra_headers(pkg_data, dist):
+    for key in _dist_and_platform(dist):
+        return pkg_data.get("extra_headers", {}).get(key, [])
+    return {}
 
 
 def _debian_format(text, width=78):
@@ -157,19 +197,20 @@ Requires: {{ dep }}
 
 # standard directory layout (relative to $ROOT)
 # meta/ contains the meta package definitions - one per file
-# stage/pkgname/{deb,rpm}/ contain all necessary information to build meta-packages
+# stage/pkgname/{conda,deb,rpm}/ contain all necessary information
+# to build meta-packages
 
-def rpm_create_source(pkg_data):
+def rpm_create_source(pkg_data, dist):
     pkg = pkg_data["name"]
 
     # get dependencies
-    dep_list = list(_get_dependencies(pkg_data, "rpm"))
+    dep_list = list(_get_dependencies(pkg_data, dist))
 
     # if extra headers are specified, add them verbatim here
-    extra_headers = pkg_data.get("extra_headers", {}).get("rpm", [])
+    extra_headers = _get_extra_headers(pkg_data, dist)
 
     # write spec file
-    spec = STAGE / pkg / "rpm" / "{}.spec".format(pkg)
+    spec = STAGE / pkg / dist / "{}.spec".format(pkg)
     with spec.open("w") as specf:
         print(
             SPEC_TEMPLATE.render(
@@ -247,20 +288,20 @@ Description: {{ pkg_data['desc_short'] }}
 """.strip())
 
 
-def deb_create_source(pkg_data):
-    _deb_control(pkg_data)
-    _deb_readme(pkg_data)
-    _deb_changelog(pkg_data)
-    _deb_copyright(pkg_data)
+def deb_create_source(pkg_data, dist):
+    _deb_control(pkg_data, dist)
+    _deb_readme(pkg_data, dist)
+    _deb_changelog(pkg_data, dist)
+    _deb_copyright(pkg_data, dist)
 
 
-def _deb_readme(pkg_data):
-    with (STAGE / pkg_data["name"] / "deb" / "README").open("w") as readme:
+def _deb_readme(pkg_data, dist):
+    with (STAGE / pkg_data["name"] / dist / "README").open("w") as readme:
         print(pkg_data["desc_long"], file=readme)
 
 
-def _deb_changelog(pkg_data):
-    with (STAGE / pkg_data["name"] / "deb" / "changelog.Debian").open("w") as readme:
+def _deb_changelog(pkg_data, dist):
+    with (STAGE / pkg_data["name"] / dist / "changelog.Debian").open("w") as readme:
         print(
             DEBIAN_CHANGELOG_TEMPLATE.render(
                 pkg_data=pkg_data,
@@ -269,8 +310,8 @@ def _deb_changelog(pkg_data):
         )
 
 
-def _deb_copyright(pkg_data):
-    with (STAGE / pkg_data["name"] / "deb" / "copyright").open("w") as readme:
+def _deb_copyright(pkg_data, dist):
+    with (STAGE / pkg_data["name"] / dist / "copyright").open("w") as readme:
         print(
             DEBIAN_COPYRIGHT_TEMPLATE.render(
                 pkg_data=pkg_data,
@@ -279,14 +320,14 @@ def _deb_copyright(pkg_data):
         )
 
 
-def _deb_control(pkg_data):
+def _deb_control(pkg_data, dist):
     pkg = pkg_data["name"]
 
     # get dependencies
-    dep_list = list(_get_dependencies(pkg_data, "deb"))
+    dep_list = list(_get_dependencies(pkg_data, dist))
 
     # if extra headers are specified, add them verbatim here
-    extra_headers = pkg_data.get("extra_headers", {}).get("deb", [])
+    extra_headers = _get_extra_headers(pkg_data, dist)
 
     # reformat long description
     pkg_data["desc_long"] = _debian_format(
@@ -294,7 +335,7 @@ def _deb_control(pkg_data):
     )
 
     # write spec file
-    control = STAGE / pkg / "deb" / "control"
+    control = STAGE / pkg / dist / "control"
     with control.open("w") as contf:
         print(
             DEBIAN_CONTROL_TEMPLATE.render(
@@ -344,9 +385,9 @@ about:
 """)
 
 
-def conda_create_recipe(pkg_data):
+def conda_create_recipe(pkg_data, dist):
     # get dependencies
-    dep_list = list(_get_dependencies(pkg_data, "conda"))
+    dep_list = list(_get_dependencies(pkg_data, dist))
 
     # if any packages use selectors, they can't be noarch
     if any(map(SELECTOR_REGEX.search, dep_list)):
@@ -357,7 +398,7 @@ def conda_create_recipe(pkg_data):
         noarch = "generic"
 
     # write spec file
-    meta = STAGE / pkg / "conda" / "meta.yaml"
+    meta = STAGE / pkg / dist / "meta.yaml"
     with meta.open("w") as specf:
         print(
             CONDA_TEMPLATE.render(
@@ -402,11 +443,10 @@ def write_tests(pkg_data, dist):
 # -- main ---------------------------------------
 
 BUILDERS = {
-    "rpm": rpm_create_source,
-    "deb": deb_create_source,
     "conda": conda_create_recipe,
 }
-
+BUILDERS.update({dist: rpm_create_source for dist in RPM_DISTS})
+BUILDERS.update({dist: deb_create_source for dist in DEBIAN_DISTS})
 
 if __name__ == "__main__":
     for meta_file in (ROOT / "meta").glob("*.yml"):
@@ -432,27 +472,31 @@ if __name__ == "__main__":
             assert content.get(key), "{} requires key '{}'".format(meta_file, key)
 
         # build for each type
-        for build, build_func in BUILDERS.items():
-            if build not in content.get("skip", []):
-                content["name"] = get_package_name(content, build, pkg)
-                # once we get here, check if we need to work at all on this one
-                # for that, check its version file and compare to latest one from changelog
-                versionfile = (STAGE / content["name"] / "version")
-                try:
-                    with versionfile.open("r") as verf:
-                        version = verf.read().strip()
-                except FileNotFoundError:
-                    pass
-                else:
-                    if version == str(content['changelog'][0]['version']).strip():
-                        continue
+        for dist, build_func in BUILDERS.items():
+            if any(
+                x in content.get("skip", [])
+                for x in _dist_and_platform(dist)
+            ):
+                continue
+            content["name"] = get_package_name(content, dist, pkg)
+            # once we get here, check if we need to work at all on this one
+            # for that, check its version file and compare to latest one from changelog
+            versionfile = (STAGE / content["name"] / "version")
+            try:
+                with versionfile.open("r") as verf:
+                    version = verf.read().strip()
+            except FileNotFoundError:
+                pass
+            else:
+                if version == str(content['changelog'][0]['version']).strip():
+                    continue
 
-                try:
-                    (STAGE / content["name"] / build).mkdir(parents=True)
-                except FileExistsError:
-                    pass
-                build_func(content)
-                write_tests(content, build)
+            try:
+                (STAGE / content["name"] / dist).mkdir(parents=True)
+            except FileExistsError:
+                pass
+            build_func(content, dist)
+            write_tests(content, dist)
 
         # all done, then update version file
         with versionfile.open("w") as verf:
