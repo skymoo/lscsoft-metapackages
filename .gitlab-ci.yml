@@ -172,6 +172,8 @@ build:conda:
     - .conda:base
     - .conda
     - .build
+  variables:
+    GIT_STRATEGY: fetch
   script:
     # install dependencies for generate.py, and conda builds
     - conda install --yes --quiet
