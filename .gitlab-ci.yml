@@ -1,59 +1,77 @@
+include:
+  - project: computing/gitlab-ci-templates
+    file:
+      - conda/base.yml
+      - packaging/debian.yml
+      - packaging/rhel.yml
+      - python/base.yml
+      - python/docs.yml
+
 stages:
+  - lint
   - generate
   - build
   - test
   - deploy
 
-variables:
-  APT_GET: "apt-get -y -o dir::cache::archives=${CI_PROJECT_DIR}/.cache/apt"
-  CONDA_BLD_PATH: "${CI_PROJECT_DIR}/conda-bld"
-  CONDA_PKGS_DIRS: "${CI_PROJECT_DIR}/.cache/conda"
-  PIP_CACHE_DIR: "${CI_PROJECT_DIR}/.cache/pip"
-  YUM: "yum --assumeyes --setopt=cachedir=${CI_PROJECT_DIR}/.cache/yum --setopt=keepcache=1"
+# -- macros -----------------
 
-.apt-cache: &apt-cache
-  cache:
-    key: "${CI_JOB_NAME}"
-    paths:
-      - .cache/apt
+.stretch:
+  image: igwn/base:stretch-proposed
 
-.apt-init: &apt-init
-  mkdir -p "${CI_PROJECT_DIR}/.cache/apt/partial" &&
-  ${APT_GET} update
+.buster:
+  image: igwn/base:buster
 
-.conda-cache: &conda-cache
-  cache:
-    key: "${CI_JOB_NAME}"
-    paths:
-      - .cache/conda
+.bullseye:
+  image: igwn/base:bullseye
+  allow_failure: true
 
-.pip-cache: &pip-cache
-  cache:
-    key: "${CI_JOB_NAME}"
-    paths:
-      - .cache/pip
+.el7:
+  image: igwn/base:el7-testing
 
-.yum-cache: &yum-cache
-  cache:
-    key: "${CI_JOB_NAME}"
-    paths:
-      - .cache/yum
+.el8:
+  image: igwn/base:el8-testing
+  allow_failure: true
+
+.conda:
+  image: igwn/base:conda
+  after_script:
+    - find ${CI_PROJECT_DIR}/.cache/conda/pkgs
+          -mindepth 1
+          -maxdepth 1
+          -type d
+
+# -- lint -------------------
 
 lint:yaml:
-  <<: *pip-cache
+  extends:
+    - .python:base
+  variables:
+    GIT_STRATEGY: fetch
   image: python:alpine
-  stage: generate
+  needs: []
+  stage: lint
   before_script:
-    - python -m pip install yamllint
+    - python -m pip install
+          yamllint
   script:
     - yamllint meta/*.yml
 
+# -- render metapackages ----
+
 generate:
-  <<: *pip-cache
+  extends:
+    - .python:base
+  variables:
+    GIT_STRATEGY: fetch
   image: python:alpine
   stage: generate
+  needs: []
   before_script:
-    - python -m pip install python-dateutil jinja2 ruamel.yaml
+    - python -m pip install
+          jinja2
+          python-dateutil
+          ruamel.yaml
   script:
     - python tools/generate.py
   artifacts:
@@ -61,16 +79,25 @@ generate:
     paths:
       - stage
 
-build:debian:
-  <<: *apt-cache
-  image: igwn/base:stretch-proposed
+# -- build metapackages -----
+
+.build:
   stage: build
   needs:
     - generate
-  before_script:
-    - *apt-init
-    - ${APT_GET} --assume-yes install equivs lintian
+  variables:
+    GIT_STRATEGY: none
+
+# -- debian
+
+.build:debian:
+  extends:
+    - .debian:base
+    - .build
   script:
+    - apt-get -y -q install
+          equivs
+          lintian
     - for i in stage/*/deb/; do (
           echo "-- $i";
           cd $i;
@@ -87,15 +114,32 @@ build:debian:
     paths:
       - debs
 
-build:rhel:
-  <<: *yum-cache
+build:stretch:
+  extends:
+    - .build:debian
+    - .stretch
+
+build:buster:
+  extends:
+    - .build:debian
+    - .buster
+
+build:bullseye:
+  extends:
+    - .build:debian
+    - .bullseye
+
+# -- rhel
+
+.build:rhel:
+  extends:
+    - .rhel:base
+    - .build
   image: igwn/base:el7-testing
-  stage: build
-  needs:
-    - generate
-  before_script:
-    - ${YUM} install rpm-build rpmlint
   script:
+    - yum -y -q install
+          rpm-build
+          rpmlint
     - for i in stage/*/rpm/*.spec; do
           rpmlint $i;
           rpmbuild -ba --define "_topdir $CI_PROJECT_DIR/rpmbuild" $i;
@@ -109,56 +153,70 @@ build:rhel:
       - rpms
       - srpms
 
+build:el7:
+  extends:
+    - .build:rhel
+    - .el7
+
+build:el8:
+  extends:
+    - .build:rhel
+    - .el8
+
+# -- conda
+
 build:conda:
-  <<: *conda-cache
-  image: igwn/base:conda
-  stage: build
-  needs:
-    - generate
-  before_script:
+  extends:
+    - .conda:base
+    - .conda
+    - .build
+  script:
     # install dependencies for generate.py, and conda builds
-    - conda install --yes
+    - conda install --yes --quiet
           "python>3.4"
           ruamel.yaml
           networkx
           "conda<4.7.11a0"
           conda-build
           conda-forge-pinning
-  script:
     - set -x;
     - for pkg in $(python build-order.py); do
-        recipe_dir="stage/${pkg}/conda";
-        echo "---------- Processing ${pkg}";
-        conda render ${recipe_dir}
-            --use-local
-            --variant-config-files $(conda info --base)/conda_build_config.yaml;
-        conda build ${recipe_dir}
-            --error-overlinking
-            --error-overdepending
-            --no-anaconda-upload
-            --use-local
-            --variant-config-files $(conda info --base)/conda_build_config.yaml;
-      done
+          recipe_dir="stage/${pkg}/conda";
+          echo "---------- Processing ${pkg}";
+          conda render ${recipe_dir}
+              --use-local
+              --variant-config-files $(conda info --base)/conda_build_config.yaml;
+          conda build ${recipe_dir}
+              --error-overlinking
+              --error-overdepending
+              --no-anaconda-upload
+              --use-local
+              --variant-config-files $(conda info --base)/conda_build_config.yaml;
+        done
   artifacts:
     expire_in: 3h
     paths:
       - conda-bld/noarch
       - conda-bld/linux-64
 
-test:debian:
-  <<: *apt-cache
-  image: igwn/base:stretch-proposed
+# -- test metapackages ------
+
+.test:
   stage: test
-  needs:
-    - generate
-    - build:debian
-  before_script:
-    - *apt-init
-    - ${APT_GET} --assume-yes upgrade
+  variables:
+    GIT_STRATEGY: fetch
+
+# -- debian
+
+.test:debian:
+  extends:
+    - .debian:base
+    - .test
+  script:
+    - apt-get -y -q upgrade
     # setup local apt repository
     - apt-get -y -q install local-apt-repository liblz4-tool
     - mkdir /srv/local-apt-repository
-  script:
     # fill our local apt repo and rebuild it
     - cp -v debs/*.deb /srv/local-apt-repository
     - /usr/lib/local-apt-repository/rebuild
@@ -168,51 +226,99 @@ test:debian:
     - echo "Installing metapackages:"; for MPKG in ${METAPACKAGES}; do echo " ${MPKG}"; done
     # install new packages
     - xargs apt-get -y install <<< ${METAPACKAGES}
+    # prepare a virtualenv to support the tests
+    - python3 -m venv __test
+    - __test/bin/python -m pip install pytest
     # run the tests
-    - for testscript in stage/*/deb/test.sh; do
-          echo "-- testing $(echo ${testscript} | cut -d\/ -f2)";
-          bash ${testscript};
-      done
+    - __test/bin/python -m pytest -v tools/test.py --script stage/*/deb/test.sh
 
-test:rhel:
-  <<: *yum-cache
-  image: igwn/base:el7-testing
-  stage: test
+test:stretch:
+  extends:
+    - .test:debian
+    - .stretch
   needs:
     - generate
-    - build:rhel
-  before_script:
-    - ${YUM} clean expire-cache metadata dbcache headers
-    - ${YUM} makecache
-    - ${YUM} update
+    - build:stretch
+
+test:buster:
+  extends:
+    - .test:debian
+    - .buster
+  needs:
+    - generate
+    - build:buster
+
+test:bullseye:
+  extends:
+    - .test:debian
+    - .bullseye
+  needs:
+    - generate
+    - build:bullseye
+
+# -- rhel
+
+.test:rhel:
+  extends:
+    - .rhel:base
+    - .test
   script:
-    - ${YUM} localinstall rpms/*.rpm
-    - for testscript in stage/*/rpm/test.sh; do
-          echo "-- testing $(echo ${testscript} | cut -d\/ -f2)";
-          bash ${testscript};
-      done
+    - yum -y -q clean expire-cache metadata dbcache
+    - yum -y -q makecache
+    - yum -y -q update
+    - yum -y -q localinstall rpms/*.rpm
+    # prepare a virtualenv to support the tests
+    - python3 -m venv __test
+    - __test/bin/python -m pip install pytest
+    # run the tests
+    - __test/bin/python -m pytest -v tools/test.py --script stage/*/rpm/test.sh
+
+test:el7:
+  extends:
+    - .test:rhel
+    - .el7
+  needs:
+    - generate
+    - build:el7
+
+test:el8:
+  extends:
+    - .test:rhel
+    - .el8
+  needs:
+    - generate
+    - build:el8
+
+# -- conda
 
 test:conda:
-  <<: *conda-cache
-  image: igwn/base:conda
-  stage: test
+  extends:
+    - .conda:base
+    - .conda
+    - .test
   needs:
     - generate
     - build:conda
-  before_script:
-    - source /opt/conda/etc/profile.d/conda.sh
-    - conda install --yes networkx pyyaml
   script:
-    - pkglist=$(python build-order.py)
-    - conda create --name test --use-local ${pkglist}
+    # get list of packages in the local conda-bld repo
+    - METAPACKAGES=$(conda search --override-channels --channel local --json | python -c "import json, sys; print('\n'.join(json.load(sys.stdin).keys()))")
+    # create a new environment containing the metapackages
+    - xargs conda create --name test --use-local <<< ${METAPACKAGES}
     - conda list --name test
     - conda activate test
-    - for testscript in stage/*/conda/test.sh; do
-          echo "-- testing $(echo ${testscript} | cut -d\/ -f2)";
-          bash ${testscript};
-      done
+    # prepare a virtualenv to support the tests
+    - python3 -m venv __test
+    - __test/bin/python -m pip install pytest
+    # run the tests
+    - __test/bin/python -m pytest -v tools/test.py --script stage/*/conda/test.sh
+
+# -- docs -------------------
 
 docs:
+  extends:
+    - .python:mkdocs
+  variables:
+    GIT_STRATEGY: fetch
   image: python:3.8
   stage: generate
   needs: []
@@ -220,14 +326,7 @@ docs:
     - python -m pip install -r docs/requirements.txt
   script:
     - python tools/docs.py meta .
-    - mkdocs build --strict --verbose
-  artifacts:
-    paths:
-      - site
-  cache:
-    key: "${CI_JOB_NAME}"
-    paths:
-      - .cache/pip
+    - python -m mkdocs build --strict --verbose
 
 pages:
   stage: deploy
