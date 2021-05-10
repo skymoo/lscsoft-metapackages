@@ -3,6 +3,16 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-05-19T06:38:30-07:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - Updated for move to python 3.6 for RedHat
+    version: 20210519
+  - date: 2021-05-07T12:32:29-07:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - Updated for continued gds splitting
+    version: 20210507
   - date: 2021-02-25T21:26:29-08:00
     author: Edward Maros <ed.maros@ligo.org>
     changes:
@@ -29,14 +39,12 @@ deps:
     deb: gds-base-dev
     rpm:
   gds-base-crtools:
-  gds-base-frameio:
   gds-framexmit:
   gds-framexmit-headers:
   gds-framexmit-devel:
     deb: gds-framexmit-dev
     rpm:
   gds-base-monitors:
-  gds-base-root:
   gds-base-web:
   gds-services:
   # From the gds-frameio source package
@@ -68,6 +76,8 @@ deps:
   gds-dtt-crtools:
   gds-dtt-monitors:
   py-gds-dtt:
+    rpm: py36-gds-dtt
+    deb:
   # From the gds-gui source package
   gds-gui-crtools:
   gds-gui-headers:
@@ -90,10 +100,7 @@ deps:
   gds-root-extensions-crtools:
   # From the gds-utilities source package
   gds-utilities-base:
-  gds-utilities-frameio:
   gds-utilities-monitors:
-  gds-utilities-root:
-  gds-utilities-web:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
