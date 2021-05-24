@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-05-19T06:38:30-07:00
+    author: Edward Maros <ed.maros@ligo.org>
+    changes:
+      - Updated for move to python 3.6 for RedHat
+    version: 20210519
   - date: 2021-03-03T16:24:08-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -22,6 +27,8 @@ deps:
   gds-gui-crtools:
   gds-dtt-crtools:
   py-gds-dtt:
+    rpm: py36-gds-dtt
+    deb:
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
