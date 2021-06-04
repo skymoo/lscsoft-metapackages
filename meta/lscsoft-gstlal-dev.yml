@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2021-06-04T13:16:12-04:00
+    author: Patrick Godwin <patrick.godwin@ligo.org>
+    changes:
+     - add python-pluggy, python-dataclasses
+    version: 20210604
   - date: 2021-04-05T19:44:26-07:00
     author: Adam Mercer <adam.mercer@ligo.org>
     changes:
@@ -157,6 +162,10 @@ deps:
     rpm: python2-gstreamer1, python3-gstreamer1
   python-avahi:
     rpm: python2-avahi, python3-avahi
+  python-dataclasses:
+    rpm: python36-dataclasses
+  python-pluggy:
+    rpm: python36-pluggy
 maintainer: Data Analysis Software Working Group <daswg@ligo.org>
 priority: optional
 section: science
