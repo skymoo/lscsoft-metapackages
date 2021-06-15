@@ -1,11 +1,10 @@
 include:
   - project: computing/gitlab-ci-templates
     file:
-      - conda/base.yml
-      - packaging/debian.yml
-      - packaging/rhel.yml
-      - python/base.yml
-      - python/docs.yml
+      - conda.yml
+      - debian.yml
+      - rhel.yml
+      - python.yml
 
 stages:
   - lint
@@ -41,17 +40,11 @@ stages:
 
 .conda:
   image: igwn/base:conda
-  after_script:
-    - find ${CI_PROJECT_DIR}/.cache/conda/pkgs
-          -mindepth 1
-          -maxdepth 1
-          -type d
 
 # -- lint -------------------
 
 lint:yaml:
-  extends:
-    - .python:base
+  extends: .python:base
   variables:
     GIT_STRATEGY: fetch
   image: python:alpine
@@ -66,8 +59,7 @@ lint:yaml:
 # -- render metapackages ----
 
 generate:
-  extends:
-    - .python:base
+  extends: .python:base
   variables:
     GIT_STRATEGY: fetch
   image: python:alpine
@@ -327,8 +319,7 @@ test:conda:
 # -- docs -------------------
 
 docs:
-  extends:
-    - .python:mkdocs
+  extends: .python:mkdocs
   variables:
     GIT_STRATEGY: fetch
   image: python:3.8
