@@ -16,15 +16,21 @@ stages:
 
 # -- macros -----------------
 
+.debian:
+  # we don't have the personpower to support Debian
+  allow_failure: true
+
 .stretch:
+  extends: .debian
   image: igwn/base:stretch-proposed
 
 .buster:
+  extends: .debian
   image: igwn/base:buster
 
 .bullseye:
+  extends: .debian
   image: igwn/base:bullseye
-  allow_failure: true
 
 .el7:
   image: igwn/base:el7-testing
