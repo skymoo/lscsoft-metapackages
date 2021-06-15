@@ -184,6 +184,11 @@ def parse_metapackage(metafile):
         for mgr in PACKAGE_MANAGERS
         if mgr not in meta.get("skip", [])
     }
+    # make sure the following keys are present
+    for key, default in (
+        ("extra_headers", dict),
+    ):
+        meta.setdefault(key, default())
     return meta
 
 
