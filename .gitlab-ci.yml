@@ -193,13 +193,9 @@ build:conda:
           "conda<4.7.11a0"
           conda-build
           conda-forge-pinning
-    - set -x;
     - for pkg in $(python build-order.py); do
           recipe_dir="stage/${pkg}/conda";
           echo -e "\e[32m-- ${pkg}\e[0m";
-          conda render ${recipe_dir}
-              --use-local
-              --variant-config-files $(conda info --base)/conda_build_config.yaml;
           conda build ${recipe_dir}
               --error-overlinking
               --error-overdepending
