@@ -103,14 +103,14 @@ generate:
           equivs
           lintian
     - for i in stage/*/${DIST}/; do (
-          echo "-- $i";
+          echo -e "\e[32m-- $i\e[0m";
           cd $i;
           equivs-build control
       ); done
     - mkdir debs
     - set -- ${LINTIAN_OPTIONS}
     - for i in stage/*/${DIST}/*.deb; do
-          echo "-- $i";
+          echo -e "\e[32m-- $i\e[0m";
           lintian --allow-root --pedantic "$@" $i;
           cp $i debs;
       done
@@ -152,6 +152,7 @@ build:bullseye:
           rpm-build
           rpmlint
     - for i in stage/*/${DIST}/*.spec; do
+          echo -e "\e[32m-- $i\e[0m";
           rpmlint $i;
           rpmbuild -ba --define "_topdir $CI_PROJECT_DIR/rpmbuild" $i;
       done
@@ -195,7 +196,7 @@ build:conda:
     - set -x;
     - for pkg in $(python build-order.py); do
           recipe_dir="stage/${pkg}/conda";
-          echo "---------- Processing ${pkg}";
+          echo -e "\e[32m-- ${pkg}\e[0m";
           conda render ${recipe_dir}
               --use-local
               --variant-config-files $(conda info --base)/conda_build_config.yaml;
