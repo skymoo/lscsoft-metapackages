@@ -60,6 +60,9 @@ generate:
   stage: generate
   needs: []
   before_script:
+    # clean up reused workspace
+    - rm -rvf stage/
+    # install the requirements for generate.py
     - python -m pip install
           jinja2
           python-dateutil
