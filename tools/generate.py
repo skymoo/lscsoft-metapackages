@@ -122,7 +122,7 @@ def _get_dependencies(pkg_data, dist):
 
         # parse a comma-separated list
         if not isinstance(raw, list):
-            raw = raw.split(",")
+            raw = list(map(str.strip, raw.split(",")))
             comment = _parse_key_comment(req, key)
             if comment and len(raw) != 1:
                 raise ValueError(
@@ -275,15 +275,13 @@ Readme: README
 Changelog: changelog.Debian
 Copyright: copyright
 Architecture: all
-
 {% for line in pkg_data.get("extra_headers", {}).get("deb", []) -%}
 {{ line }}
-{% endfor %}
+{% endfor -%}
 Depends:
 {%- for dep in dependencies %}
  {{ dep }},
 {%- endfor %}
-
 Description: {{ pkg_data['desc_short'] }}
 {{ pkg_data['desc_long'] }}
 """.strip())
