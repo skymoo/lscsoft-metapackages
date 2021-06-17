@@ -95,6 +95,9 @@ generate:
   variables:
     LINTIAN_OPTIONS: "--fail-on-warnings"
   script:
+    # clean up reused workspace
+    - rm -rvf debs
+    # build debs
     - DIST=${CI_JOB_NAME##*:}
     - apt-get -y -q install
           equivs
@@ -141,6 +144,9 @@ build:bullseye:
     - .build
   image: igwn/base:el7-testing
   script:
+    # clean up reused workspace
+    - rm -rvf rpmbuild/ rpms/ srpms/
+    # build rpms
     - DIST=${CI_JOB_NAME##*:}
     - yum -y -q install
           rpm-build
