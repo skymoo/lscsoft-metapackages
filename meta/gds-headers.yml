@@ -15,7 +15,7 @@ changelog:
     version: 20191212
 desc_short: 'GDS header files'
 desc_long: |
-  GDS software header files
+  Metapackage providing GDS software header files.
 deps:
   gds-base-headers:
   gds-frameio-devel:

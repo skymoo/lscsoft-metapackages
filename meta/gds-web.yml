@@ -10,7 +10,7 @@ changelog:
     version: 20190225
 desc_short: 'DMT web services'
 desc_long: |
-  GDS web services provided by DMT
+  Metapackage providing GDS web services from DMT.
 deps:
   gds-base-web:
   gds-utilities-web:

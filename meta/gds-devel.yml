@@ -23,7 +23,7 @@ changelog:
     version: 20191212
 desc_short: 'GDS development files'
 desc_long: |
-  GDS software development files.
+  Metapackage providing GDS software development files.
 deps:
   gds-base-devel:
     deb: gds-base-dev

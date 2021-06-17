@@ -30,7 +30,7 @@ changelog:
     version: 20200210
 desc_short: 'GDS meta package'
 desc_long: |
-  This package installs all GDS packages (except gds-runtime)
+  Metapackage to install all GDS packages (except gds-runtime).
 deps:
   # From the gds source package
   gds-base:

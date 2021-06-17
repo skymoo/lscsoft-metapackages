@@ -15,7 +15,7 @@ changelog:
     version: 20190225
 desc_short: 'DMT Monitor programs'
 desc_long: |
-  GDS DMT monitor programs
+  Metapackage providing GDS DMT monitor programs.
 deps:
   gds-base-monitors:
   gds-monitor-apps:

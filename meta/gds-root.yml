@@ -15,7 +15,7 @@ changelog:
     version: 20190225
 desc_short: 'DMT Monitor programs'
 desc_long: |
-  GDS DMT monitor programs
+  Metapackage providing GDS ROOT extensions.
 deps:
   gds-base-root:
   gds-root-extensions-base:
