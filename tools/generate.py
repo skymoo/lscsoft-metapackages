@@ -10,8 +10,8 @@ import textwrap
 from pathlib import Path
 
 import jinja2
+import ruamel.yaml
 from dateutil import parser as dateparser
-from ruamel import yaml
 
 ROOT = Path.cwd().absolute()
 STAGE = ROOT / "stage"
@@ -33,16 +33,17 @@ DEBIAN_DISTS = (
     "trixie",
 )
 
+yaml = ruamel.yaml.YAML()
+
 
 # improve datetime parsing
 def timestamp_constructor(loader, node):
     return dateparser.parse(node.value)
 
 
-yaml.add_constructor(
+yaml.Constructor.add_constructor(
     'tag:yaml.org,2002:timestamp',
     timestamp_constructor,
-    Loader=yaml.SafeLoader,
 )
 
 
@@ -454,7 +455,7 @@ if __name__ == "__main__":
 
         pkg = meta_file.stem
         with meta_file.open("r") as metaf:
-            content = yaml.round_trip_load(metaf)
+            content = yaml.load(metaf)
 
         # a few modifications need to be done (convenience)
         # parse date/times from changelog and sort them with newest first
