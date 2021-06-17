@@ -3,6 +3,11 @@
 
 # dates should be formatted using: 'date +%Y-%m-%dT%H:%M:%S%:z'
 changelog:
+  - date: 2020-05-06T10:15:47+01:00
+    author: Duncan Macleod <duncan.macleod@ligo.org>
+    changes:
+      - add git-buildpackages
+    version: 20200506
   - date: 2019-10-29T18:13:18+00:00
     author: Duncan Macleod <duncan.macleod@ligo.org>
     changes:
@@ -17,7 +22,7 @@ deps:
   conda-forge-build:
     conda: conda-build, conda-forge-pinning, conda-smithy, conda-verify
   dpkg:
-    deb: dpkg-dev, devscripts, lintian
+    deb: dpkg-dev, devscripts, git-buildpackage, lintian
   rpmbuild:
     rpm: rpm-build, rpmdevtools, rpmlint, yum-utils
   rpm-macros:
