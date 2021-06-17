@@ -92,6 +92,8 @@ generate:
   extends:
     - .debian:base
     - .build
+  variables:
+    LINTIAN_OPTIONS: "--fail-on-warnings"
   script:
     - DIST=${CI_JOB_NAME##*:}
     - apt-get -y -q install
@@ -103,9 +105,10 @@ generate:
           equivs-build control
       ); done
     - mkdir debs
+    - set -- ${LINTIAN_OPTIONS}
     - for i in stage/*/${DIST}/*.deb; do
           echo "-- $i";
-          lintian --pedantic $i;
+          lintian --allow-root --pedantic "$@" $i;
           cp $i debs;
       done
   artifacts:
@@ -124,6 +127,8 @@ build:buster:
     - .buster
 
 build:bullseye:
+  variables:
+    LINTIAN_OPTIONS: "--fail-on warning"
   extends:
     - .build:debian
     - .bullseye
