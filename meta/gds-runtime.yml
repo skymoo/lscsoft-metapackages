@@ -10,7 +10,7 @@ changelog:
     version: 20190225
 desc_short: 'DMT run-time software'
 desc_long: |
-  DMT run-time supervisor and services
+  Metapackage providing DMT run-time supervisor and services.
 deps:
   gds-base-runtime:
   gds-utilities-runtime:

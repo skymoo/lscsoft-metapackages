@@ -20,7 +20,7 @@ changelog:
     version: 20191212
 desc_short: 'GDS control room tools'
 desc_long: |
-  GDS tools used in the control room
+  Metapackage providing GDS tools used in the control room.
 deps:
   gds-base-crtools:
   gds-root-extensions-crtools:

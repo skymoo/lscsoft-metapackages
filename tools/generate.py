@@ -10,8 +10,8 @@ import textwrap
 from pathlib import Path
 
 import jinja2
+import ruamel.yaml
 from dateutil import parser as dateparser
-from ruamel import yaml
 
 ROOT = Path.cwd().absolute()
 STAGE = ROOT / "stage"
@@ -33,16 +33,17 @@ DEBIAN_DISTS = (
     "trixie",
 )
 
+yaml = ruamel.yaml.YAML()
+
 
 # improve datetime parsing
 def timestamp_constructor(loader, node):
-    return dateparser.parse(node.value)
+    return dateparser.parse(node.value, ignoretz=False)
 
 
-yaml.add_constructor(
+yaml.Constructor.add_constructor(
     'tag:yaml.org,2002:timestamp',
     timestamp_constructor,
-    Loader=yaml.SafeLoader,
 )
 
 
@@ -121,7 +122,7 @@ def _get_dependencies(pkg_data, dist):
 
         # parse a comma-separated list
         if not isinstance(raw, list):
-            raw = raw.split(",")
+            raw = list(map(str.strip, raw.split(",")))
             comment = _parse_key_comment(req, key)
             if comment and len(raw) != 1:
                 raise ValueError(
@@ -145,7 +146,7 @@ def _get_extra_headers(pkg_data, dist):
 
 
 def _debian_format(text, width=78):
-    parts = text.split('\n\n')
+    parts = text.strip().split('\n\n')
     return '\n .\n'.join(
         "\n".join(textwrap.wrap(
             p,
@@ -274,15 +275,13 @@ Readme: README
 Changelog: changelog.Debian
 Copyright: copyright
 Architecture: all
-
 {% for line in pkg_data.get("extra_headers", {}).get("deb", []) -%}
 {{ line }}
-{% endfor %}
+{% endfor -%}
 Depends:
 {%- for dep in dependencies %}
  {{ dep }},
 {%- endfor %}
-
 Description: {{ pkg_data['desc_short'] }}
 {{ pkg_data['desc_long'] }}
 """.strip())
@@ -454,7 +453,7 @@ if __name__ == "__main__":
 
         pkg = meta_file.stem
         with meta_file.open("r") as metaf:
-            content = yaml.round_trip_load(metaf)
+            content = yaml.load(metaf)
 
         # a few modifications need to be done (convenience)
         # parse date/times from changelog and sort them with newest first

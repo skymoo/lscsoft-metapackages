@@ -15,7 +15,8 @@ changelog:
     version: 20190225
 desc_short: 'Global Diagnostics Software lowlatency runtime files'
 desc_long: |
-  Lowlatency libraries that implement the GDS shared memory and interconnects
+  Metapackage providing lowlatency libraries that implement the GDS
+  shared memory and interconnects.
 deps:
   gds-lsmp:
   gds-lsmp-devel:

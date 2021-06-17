@@ -15,7 +15,7 @@ changelog:
     version: 20191212
 desc_short: 'GDS Frame I/O libraries'
 desc_long: |
-  Frame I/O libraries
+  Metapackage providing GDS Frame I/O libraries.
 deps:
   gds-base-frameio:
   gds-frameio-base:

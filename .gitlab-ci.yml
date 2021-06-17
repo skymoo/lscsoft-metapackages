@@ -92,20 +92,26 @@ generate:
   extends:
     - .debian:base
     - .build
+  variables:
+    LINTIAN_OPTIONS: "--fail-on-warnings"
   script:
+    # clean up reused workspace
+    - rm -rvf debs
+    # build debs
     - DIST=${CI_JOB_NAME##*:}
     - apt-get -y -q install
           equivs
           lintian
     - for i in stage/*/${DIST}/; do (
-          echo "-- $i";
+          echo -e "\e[32m-- $i\e[0m";
           cd $i;
           equivs-build control
       ); done
     - mkdir debs
+    - set -- ${LINTIAN_OPTIONS}
     - for i in stage/*/${DIST}/*.deb; do
-          echo "-- $i";
-          lintian --pedantic $i;
+          echo -e "\e[32m-- $i\e[0m";
+          lintian --allow-root --pedantic "$@" $i;
           cp $i debs;
       done
   artifacts:
@@ -124,6 +130,8 @@ build:buster:
     - .buster
 
 build:bullseye:
+  variables:
+    LINTIAN_OPTIONS: "--fail-on warning"
   extends:
     - .build:debian
     - .bullseye
@@ -136,11 +144,15 @@ build:bullseye:
     - .build
   image: igwn/base:el7-testing
   script:
+    # clean up reused workspace
+    - rm -rvf rpmbuild/ rpms/ srpms/
+    # build rpms
     - DIST=${CI_JOB_NAME##*:}
     - yum -y -q install
           rpm-build
           rpmlint
     - for i in stage/*/${DIST}/*.spec; do
+          echo -e "\e[32m-- $i\e[0m";
           rpmlint $i;
           rpmbuild -ba --define "_topdir $CI_PROJECT_DIR/rpmbuild" $i;
       done
@@ -181,13 +193,9 @@ build:conda:
           "conda<4.7.11a0"
           conda-build
           conda-forge-pinning
-    - set -x;
     - for pkg in $(python build-order.py); do
           recipe_dir="stage/${pkg}/conda";
-          echo "---------- Processing ${pkg}";
-          conda render ${recipe_dir}
-              --use-local
-              --variant-config-files $(conda info --base)/conda_build_config.yaml;
+          echo -e "\e[32m-- ${pkg}\e[0m";
           conda build ${recipe_dir}
               --error-overlinking
               --error-overdepending

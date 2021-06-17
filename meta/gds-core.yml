@@ -15,7 +15,8 @@ changelog:
     version: 20191212
 desc_short: 'GDS package Core libraries'
 desc_long: |
-  Core libraries required by the rest of the GDS packages
+  Metapackage providing core libraries required by the rest
+  of the GDS packages.
 deps:
   gds-base:
   gds-lsmp:
