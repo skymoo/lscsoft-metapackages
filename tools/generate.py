@@ -146,7 +146,7 @@ def _get_extra_headers(pkg_data, dist):
 
 
 def _debian_format(text, width=78):
-    parts = text.split('\n\n')
+    parts = text.strip().split('\n\n')
     return '\n .\n'.join(
         "\n".join(textwrap.wrap(
             p,
