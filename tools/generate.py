@@ -38,7 +38,7 @@ yaml = ruamel.yaml.YAML()
 
 # improve datetime parsing
 def timestamp_constructor(loader, node):
-    return dateparser.parse(node.value)
+    return dateparser.parse(node.value, ignoretz=False)
 
 
 yaml.Constructor.add_constructor(
