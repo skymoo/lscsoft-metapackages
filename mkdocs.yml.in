@@ -25,9 +25,14 @@ markdown_extensions:
   - toc:
       permalink: true
 
+# plugins
+plugins:
+  - include-markdown
+
 # navigation links
 nav:
   - 'index.md'
+  - 'guide.md'
 
 # customisation
 extra_css:

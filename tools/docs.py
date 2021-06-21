@@ -30,6 +30,9 @@ title: Introduction
 This page describes the metapackages that are available in the IGWN
 Software Distributions to simplify software envirnoment configuration.
 
+See the [_User guide_](guide.md) for instructions on how to configure and
+use the metapackages, and also how to propose changes or additions.
+
 The available metapackages are:
 
 | Package name | Description |
