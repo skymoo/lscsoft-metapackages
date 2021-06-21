@@ -4,5 +4,6 @@ mkdocs-include-markdown-plugin ~=3.1.4
 mkdocs-material ~=5.0
 mkdocs-minify-plugin
 mkdocs-redirects >=1.0.0
+pymdown-extensions ~=8.0
 python-dateutil
 ruamel.yaml
