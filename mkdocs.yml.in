@@ -2,8 +2,8 @@
 site_name: 'IGWN | Metapackages'
 site_description: 'IGWN Metapackages'
 site_author: 'Duncan Macleod'
-site_url: 'https://packaging.docs.ligo.org/lscsoft-metapackages'
-repo_url: 'https://git.ligo.org/packaging/lscsoft-metapackages'
+site_url: 'https://packaging.docs.ligo.org/metapackages'
+repo_url: 'https://git.ligo.org/packaging/metapackages'
 repo_name: 'GitLab'
 copyright: 'Copyright &copy; 2021 Cardiff University'
 
