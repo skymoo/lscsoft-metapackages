@@ -10,10 +10,11 @@ from operator import itemgetter
 from pathlib import Path
 
 import jinja2
-
-import yaml
+import ruamel.yaml
 
 import generate
+
+yaml = ruamel.yaml.YAML()
 
 PACKAGE_MANAGERS = {
     "conda": "Conda",
@@ -140,7 +141,7 @@ def write_mkdocs_yml(pkgfiles, outfile):
     tmplt = outfile.with_suffix(".yml.in")
     metapages = sorted(x.with_suffix('.md').name for x in pkgfiles)
     with open(tmplt, "r") as tmplf:
-        mkconf = yaml.load(tmplf, Loader=yaml.SafeLoader)
+        mkconf = yaml.load(tmplf)
     mkconf['nav'].append({"Metapackages": metapages})
     with open(outfile, "w") as ymlf:
         yaml.dump(mkconf, ymlf)
@@ -171,7 +172,7 @@ def parse_metapackage(metafile):
         text = inf.read()
     for regex, repl in FORMATTING.items():
         text = regex.sub(repl, text)
-    meta = yaml.safe_load(text)
+    meta = yaml.load(text)
 
     # post-process
     meta["name"] = metafile.stem
