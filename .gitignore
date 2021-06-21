@@ -1,6 +1,7 @@
 *.swp
 *.py[cod]
 docs/*.md
+!docs/guide.md
 mkdocs.yml
 
 __pycache__/

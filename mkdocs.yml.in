@@ -22,12 +22,18 @@ markdown_extensions:
   - attr_list
   - markdown.extensions.codehilite
   - meta
+  - pymdownx.superfences
   - toc:
       permalink: true
+
+# plugins
+plugins:
+  - include-markdown
 
 # navigation links
 nav:
   - 'index.md'
+  - 'guide.md'
 
 # customisation
 extra_css:
